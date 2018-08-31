@@ -1,0 +1,140 @@
+<div *ngIf = "isSettingFloorPackages()" id="floorMenu" class="floor-menu">
+  <ngx-loading [show]="loading"></ngx-loading>    
+  <div *ngIf = "isView()" class="floor-menu__floor-info">
+    <div class="floor-menu__title icon-table">
+      <div class="floor-menu__text">{{ 'SETTINGS_FLOOR_PACKAGES' | translate }}</div>
+      <div class="floor-menu__desc">{{ 'SETTINGS_FLOOR_PACKAGES_DESC' | translate }}</div>
+      <button (click)="closeFloorPackageSettings()" class="floor-menu__close icon-close"></button>
+    </div>
+    <div class="floor-menu__content">
+      <div class="floor-menu__floor">
+        <div class="floor-menu__floor-name-label">{{ 'PACKAGE_NAME' | translate }}</div>
+        <div class="floor-menu__floor-name">{{selectFp.name}}</div>
+        <button *ngIf = "defaultFp.id != selectFp.id && selectFp.is_publish" class="floor-menu__btn floor-menu__btn_accent" (click) = "setAsDefault()" >{{ 'SET_AS_DEFAULT' | translate }}</button>
+        <button class="floor-menu__btn floor-menu__btn_mobile-view">Show View</button>
+        <!-- *ngIf = "!selectFp.is_publish" -->
+        <button *ngIf = "!selectFp.is_publish"  class="floor-menu__btn floor-menu__btn_edit" (click)="showEdit()">{{ 'EDIT_PACKAGE' | translate }}</button>
+      </div>
+      <button class="floor-menu__btn" (click)="duplicate()">{{ 'DUPLICATE' | translate }}</button>
+    </div>
+  </div>
+  <div *ngIf = "isEdit()" id="floorEditMenu" class="floor-menu__floor-edit">
+    <form [formGroup]="editForm" novalidate>
+      <div class="floor-menu__title icon-table">
+        <div class="floor-menu__text">{{ 'SETTINGS_FLOOR_PACKAGES' | translate }}</div>
+        <div class="floor-menu__desc">{{ 'SETTINGS_FLOOR_PACKAGES_DESC' | translate }}</div>
+        <button (click)="showView()" class="floor-menu__close icon-close"></button>
+      </div>
+      <div class="floor-menu__content">
+        <div class="floor-menu__floor">
+          <div class="floor-menu__floor-name-label">{{ 'PACKAGE_NAME' | translate | uppercase }}</div>
+          <input class="floor-menu__input" type="text" formControlName="input_floor_package_name" [(ngModel)] = "editFp.name" autofocus>
+          <p><show-errors [control]="editForm.controls.input_floor_package_name"></show-errors></p>        
+          <button (click) = "saveEdit()" [disabled]="editForm.invalid || editForm.pending" class="floor-menu__btn floor-menu__btn_accent">{{ 'SAVE' | translate }}</button>
+          <div class="floor-menu__publish-status">
+            <div class="floor-menu__publish-status-info">
+              <div class="floor-menu__publish-status-text">{{ 'PUBLISH_PACKAGE' | translate }}</div>
+              <div class="floor-menu__publish-status-desc">{{ 'SWITCH_ON_TO_PUBLISH' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="floor-menu__publish-status-switch" [(ngModel)] = "editFp.is_publish" formControlName="radio_floor_publish"></mat-slide-toggle>
+          </div>
+        </div>
+        <button *ngIf = "defaultFp.id != selectFp.id" class="floor-menu__btn floor-menu__btn_red" (click) = "deletePackage()">{{ 'DELETE' | translate }}</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf = "isCreate()" id="floorCreateMenu" class="floor-menu__floor-edit">
+    <form [formGroup]="createForm" novalidate>
+      <div class="floor-menu__title icon-table">
+        <div class="floor-menu__text">{{ 'SETTINGS_FLOOR_PACKAGES' | translate }}</div>
+        <div class="floor-menu__desc">{{ 'SETTINGS_FLOOR_PACKAGES_DESC' | translate }}</div>
+        <button (click)="showView()" class="floor-menu__close icon-close"></button>
+      </div>
+      <div class="floor-menu__content">
+        <div class="floor-menu__floor">
+          <div class="floor-menu__floor-name-label">{{ 'PACKAGE_NAME' | translate | uppercase }}</div>
+          <input class="floor-menu__input" type="text" formControlName="input_floor_package_name" [(ngModel)] = "createFp.name" autofocus>
+          <p><show-errors [control]="createForm.controls.input_floor_package_name"></show-errors></p>      
+          <button (click) = "saveCreate()" [disabled]="createForm.invalid || createForm.pending" class="floor-menu__btn floor-menu__btn_accent">{{ 'SAVE' | translate }}</button>
+          <div class="floor-menu__publish-status">
+            <div class="floor-menu__publish-status-info">
+              <div class="floor-menu__publish-status-text">{{ 'PUBLISH_PACKAGE' | translate }}</div>
+              <div class="floor-menu__publish-status-desc">{{ 'SWITCH_ON_TO_PUBLISH' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="floor-menu__publish-status-switch" [(ngModel)] = "createFp.is_publish" formControlName="radio_floor_publish"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div> 
+  <div *ngIf = "isItemEdit()" id="floorMenuTableEdit" class="floor-menu__table-edit">
+    <form [formGroup]="tableEditForm" (ngSubmit)="saveTable()" novalidate>
+      <div class="floor-menu__title icon-table">
+        <div class="floor-menu__text">{{ 'SETTINGS_FLOOR_PACKAGES' | translate }}</div>
+        <div class="floor-menu__desc">{{ 'SETTINGS_FLOOR_PACKAGES_DESC' | translate }}</div>
+        <button (click)="closeItemEdit()" class="floor-menu__close icon-close"></button>
+      </div>
+      <div class="floor-menu__content">
+        <div class="floor-menu__fields">
+          <!-- <button type = "submit" [disabled]="tableEditForm.invalid || tableEditForm.pending"  class="floor-menu__btn floor-menu__btn_green">{{ 'SETTINGS_FLOOR_SAVE_CLOSE' | translate }} - {{ selectedTable.tableObj.table_name }}</button> -->
+          <div class="floor-menu__row">
+            <div class="floor-menu__field">
+              <div class="floor-menu__field-name">{{ 'SETTINGS_FLOOR_NAME' | translate }}</div>
+              <div class="floor-menu__field-text">
+                <input class="floor-menu__input" type="text" formControlName="input_table_name" (input)="changeTableName($event)" [(ngModel)]="selectedTable.tableObj.table_name">
+                <p><show-errors [control]="tableEditForm.controls.input_table_name" ></show-errors></p>
+              </div>
+            </div>
+          </div>
+          <div class="floor-menu__row">
+            <div class="floor-menu__field">
+              <div class="floor-menu__field-name">{{ 'SETTINGS_FLOOR_SEAT' | translate }}</div>
+              <div class="floor-menu__field">
+                <input class="floor-menu__input" type="number" formControlName="input_table_seats"  (input)="changeSeats($event)" [(ngModel)]="selectedTable.tableObj.seats"  min = "1" >
+                <p><show-errors [control]="tableEditForm.controls.input_table_seats" ></show-errors></p>                
+              </div>
+            </div>
+          </div>          
+          <div class="floor-menu__row">
+            <div class="floor-menu__col">
+              <div class="floor-menu__field">
+                <div class="floor-menu__field-name">{{ 'SETTINGS_FLOOR_SEATABLE_FROM' | translate }}</div>
+                <div class="floor-menu__field">
+                  <input class="floor-menu__input" type="number"  formControlName="input_table_seat_from"  (input)="changeSeatFrom($event)" [(ngModel)]="selectedTable.tableObj.seat_from"  min = "1" [max] = "selectedTable.tableObj.seat_to" >
+                  <p><show-errors [control]="tableEditForm.controls.input_table_seat_from" ></show-errors></p>                   
+                </div>
+              </div>
+            </div>
+            <div class="floor-menu__col">
+              <div class="floor-menu__field">
+                <div class="floor-menu__field-name">{{ 'SETTINGS_FLOOR_SEATABLE_TO' | translate }}</div>
+                <div class="floor-menu__field">
+                  <input class="floor-menu__input" type="number" (input)="changeSeatTo($event)" formControlName="input_table_seat_to" [(ngModel)]="selectedTable.tableObj.seat_to" [min] = "selectedTable.tableObj.seat_from">
+                  <p><show-errors [control]="tableEditForm.controls.input_table_seat_to" ></show-errors></p>                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floor-menu__row">
+            <div class="floor-menu__field">
+              <div class="floor-menu__field-name">{{ 'SETTINGS_FLOOR_STYLE' | translate }}</div>
+              <div class="floor-menu__table-styles">
+                <input id="style1" (change)="changeTableStyle()" class="floor-menu__table-style floor-menu__table-style_square" type="radio" formControlName="input_table_style" value = "0" [(ngModel)]="selectedTable.tableObj.style" >
+                <label for="style1"></label>
+                <input id="style2" (change)="changeTableStyle()" class="floor-menu__table-style floor-menu__table-style_round" type="radio" formControlName="input_table_style" value = "1" [(ngModel)]="selectedTable.tableObj.style" >
+                <label for="style2"></label>
+              </div>
+            </div>
+          </div>
+          <div class="floor-menu__publish-status">
+            <div class="floor-menu__publish-status-info">
+              <div class="floor-menu__publish-status-text">{{ 'SETTINGS_FLOOR_ALLOW_ONLINE_BOOKING' | translate }}</div>
+              <div class="floor-menu__publish-status-desc">{{ 'SETTINGS_FLOOR_ALLOW_SWITCH' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="floor-menu__publish-status-switch" formControlName="input_table_allow_online" [(ngModel)] = "selectedTable.tableObj.non_reservable" (change) = "changeOnlineBookingState()"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

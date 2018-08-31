@@ -1,0 +1,73 @@
+<div *ngIf = "isSettingsShiftPackages()" id="shiftMenu" class="shift-menu">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div *ngIf = "isView()" class="shift-menu__shift-info">
+    <div class="shift-menu__title icon-shifts">
+      <div class="shift-menu__text">{{ 'SETTINGS_SHIFT_PACKAGES' | translate }}</div>
+      <div class="shift-menu__desc">{{ 'SETTINGS_SHIFT_PACKAGES_DESC' | translate }}</div>
+      <button (click)="closeShiftPackageSettings()" class="shift-menu__close icon-close"></button>
+    </div>
+    <div class="shift-menu__content">
+      <div class="shift-menu__shift">
+        <div class="shift-menu__shift-name-label">{{ 'PACKAGE_NAME' | translate | uppercase }}</div>
+        <div class="shift-menu__shift-name">{{selectSp.name}}</div>
+        <button *ngIf = "defaultSp.id != selectSp.id && selectSp.is_publish" class="shift-menu__btn shift-menu__btn_accent" (click) = "setAsDefault()" >{{ 'SET_AS_DEFAULT' | translate }}</button>
+        <button class="shift-menu__btn shift-menu__btn_mobile-view">Show View</button>
+        <br>
+        <!-- *ngIf = "!selectSp.is_publish" -->
+        <button *ngIf = "!selectSp.is_publish" class="shift-menu__btn shift-menu__btn_edit" (click)="showEdit()" >{{ 'EDIT_PACKAGE' | translate }}</button>
+      </div>
+      <button class="shift-menu__btn" (click)="duplicate()">{{ 'DUPLICATE' | translate }}</button>
+    </div>
+  </div>
+  <div *ngIf = "isEdit()" id="shiftEditMenu" class="shift-menu__shift-edit">
+    <form [formGroup]="editForm" novalidate>
+      <div class="shift-menu__title icon-shifts">
+        <div class="shift-menu__text">{{ 'SETTINGS_SHIFT_PACKAGES' | translate }}</div>
+        <div class="shift-menu__desc">{{ 'SETTINGS_SHIFT_PACKAGES_DESC' | translate }}</div>
+        <div (click)="showView()" class="shift-menu__close icon-close "></div>
+      </div>
+      <div class="shift-menu__content">
+        <div class="shift-menu__shift">
+          <div class="shift-menu__shift-name-label">{{ 'PACKAGE_NAME' | translate | uppercase }}</div>
+          <input class="shift-menu__input" type="text"  name = "input_shift_package_name" formControlName="input_shift_package_name" [(ngModel)] = "editSp.name">
+          <p><show-errors [control]="editForm.controls.input_shift_package_name"></show-errors></p>
+          <button (click)="saveEdit()" [disabled]="editForm.invalid || editForm.pending || !editItemValid" class="shift-menu__btn shift-menu__btn_accent">{{ 'SAVE' | translate }}</button>
+          <button class="shift-menu__btn shift-menu__btn_mobile-view">Show View</button>
+          <div class="shift-menu__publish-status">
+            <div class="shift-menu__publish-status-info">
+              <div class="shift-menu__publish-status-text">{{ 'PUBLISH_PACKAGE' | translate }}</div>
+              <div class="shift-menu__publish-status-desc">{{ 'SWITCH_ON_TO_PUBLISH' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="shift-menu__publish-status-switch" [(ngModel)] = "editSp.is_publish" formControlName="radio_shift_publish"></mat-slide-toggle>
+          </div>
+        </div>
+        <button class="shift-menu__btn shift-menu__btn_red" (click) = "deletePackage()">{{ 'DELETE' | translate }}</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf = "isCreate()" id="shiftCreateMenu" class="shift-menu__shift-edit">
+    <form [formGroup]="createForm" novalidate>
+      <div class="shift-menu__title icon-shifts">
+        <div class="shift-menu__text">{{ 'SETTINGS_SHIFT_PACKAGES' | translate }}</div>
+        <div class="shift-menu__desc">{{ 'SETTINGS_SHIFT_CREATE_SHIFT_PACKAGE' | translate }}</div>
+        <div (click)="showView()" class="shift-menu__close icon-close "></div>
+      </div>
+      <div class="shift-menu__content">
+        <div class="shift-menu__shift">
+          <div class="shift-menu__shift-name-label">{{ 'PACKAGE_NAME' | translate | uppercase }}</div>
+          <input class="shift-menu__input" type="text" formControlName="input_shift_package_name" [(ngModel)] = "createSp.name">
+          <p><show-errors [control]="createForm.controls.input_shift_package_name"></show-errors></p>     
+          <button (click)="saveCreate()" [disabled]="createForm.invalid || createForm.pending || !createItemValid"  class="shift-menu__btn shift-menu__btn_accent">{{ 'SAVE' | translate }}</button>
+          <button class="shift-menu__btn shift-menu__btn_mobile-view">Show View</button>
+          <div class="shift-menu__publish-status">
+            <div class="shift-menu__publish-status-info">
+              <div class="shift-menu__publish-status-text">{{ 'PUBLISH_PACKAGE' | translate }}</div>
+              <div class="shift-menu__publish-status-desc">{{ 'SWITCH_ON_TO_PUBLISH' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="shift-menu__publish-status-switch" formControlName="radio_shift_publish" [(ngModel)] = "createSp.is_publish"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>  
+</div>

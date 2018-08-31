@@ -1,0 +1,18 @@
+<div class="settings-list">
+  <div class="settings-list__item settings-list__item_active icon-general">
+    <div class="settings-list__item-name">{{ 'SETTINGS_GENERAL' | translate }}</div>
+    <div class="settings-list__item-desc">{{ 'SETTINGS_GENERAL_DESC' | translate }}</div>
+  </div>
+  <div (click)="showRulesSettings()" class="settings-list__item icon-rules">
+    <div class="settings-list__item-name">{{ 'SETTINGS_RULES' | translate }}</div>
+    <div class="settings-list__item-desc">{{ 'SETTINGS_RULES_DESC' | translate }}</div>
+  </div>
+  <div (click)="showShiftPackageSettings()" class="settings-list__item icon-shifts">
+    <div class="settings-list__item-name">{{ 'SETTINGS_SHIFT_PACKAGES' | translate }}</div>
+    <div class="settings-list__item-desc">{{ 'SETTINGS_SHIFT_PACKAGES_DESC' | translate }} </div>
+  </div>
+  <div (click)="showFloorPackageSettings()" class="settings-list__item icon-table">
+    <div class="settings-list__item-name">{{ 'SETTINGS_FLOOR_PACKAGES' | translate }}</div>
+    <div class="settings-list__item-desc">{{ 'SETTINGS_FLOOR_PACKAGES_DESC' | translate }}</div>
+  </div>
+</div>

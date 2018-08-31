@@ -1,0 +1,420 @@
+@import "~styles/variables";
+@import "~styles/base";
+@import "~styles/general";
+p {
+  height: 0;
+}
+
+ul.show_error {
+  margin: 0;
+
+  li.show_error_item {
+    color: lightgreen;
+    font-size: 15px;
+  }
+}
+
+.ng-select {
+  //padding-top: 8px;
+  height: 100%;
+}
+
+.ng-select .ng-control {
+  padding-top:8px;
+}
+.ng-select-dropdown-outer{
+    top: calc(100%)!important;
+   margin-top:5px!important;
+}
+
+.guest-edit {
+  z-index: 100;
+  background-color: $gray;
+  padding: 26px 23px 27px 29px;
+  box-sizing: border-box;
+  position: absolute;
+  overflow: auto;
+  top: 74px;
+  left: calc(74px + 342px);
+  width: calc(100% - 74px - 342px);
+  height: calc(100% - 74px);
+  flex-direction: column;
+
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__id {
+    @include font-style($color: $light-gray-3, $size: 14px, $weight: 300, $ls: 0.6px);
+  }
+  &__buttons {
+    display: flex;
+  }
+
+  &__action-btn {
+    margin-right: 18px;
+    border: none;
+    width: 20px;
+    height: 20px;
+    padding: 11px;
+    border-radius: 4px;
+    background-color: $dark-gray-4;
+    cursor: pointer;
+    &_block,
+    &_lock,
+    &_delete {
+      width: 44px;
+      height: 44px;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+
+  &__save-btn,
+  &__cancel-btn {
+    @include font-style($color: $light-gray-2, $size: 16px);
+    padding: 10px 27px;
+    height: 44px;
+    box-sizing: border-box;
+    background-color: $mint;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 9px;
+    border: none;
+    &.active {
+      background-color: $blue;
+    }
+    &:disabled {
+      background-color: $gray-5;
+    }
+  }
+  &__cancel-btn {
+    background-color: $dark-gray-4;
+  }
+  &__guest-info-tag {
+    @include font-style($color: $gray-3, $size: 15px);
+    background-color: $dark-gray-4;
+    border-radius: 100px;
+    padding: 9px 22px 10px;
+    margin-right: 13px;
+    margin-bottom: 0;
+    display: inline-block;
+    position: relative;
+    &:before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 17px;
+      top: 11px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    img {
+      width: 23px;
+      height: 23px;
+      border-radius: 2px;
+      margin: -7px;
+      margin-right: 2px;
+    }
+    &_vip {
+      &:before {
+        background-image: url("/assets/icons/tag-vip.svg");
+      }
+    }
+    &_mvp {
+      &:before {
+        background-image: url("/assets/icons/tag-mvp.svg");
+      }
+    }
+    &_gluten-free {
+      &:before {
+        background-image: url("/assets/icons/tag-gluten-free.svg");
+      }
+    }
+    &_vegetarian {
+      &:before {
+        background-image: url("/assets/icons/tag-vegetarian.svg");
+      }
+    }
+    &_pescatarian {
+      &:before {
+        background-image: url("/assets/icons/tag-pescatarian.svg");
+      }
+    }
+    &_smoker {
+      &:before {
+        background-image: url("/assets/icons/tag-smoker.svg");
+      }
+    }
+    &_allergies {
+      &:before {
+        background-image: url("/assets/icons/tag-alergies.svg");
+      }
+    }
+    &_blogger {
+      &:before {
+        background-image: url("/assets/icons/tag-blogger.svg");
+      }
+    }
+    &_birthday {
+      &:before {
+        background-image: url("/assets/icons/tag-birthday.svg");
+      }
+    }
+    &_anniversary {
+      &:before {
+        background-image: url("/assets/icons/tag-anniversary.svg");
+      }
+    }
+    &_window-seat {
+      &:before {
+        background-image: url("/assets/icons/tag-window-seat.svg");
+      }
+    }
+  }
+  &__col-50 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: fit-content;
+    box-sizing: border-box;
+  }
+  &__content {
+    height: 100%;
+    box-sizing: border-box;
+    //overflow-y: auto;
+    //overflow-x: hidden;
+    padding-top: 40px;
+  }
+  &__fields {
+    display: flex;
+  }
+  &__fields_tags{
+    margin-top: 35px;
+    padding-right: 8px;
+    padding-top: 8px;
+  }
+  &__fields_name_tags {
+    margin-bottom:15px;
+  }
+  &__field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0;
+    }
+    &_right {
+      margin-left: 10px;
+    }
+    ng-select {
+      height: auto!important;
+    }
+    .ng-control {
+      padding-top: 0;
+    }
+    .ng-select .ng-menu-outer {
+      top: 100%!important;
+    }
+  }
+  &__field-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__field-dropdown {
+    margin-top: 13px;
+    margin-right: 16px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 24px;
+      top: 23px;
+      width: 15px;
+      height: 9px;
+      pointer-events: none;
+      background-image: url("/assets/icons/drop-down.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  &__field-input {
+    @include font-style($color: $light-gray, $size: 17px);
+    padding: 14px 17px;
+    display: flex;
+    justify-content: space-between;
+    background-color: $gray;
+    border: 1px solid $gray-2;
+    border-radius: 4px;
+    margin-right: 17px;
+    margin-top: 13px;
+    height: 56px;
+    box-sizing: border-box;
+    resize: none;
+    &::placeholder {
+      @include font-style($color: $light-gray, $size: 17px);
+      opacity: 0.2;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__access-table {
+    border: 1px solid $gray-2;
+    border-radius: 4px;
+    overflow: auto;
+  }
+  &__row {
+    border-bottom: 1px solid $gray-2;
+    display: flex;
+  }
+  &__access-table-header {
+    margin-top: 22px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__access-table-col-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 12px);
+    padding: 17px 0;
+    text-align: center;
+    box-sizing: border-box;
+    width: 170px;
+  }
+  &__access-toggle {
+    border-right: 1px solid $gray-2;
+    box-sizing: border-box;
+    min-width: 170px;
+    max-width: 170px;
+    height: 64px!important;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    .mat-slide-toggle-label {
+      //display: flex;
+      justify-content: start!important;
+      //align-items: center;
+      height: 100%;
+    }
+  }
+}
+
+@media #{$mobile} {
+  .guest-edit {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100vw;
+    padding: 10px 5px;
+    height: calc(100vh - 55px);
+    &__title {
+      align-items: flex-start;
+      padding-bottom: 25px;
+      flex-direction: column;
+    }
+    &__save-btn,
+    &__cancel-btn {
+      padding-left: 15px;
+      padding-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    &__name {
+      margin-bottom: 10px;
+    }
+    &__action-btn {
+      margin-right: 10px;
+    }
+    &__content {
+      padding-top: 20px;
+    }
+    &__fields {
+      flex-direction: column;
+    }
+    &__field {
+      margin-top: 20px;
+      &_right {
+        margin-left: 0;
+      }
+    }
+    &__col-50 {
+      width: 100%;
+    }
+    &__field-input {
+      margin-right: 0;
+    }
+    &__field-dropdown {
+      margin-right: 0;
+    }
+    &__access-toggle {
+      min-width: 90px;
+      max-width: 90px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .guest-edit {
+    padding: 10px 5px;
+    top: 56px;
+    left: 342px;
+    width: calc(100% - 342px);
+    height: calc(100% - 56px);
+    &__title {
+      align-items: flex-start;
+      padding-bottom: 25px;
+      flex-direction: column;
+    }
+    &__save-btn,
+    &__cancel-btn {
+      padding-left: 15px;
+      padding-right: 15px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    &__name {
+      margin-bottom: 10px;
+    }
+    &__content {
+      padding-top: 20px;
+    }
+    &__fields {
+      flex-direction: column;
+    }
+    &__field {
+      margin-top: 20px;
+      &_right {
+        margin-left: 0;
+      }
+    }
+    &__col-50 {
+      width: 100%;
+    }
+    &__field-input {
+      margin-right: 0;
+    }
+    &__field-dropdown {
+      margin-right: 0;
+    }
+    &__access-toggle {
+      min-width: 90px;
+      max-width: 90px;
+    }
+  }
+}

@@ -1,0 +1,117 @@
+@import "~styles/variables";
+@import "~styles/base";
+.booking-status {
+  width: 342px;
+  height: 100%;
+  background-color: $gray;
+  display: flex;
+  flex-direction: column;
+  padding: 37px 30px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-right: 2px solid $dark-gray-6;
+  transition: all 0.3s ease-in-out;
+  &__title {
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-bottom: 38px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+  &__back {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -2px;
+    top: 3px;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    color: $light-gray-3;
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+    text-align: center;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    margin-left: -30px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+  }
+  &__save{
+    cursor: pointer;
+    @include font-style($color: $light-gray-2, $size: 16px);
+    //background-color: $dark-gray-4;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 0;
+    min-height: 56px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $mint;
+    font-weight: 400;    
+  }
+  &__radio {
+    display: none;
+    &:checked+label {
+      background-color: $mint;
+      &:before {
+        background-color: $mint;
+      }
+      &:after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: $light-gray-2;
+        position: absolute;
+        top: 21px;
+        right: 25px;
+        border-radius: 100%;
+      }
+    }
+  }
+  &__radio-icon {
+    position: absolute;
+    top: 19px;
+    left: 22px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+  }
+  &__radio+label {
+    display: block;
+    cursor: pointer;
+    @include font-style($color: $light-gray-2, $size: 16px);
+    background-color: $dark-gray-4;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 22px 16px 60px;
+    margin-bottom: 21px;
+    position: relative;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      width: 16px;
+      height: 16px;
+      border: 2px solid $light-gray-2;
+      border-radius: 100%;
+      background-color: $dark-gray-4;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+@import "~styles/variables";
+@import "~styles/base";
+[hidden]{
+    display: none !important;
+}
+.table-details {
+  width: 342px;
+  height: 100%;
+  background-color: $gray;
+  border-right: 2px solid $dark-gray-6;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 30px;
+  padding-bottom:26px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
+  overflow: auto;
+  &__table_title {
+    padding-left: 1px;
+    padding-right: 34px;
+    padding-bottom: 27px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -1px;
+    top: 13px;
+    color: $gray-8;
+    font-size: 20px;
+    line-height: 20px;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  &__title_header {
+    @include font-style($color: $light-gray-2, $size: 18px)
+  }
+  &__available {
+    @include font-style($color: $green-2, $size: 15px);
+  }
+  &__overlap {
+    color:$dark-yellow;
+  }
+  &__block{
+    color:$red;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 10px 0px;
+  }
+  &__button {
+    cursor: pointer;
+    @include font-style($color: $light-gray-2, $size: 16px);
+    background-color: $dark-gray-4;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 0;
+    margin-bottom: 20px;
+    &_green {
+      background-color: $mint;
+    }
+    &:focus {
+      outline: none;
+    }
+    &_close {
+      border: 2px solid $mint;
+      background-color: $gray;
+      @include font-style($color: $mint);
+      box-sizing: border-box;
+      //height: 52px;
+    }    
+  }
+  &__wrapper{
+    //padding: 0 30px;
+    //height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+  }  
+  &__party_title{
+    font-family: 'Heebo';
+    font-size: 20px;
+    color: #D8DEE8;
+    margin-top: 20px;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding-left: 34px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    &:before {
+      color: $golden;
+      position: absolute;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      left: 0;
+      top: 25px;
+    }
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px)
+  }
+  &__info {
+    display: flex;
+    @include font-style($color: $light-gray-3, $size: 15px);    
+  }
+  &__time {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    margin-right: 15px;
+  }
+  &__guests {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    position: relative;
+    padding-left: 22px;
+    &:before {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 0px;
+      line-height: 20px;
+    }
+  }    
+}
+
+@media #{$mobile} {
+  .table-details {
+    position: fixed;
+    width: 100vw;
+    z-index: 3;
+    overflow-y: auto;
+    border-right: none;
+    height: calc(100vh - 94px);
+  }
+}

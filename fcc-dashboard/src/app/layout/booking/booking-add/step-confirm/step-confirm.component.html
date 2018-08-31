@@ -1,0 +1,34 @@
+<div class="step-confirm">
+    <ngx-loading [show]="loading"></ngx-loading>  
+<form novalidate [formGroup]="guestForm">
+  <div class="step-confirm__row">
+    <div class="step-confirm__input step-confirm__input_full">
+      <div class="step-confirm__input-label">{{'GUESTS_PHONE_NUMBER' | translate }}</div>
+      <input [readonly] = "guest.id" formControlName="phone" class="step-confirm__text-input" type="text" [(ngModel)]="guest.phone" required pattern="[\+]\d{11,13}">
+      <p><show-errors [control]="guestForm.controls.phone"></show-errors></p>
+    </div>
+  </div>
+  <div class="step-confirm__row">
+    <div class="step-confirm__input step-confirm__input_half">
+      <div class="step-confirm__input-label">{{'GUESTS_FULL_NAME' | translate }}</div>
+      <input [readonly] = "guest.id" formControlName="name" class="step-confirm__text-input" type="text" [(ngModel)]="guest.name" required pattern="[a-zA-Z ]*">
+      <p><show-errors [control]="guestForm.controls.name"></show-errors></p>
+    </div>
+    <div class="step-confirm__input step-confirm__input_half">
+      <div class="step-confirm__input-label">{{'GUESTS_EMAIL_ADDRESS' | translate }}</div>
+      <input [readonly] = "guest.id" formControlName="email" class="step-confirm__text-input" type="text" [(ngModel)]="guest.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+      <p><show-errors [control]="guestForm.controls.email"></show-errors></p>
+    </div>
+  </div>
+  <div class="step-confirm__row">
+    <div class="step-confirm__input step-confirm__input_full">
+      <div class="step-confirm__input-label">{{'NOTES' | translate }}</div>
+      <textarea formControlName="note" class="step-confirm__text-input step-confirm__text-input_textarea" placeholder="Enter notes, if any..." [(ngModel)]="note"></textarea>
+    </div>
+  </div>
+  <div class="step-confirm__tags">
+    <!-- <tag-input [(ngModel)]='items' theme="foundation-theme" placeholder="+ ADD TAG"></tag-input> -->
+  </div>
+  <button (click)="addBooking()" [disabled]="guestForm.invalid || guestForm.pending" class="step-confirm__confirm-btn" type="button" name="button">{{'BOOKING_ADD_CONFIRM_BOOKING' | translate }}</button>
+</form>
+</div>

@@ -1,0 +1,364 @@
+@import "~styles/variables";
+@import "~styles/base";
+@import "~styles/general";
+.shift-view {
+  position: absolute;
+  width: calc(100% - 342px);
+  left: 342px;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: $gray;
+  padding: 38px 32px;
+  overflow-y: auto;
+  &__close-btn {
+    display: none;
+  }
+  &__shifts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: fit-content;
+  }
+  &__shift {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 27px 10px 30px 29px;
+    background-color: $dark-gray-2;
+    border-radius: 4px;
+    margin-top: 31px;
+    display: flex;
+    justify-content: space-between;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__col-50 {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  &__info-item {
+    margin-top: 40px;
+    padding-left: 44px;
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__info-item-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__info-item-value {
+    @include font-style($color: $light-gray-2, $size: 17px, $weight: 300, $ls: 0.2px);
+    margin-top: 2px;
+  }
+  &__info-item-toggle {
+    margin-top: 10px;
+  }
+}
+
+.shift-edit {
+  position: absolute;
+  top: 0;
+  width: calc(100% - 342px);
+  left: 342px;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: $gray;
+  padding: 25px 30px;
+  overflow-y: auto;
+  z-index: 1;
+  flex-direction: column;
+  &__close-btn {
+    display: none;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 29px;
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__desc {
+    @include font-style($color: $light-gray-3, $size: 14px, $weight: 300, $ls: 0.6px);
+  }
+  &__add-btn {
+    @include font-style($color: $light-gray-2, $size: 16px);
+    padding: 10px 25px;
+    height: 44px;
+    box-sizing: border-box;
+    background-color: $mint;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+  }
+  &__shifts {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 45px;
+  }
+  &__shift {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 10px 38px 29px;
+    background-color: $dark-gray-2;
+    border-radius: 4px;
+    margin-top: 31px;
+    position: relative;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-top: 40px;
+    }
+  }
+  &__col-50 {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  &__field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__field-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__field-dropdown {
+    //margin-top: 13px;
+    margin-right: 21px;
+    position: relative;
+    &:after {
+      /*content: '';
+      position: absolute;
+      right: 24px;
+      top: 23px;
+      width: 15px;
+      height: 9px;
+      pointer-events: none;
+      background-image: url("/assets/icons/drop-down.svg");
+      background-size: contain;
+      background-repeat: no-repeat;*/
+    }
+  }
+  &__field-control {
+    margin-top: 13px;
+    margin-right: 21px;
+  }
+  &__field-input {
+    margin-top: 13px;
+    margin-right: 21px;
+  }
+  &__field-time {
+    margin-top: 13px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__time {
+    width: fit-content;
+    padding: 18px 53px 18px 22px;
+    background-color: $gray-2;
+    border-radius: 100px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    position: relative;
+    @include font-style($color: $light-gray-2, $size: 15px);
+  }
+  &__time-delete {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 14px;
+    height: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    color: $gray-8;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+  }
+  &__add-time-btn {
+    cursor: pointer;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    border: 1px solid $gray-2;
+    border-radius: 100px;
+    background: none;
+    font-size: 18px;
+    line-height: 18px;
+    color: $mint;
+  }
+  &__shift-status {
+    position: absolute;
+    right: 31px;
+    bottom: 31px;
+  }
+  &__text-input {
+    font-family: 'Heebo';
+    font-size: 17px;
+    color: #BEC4CD;
+    padding: 14px 17px;
+    background-color: $dark-gray-2;
+    border: 1px solid #3A4149;
+    border-radius: 4px;
+    height: 56px;
+    width: 100%;
+    box-sizing: border-box;
+    &::placeholder {
+      @include font-style($color: $light-gray, $size: 17px);
+      opacity: 0.2;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__slot_length{
+    width:0;
+    height: 0;
+    border:0!important;
+    padding:0!important;
+    margin:0;
+  }
+}
+
+@media #{$mobile} {
+  .shift-view {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+    z-index: 3;
+    padding: 25px 0;
+    padding-top: 70px;
+    &__close-btn {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 25px;
+      top: 25px;
+      font-size: 2px;
+      line-height: 20px;
+      color: $gray-8;
+      border: none;
+      background: none;
+      z-index: 1;
+    }
+  }
+  .shift-edit {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+    z-index: 3;
+    padding: 10px 0;
+    padding-top: 50px;
+    &__close-btn {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 15px;
+      top: 15px;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+      background: none;
+      border: none;
+      z-index: 1;
+    }
+    &__title {
+      padding: 0 15px;
+      padding-bottom: 30px;
+    }
+    &__shifts {
+      margin-top: 20px;
+    }
+    &__shift {
+      padding: 10px;
+      padding-bottom: 60px;
+    }
+    &__row {
+      flex-direction: column;
+    }
+    &__col-50 {
+      width: 100%;
+    }
+    &__field-dropdown,
+    &__field-input {
+      margin-right: 0;
+    }
+    &__shift-status {
+      right: 10px;
+      bottom: 20px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .shift-view {
+    &__shift {
+      flex-direction: column;
+    }
+    &__col-50 {
+      width: 100%;
+    }
+  }
+  .shift-edit {
+    padding: 10px;
+    &__title {
+      padding: 0 15px;
+      padding-bottom: 10px;
+    }
+    &__shifts {
+      margin-top: 20px;
+    }
+    &__shift {
+      padding: 10px;
+      padding-bottom: 60px;
+    }
+    &__row {
+      flex-direction: column;
+    }
+    &__col-50 {
+      width: 100%;
+    }
+    &__field-dropdown,
+    &__field-input {
+      margin-right: 0;
+    }
+    &__shift-status {
+      right: 10px;
+      bottom: 20px;
+    }
+  }
+}

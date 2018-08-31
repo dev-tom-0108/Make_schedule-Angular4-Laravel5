@@ -1,0 +1,96 @@
+@import "~styles/variables";
+@import "~styles/base";
+[hidden]{
+  display: none !important;
+}
+.floor-package-view {
+  position: absolute;
+  width: calc(100% - 342px);
+  left: 342px;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: $dark-gray-3;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    padding: 23px 26px 23px;
+    position: relative;
+    align-items: center;
+    border-bottom: 1px solid $dark-gray-7;
+  }
+  &__dropdown-arrow {
+    position: absolute;
+    right: 21px;
+    top: 40%;
+    pointer-events: none;
+  }
+  &__dropdown {
+    position: relative;
+    width: 220px;
+    margin-right: 22px;
+  }
+  &__close-btn {
+    display: none;
+  }
+  &__zoom-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+    background-color: $dark-gray-2;
+    margin-right: 16px;
+    cursor: pointer;
+    border: none;
+    color: $gray-8;
+    font-size: 18px;
+    line-height: 18px;
+  }
+  &__zoom-btn:disabled{
+    opacity: .4;
+    cursor:not-allowed;
+  }  
+  &__container {
+    height: calc( 100% - 102px );
+    box-sizing: border-box;
+    overflow: auto;
+    background-image: url("/assets/images/canvas-bg.png");
+    background-size: 50px 55px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media #{$mobile} {
+  .floor-package-view {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+    z-index: 3;
+    &__header {
+      padding: 15px;
+      align-items: center;
+    }
+    &__dropdown {
+      width: 160px;
+    }
+    &__zoom-btn {
+      width: 35px;
+      height: 35px;
+    }
+    &__close-btn {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 25px;
+      top: 25px;
+      border: none;
+      background: none;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+}

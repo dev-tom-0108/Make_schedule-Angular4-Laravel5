@@ -1,0 +1,94 @@
+@import "~styles/variables";
+@import "~styles/base";
+.guest-list {
+  height: 100%;
+  width: 340px;
+  background-color: $gray;
+  border-right: 2px solid $dark-gray-6;
+  &__search {
+    width: 100%;
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 26px;
+      left: 26px;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      pointer-events: none;
+    }
+  }
+  &__search-input {
+    @include font-style($color: $light-gray, $size: 16px);
+    padding: 25px 25px 23px 64px;
+    background-color: #24292F;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      @include font-style($color: $gray-3, $size: 16px);
+      opacity: 0.4;
+    }
+  }
+  &__title {
+    padding: 19px 30px;
+    background-color: $dark-gray-2;
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-4, $size: 13px);
+  }
+  &__results {
+    height: calc(100% - 150px);
+    //overflow: hidden;
+  }
+  &__guests {
+    overflow-y: auto;
+    height: calc(100%);
+    padding-bottom: 20px;
+  }
+  &__guest {
+    cursor: pointer;
+    padding: 19px 30px 20px;
+    border-bottom: 1px solid $dark-gray-5;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: $dark-gray-2;
+    }
+    &_active {
+      background-color: $dark-gray-2;
+    }
+  }
+  &__guest-name {
+    @include font-style($color: $light-gray, $size: 18px);
+  }
+  &__guest-phone {
+    @include font-style($color: $light-gray-3, $size: 15px);
+  }
+}
+
+@media #{$mobile} {
+  .guest-list {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    &__guests {
+      height: calc(100% - 101px);
+    }
+    &__search-input {
+      padding: 10px 25px 10px 40px;
+    }
+    &__search {
+      &:before {
+        top: 13px;
+        left: 14px;
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+}

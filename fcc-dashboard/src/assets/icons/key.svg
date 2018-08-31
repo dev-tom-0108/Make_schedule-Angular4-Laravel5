@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="20px" viewBox="0 0 17 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Password</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Staffs-Edit" transform="translate(-1138.000000, -113.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Header">
+                    <g id="Password" transform="translate(680.000000, 1.000000)">
+                        <g transform="translate(14.000000, 13.000000)">
+                            <g>
+                                <path d="M14.7272727,4.90909091 C14.7272727,7.61972727 12.528,9.81818182 9.81654545,9.81818182 C7.10672727,9.81818182 4.90909091,7.61972727 4.90909091,4.90909091 C4.90909091,2.19681818 7.10672727,0 9.81654545,0 C12.528,0 14.7272727,2.19681818 14.7272727,4.90909091 Z" id="Stroke-1" stroke-width="2"></path>
+                                <path d="M0,15.5454545 L2.45454545,18" id="Stroke-3" stroke-width="2"></path>
+                                <path d="M2.45454545,13.0909091 L4.90909091,15.5454545" id="Stroke-5" stroke-width="2"></path>
+                                <path d="M0,15.5454545 L6.59536364,8.60809091" id="Stroke-7" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

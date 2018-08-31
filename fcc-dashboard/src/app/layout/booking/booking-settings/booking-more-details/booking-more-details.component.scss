@@ -1,0 +1,460 @@
+@import "~styles/variables";
+@import "~styles/base";
+[hidden]{
+  display: none !important;
+}
+.more-details {
+  background-color: $gray;
+  padding: 26px 30px;
+  box-sizing: border-box;
+  //position: absolute;
+  overflow: auto;
+  height: 100%;
+  width:100%;
+  position: relative;
+  /*top: 74px;
+  left: calc(74px + 342px);
+  width: calc(100% - 74px - 342px);
+  height: calc(100% - 74px);
+  z-index: 3;*/
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__id {
+    @include font-style($color: $light-gray-3, $size: 14px, $weight: 300, $ls: 0.6px);
+  }
+  &__close,
+  &__edit-btn {
+    @include font-style($color: $light-gray-2, $size: 16px);
+    padding: 10px 30px;
+    height: 44px;
+    box-sizing: border-box;
+    background-color: $dark-gray-4;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+  }
+  &__close {
+    background-color: $mint;
+  }
+  &__booking-info {
+    display: flex;
+    padding-top: 40px;
+  }
+  &__col-50 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__col-30 {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__booking-info-item {
+    margin-top: 40px;
+    padding-left: 43px;
+    position: relative;
+    &:before {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+      position: absolute;
+      left: 0;
+      top: 11px;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__booking-info-item-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__booking-info-item-value {
+    @include font-style($color: $light-gray-2, $size: 17px, $weight: 300, $ls: 0.2px);
+    margin-top: 2px;
+  }
+  &__guest-info {
+    display: flex;
+    padding-top: 40px;
+  }
+  &__guest-info-item {
+    margin-top: 40px;
+    padding-left: 43px;
+    position: relative;
+    &:before {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+      left: 0;
+      top: 11px;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__guest-info-item-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__guest-info-item-value {
+    @include font-style($color: $light-gray-2, $size: 17px, $weight: 300, $ls: 0.2px);
+    margin-top: 2px;
+  }
+  &__guest-info-tags {
+    margin-top: 40px;
+  }
+  &__guest-info-tag {
+    @include font-style($color: $gray-3, $size: 13px);
+    text-transform: uppercase;
+    background-color: $dark-gray-4;
+    border-radius: 100px;
+    padding: 9px 22px 10px;
+    margin-right: 13px;
+    margin-bottom: 8px;
+    display: inline-block;
+    position: relative;
+    &:before {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      line-height: 16px;
+      color: $gray-8;
+      padding: 0;
+      position: absolute;
+      left: 17px;
+      top: 11px;
+    }
+  }
+  &__guest-info-tag-icon{
+    width: 23px;
+    height: 23px;
+    border-radius: 2px;
+    margin: -7px;
+    margin-right: 2px;
+  }
+  &__prev-bookings {
+    margin-top: 40px;
+    display: flex;
+  }
+  &__prev-bookings-counter {
+    display: flex;
+    flex-direction: column;
+  }
+  &__prev-bookings-counter-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__prev-bookings-counter-value {
+    @include font-style($color: $light-gray-2, $size: 36px);
+  }
+  .mat-table {
+    margin-top: 8px;
+    background-color: $gray;
+  }
+  .mat-header-row,
+  .mat-row {
+    border-bottom: 1px solid $dark-gray-5;
+    padding: 30px 0;
+    min-height: fit-content;
+    text-align: center;
+  }
+  .mat-column-id {
+    //min-width: 134px;
+    //max-width: 134px;
+    flex: 0 0 15%;
+  }
+  .mat-column-date {
+    //min-width: 254px;
+    //max-width: 254px;
+    //min-width: 180px;
+    flex: 0 0 30%;
+  }
+  .mat-column-time {
+    //min-width: 110px;
+    //max-width: 110px;
+    flex: 0 0 15%;    
+  }
+  .mat-column-status {
+    //min-width: 117px;
+    //max-width: 117px;
+    flex: 0 0 20%;    
+  }
+  .mat-column-link {
+    //min-width: 150px;
+    //max-width: 150px;
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      @include font-style($color: $mint, $size: 15px, $weight: 200);
+    }
+  }
+  .mat-header-row {
+    padding-bottom: 20px;
+  }
+  .mat-header-cell {
+    @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+  }
+  .mat-cell {
+    @include font-style($color: $light-gray-2, $size: 15px, $weight: 200);
+  }
+}
+
+@media #{$mobile} {
+  .more-details {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px 5px;
+    &__edit-btn {
+      margin-right: 0;
+      @include font-style( $size: 14px);
+      padding: 6px 19px;
+      height: 32px;
+    }
+    &__title {
+      margin-bottom: 5px;
+      padding: 0 10px;
+      padding-bottom: 15px;
+    }
+    &__close {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 10px;
+      border: none;
+      background: none;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+    &__booking-info {
+      padding-top: 15px;
+    }
+    &__booking-info-item {
+      padding-left: 30px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__booking-info-item-name {
+      @include font-style( $size: 10px);
+    }
+    &__booking-info-item-value {
+      @include font-style( $size: 14px, $ls: 0);
+      margin-top: 0;
+      overflow-wrap: break-word
+    }
+    &__booking-info-item {
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 8px;
+      }
+    }
+    &__guest-info {
+      padding-top: 15px;
+    }
+    &__guest-info-item {
+      padding-left: 30px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__guest-info-item-name {
+      @include font-style( $size: 10px);
+    }
+    &__guest-info-item-value {
+      @include font-style( $size: 14px, $ls: 0);
+      margin-top: 0;
+      overflow-wrap: break-word
+    }
+    &__guest-info-item {
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 8px;
+      }
+    }
+    &__guest-info-tags {
+      margin-top: 20px;
+      overflow-y: auto;
+    }
+    &__guest-info-tag {
+      padding: 4px 6px 4px 26px;
+      &:before {
+        width: 14px;
+        height: 14px;
+        left: 8px;
+        top: 6px;
+      }
+    }
+    &__prev-bookings {
+      margin-top: 15px;
+    }
+    &__prev-bookings-counter-value {
+      text-align: center;
+    }
+    .mat-row {
+      padding: 10px 0;
+      min-width: fit-content;
+    }
+    .mat-header-row {
+      padding: 0;
+    }
+    .mat-cell,
+    .mat-header-cell {
+      @include font-style( $size: 12px);
+    }
+    .mat-column-id {
+      min-width: 85px;
+      max-width: 85px;
+    }
+    .mat-column-date {
+      min-width: 150px;
+      max-width: 150px;
+    }
+    .mat-column-time {
+      min-width: 85px;
+      max-width: 85px;
+    }
+    .mat-column-guests {
+      min-width: 45px;
+      max-width: 45px;
+    }
+    .mat-column-status {
+      min-width: 65px;
+      max-width: 65px;
+    }
+    .mat-column-link {
+      min-width: 30px;
+      max-width: 30px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .more-details {
+    top:0;
+    left:0;
+    padding: 20px 10px;
+    &__booking-info {
+      padding-top: 15px;
+    }
+    &__booking-info-item {
+      padding-left: 30px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__booking-info-item-name {
+      @include font-style( $size: 10px);
+    }
+    &__booking-info-item-value {
+      @include font-style( $size: 14px, $ls: 0);
+      margin-top: 0;
+      overflow-wrap: break-word
+    }
+    &__booking-info-item {
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 8px;
+      }
+    }
+    &__guest-info {
+      padding-top: 15px;
+    }
+    &__guest-info-item {
+      padding-left: 30px;
+      margin-top: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__guest-info-item-name {
+      @include font-style( $size: 10px);
+    }
+    &__guest-info-item-value {
+      @include font-style( $size: 14px, $ls: 0);
+      margin-top: 0;
+      overflow-wrap: break-word
+    }
+    &__guest-info-item {
+      &::before {
+        width: 18px;
+        height: 18px;
+        top: 8px;
+      }
+    }
+    &__guest-info-tags {
+      margin-top: 20px;
+      overflow-y: auto;
+    }
+    &__guest-info-tag {
+      padding: 4px 6px 4px 26px;
+      &:before {
+        width: 14px;
+        height: 14px;
+        left: 8px;
+        top: 6px;
+      }
+    }
+    &__prev-bookings {
+      margin-top: 15px;
+    }
+    &__prev-bookings-counter-value {
+      text-align: center;
+    }
+    .mat-row {
+      padding: 10px 0;
+      min-width: fit-content;
+    }
+    .mat-header-row {
+      padding: 0;
+    }
+    .mat-cell,
+    .mat-header-cell {
+      @include font-style( $size: 12px);
+    }
+    .mat-column-id {
+      min-width: 85px;
+      max-width: 85px;
+    }
+    .mat-column-date {
+      min-width: 150px;
+      max-width: 150px;
+    }
+    .mat-column-time {
+      min-width: 85px;
+      max-width: 85px;
+    }
+    .mat-column-guests {
+      min-width: 45px;
+      max-width: 45px;
+    }
+    .mat-column-status {
+      min-width: 65px;
+      max-width: 65px;
+    }
+    .mat-column-link {
+      min-width: 30px;
+      max-width: 30px;
+    }
+  }
+}

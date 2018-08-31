@@ -1,0 +1,150 @@
+@import "~styles/variables";
+@import "~styles/base";
+color-picker {
+  width: 100%;
+}
+.color-picker{
+  background-color: #292F35!important;
+  border-radius: 4px;
+  box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+  border: 0!important;
+  margin-left: auto;
+  margin-right: auto;
+  .box div, input{
+    @include font-style($color: $light-gray-2, $size: 15px!important);
+    background-color: #292F35;
+    border-radius: 4px;
+  }
+}
+.table-assign {
+  width: 342px;
+  height: 100%;
+  position: absolute;
+  overflow: auto;
+  box-sizing: border-box;
+  border-right: 2px solid $dark-gray-6;
+  background-color: $gray;
+  overflow-y: auto;
+  z-index: 4;
+  &__title {
+    padding: 25px 30px 28px;
+    border-bottom: 1px solid $dark-gray-13;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    //align-items: center;
+  }
+  &__close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url("/assets/icons/close.svg");
+    background-size: 20px 20px;
+  }
+  &__text {
+    @include font-style($color: $light-gray-2, $size: 18px)
+  }
+  &__table {
+    @include font-style($color: $light-gray-3, $size: 15px)
+  }
+  &__staffs {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    border-bottom: 1px solid $dark-gray-5;
+  }
+  &__staffs-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+
+    position: relative;
+  }
+  &__staffs-tables-item{
+    padding: 20px 30px;
+    position: relative;
+  }
+  &__staffs-item-content{
+    display: flex;
+    align-items: center;
+    margin-left:10px;
+  }
+  &__staffs-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  &__staffs-item-thumbnail {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    border-radius: 50%;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__staffs-item-name {
+    margin-left:10px;
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__staffs-item-time {
+    @include font-style($color: $light-gray-3, $size: 15px);
+  }
+  &__staffs-item-title-text{
+    text-transform: uppercase;
+    font-family: 'Heebo';
+    font-size: 13px;
+    color: #BBC0CA;
+  }
+  &__staffs-item-info-left {
+    display: flex;
+  }
+  &__buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+  }
+  &__button {
+    cursor: pointer;
+    @include font-style($color: $light-gray-2, $size: 16px);
+    background-color: $dark-gray-4;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 0;
+    margin-bottom: 20px;
+    text-align: center;
+    &:focus {
+      outline: none;
+    }
+    &_active {
+      background-color: $mint;
+    }
+  }
+  &__colors {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  &__color{
+    display: flex;
+    justify-content: center;
+
+  }
+}
+
+@media #{$mobile} {
+  .table-assign {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}

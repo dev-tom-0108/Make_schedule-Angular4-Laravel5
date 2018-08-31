@@ -1,0 +1,25 @@
+@import "~styles/variables";
+@import "~styles/base";
+[hidden]{
+  display: none !important;
+}
+.booking-settings {
+  width: 342px;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  overflow: auto;
+  z-index: 3;
+}
+.booking-settings-more{
+  width:100%;
+}
+.booking-more-details{
+  width:100%;
+}
+@media #{$mobile} {
+  .booking-settings {
+    width: 100vw;
+    height: 100%;
+  }
+}

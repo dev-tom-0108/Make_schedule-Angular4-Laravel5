@@ -1,0 +1,260 @@
+@import "fonts";
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  &:before {
+    font-family: 'fcc-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+  }
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-phone:before {
+  content: "\e92d";
+}
+
+.icon-window-seat:before {
+  content: "\e900";
+}
+
+.icon-table:before {
+  content: "\e901";
+}
+
+.icon-minus:before {
+  content: "\e902";
+}
+
+.icon-plus:before {
+  content: "\e903";
+}
+
+.icon-account:before {
+  content: "\e904";
+}
+
+.icon-allergies:before {
+  content: "\e905";
+}
+
+.icon-anniversary:before {
+  content: "\e906";
+}
+
+.icon-arrow-down:before {
+  content: "\e907";
+}
+
+.icon-arrow-right:before {
+  content: "\e908";
+}
+
+.icon-back:before {
+  content: "\e909";
+}
+
+.icon-badge:before {
+  content: "\e90a";
+}
+
+.icon-bell:before {
+  content: "\e90b";
+}
+
+.icon-birthday:before {
+  content: "\e90c";
+}
+
+.icon-block:before {
+  content: "\e90d";
+}
+
+.icon-blocked-table:before {
+  content: "\e90e";
+}
+
+.icon-blogger:before {
+  content: "\e90f";
+}
+
+.icon-booked:before {
+  content: "\e910";
+}
+
+.icon-booking:before {
+  content: "\e911";
+}
+
+.icon-calendar:before {
+  content: "\e912";
+}
+
+.icon-camera:before {
+  content: "\e913";
+}
+
+.icon-cancel:before {
+  content: "\e914";
+}
+
+.icon-chat:before {
+  content: "\e915";
+}
+
+.icon-check:before {
+  content: "\e916";
+}
+
+.icon-clock:before {
+  content: "\e917";
+}
+
+.icon-close:before {
+  content: "\e918";
+}
+
+.icon-company:before {
+  content: "\e919";
+}
+
+.icon-confirmed:before {
+  content: "\e91a";
+}
+
+.icon-dashboard:before {
+  content: "\e91b";
+}
+
+.icon-delete:before {
+  content: "\e91c";
+}
+
+.icon-deposit:before {
+  content: "\e91d";
+}
+
+.icon-email:before {
+  content: "\e91e";
+}
+
+.icon-export:before {
+  content: "\e91f";
+}
+
+.icon-general:before {
+  content: "\e920";
+}
+
+.icon-gluten-free:before {
+  content: "\e921";
+}
+
+.icon-guests:before {
+  content: "\e922";
+}
+
+.icon-hours:before {
+  content: "\e923";
+}
+
+.icon-key:before {
+  content: "\e924";
+}
+
+.icon-list:before {
+  content: "\e925";
+}
+
+.icon-logout:before {
+  content: "\e926";
+}
+
+.icon-mvp:before {
+  content: "\e927";
+}
+
+.icon-no-show:before {
+  content: "\e928";
+}
+
+.icon-part-seated:before {
+  content: "\e929";
+}
+
+.icon-people:before {
+  content: "\e92a";
+}
+
+.icon-person:before {
+  content: "\e92b";
+}
+
+.icon-pescatarian:before {
+  content: "\e92c";
+}
+
+.icon-profile:before {
+  content: "\e92e";
+}
+
+.icon-quote:before {
+  content: "\e92f";
+}
+
+.icon-refund:before {
+  content: "\e930";
+}
+
+.icon-role:before {
+  content: "\e931";
+}
+
+.icon-rules:before {
+  content: "\e932";
+}
+
+.icon-search:before {
+  content: "\e933";
+}
+
+.icon-seated:before {
+  content: "\e934";
+}
+
+.icon-settings:before {
+  content: "\e935";
+}
+
+.icon-shifts:before {
+  content: "\e936";
+}
+
+.icon-smoker:before {
+  content: "\e937";
+}
+
+.icon-status:before {
+  content: "\e938";
+}
+
+.icon-staffs:before {
+  content: "\e939";
+}
+
+.icon-timeline:before {
+  content: "\e93a";
+}
+
+.icon-vegetarian:before {
+  content: "\e93b";
+}
+
+.icon-waiting:before {
+  content: "\e93c";
+}

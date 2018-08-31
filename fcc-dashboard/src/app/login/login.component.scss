@@ -1,0 +1,122 @@
+@import "~styles/variables";
+@import "~styles/base";
+.login {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $dark-gray-3;
+  z-index: 9999;
+  &__header {
+    @include font-style($color: $light-gray-2, $size: 18px);
+
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $dark-gray;
+    border-bottom: 2px solid $dark-gray-6;
+    color: $white;    
+  }
+  &__header__title{
+    @include font-style($color: $light-gray-2, $size: 26px);
+    margin-left: 20px;
+  }
+
+  &__close {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    margin: 25px;
+    background-image: url("/assets/icons/close.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  &__header__lang{ 
+    position: relative;
+    right:10px;
+    top:0;
+    &-block{
+      list-style-type: none;  
+      @include font-style($color: $light-gray, $size: 15px);
+      margin-right:20px;  
+      input, label{
+        cursor: pointer;
+      }  
+    }
+  }
+  form{
+    width: 100%;
+    height: calc(100% - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__container {
+    width: 100%;
+    height: calc(100% - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__content {
+    margin-top: -90px;
+    width: 670px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 4px;
+    overflow: auto;
+    box-shadow: 0 2px 0 0 $dark-gray-6;
+  }
+  &__input {
+    background-color: $gray;
+    padding: 27px 30px;
+    border: none;
+    border-bottom: 1px solid $dark-gray-5;
+    @include font-style($color: $light-gray-2, $size: 17px);
+    &:last-child {
+      border-bottom: 0;
+    }
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      @include font-style($color: $light-gray-2, $size: 17px);
+      opacity: 0.15;
+    }
+  }
+
+
+  &__btn {
+    @include font-style($color: $light-gray-2, $size: 16px);
+    width: 100%;
+    background-color: $mint;
+    padding: 16px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 30px;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__btn:disabled{
+    opacity: .4;
+    cursor:none;
+  }  
+  &__forgot {
+    @include font-style($color: $mint, $size: 16px);
+    text-decoration: none;
+    margin-top: 35px;
+  }
+}

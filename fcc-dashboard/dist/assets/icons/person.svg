@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="14px" viewBox="0 0 13 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-Details" transform="translate(-218.000000, -129.000000)" stroke-width="2" stroke="#54606E">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="Header" transform="translate(30.000000, 26.000000)">
+                    <g id="Page-1" transform="translate(115.000000, 30.000000)">
+                        <g id="Group">
+                            <path d="M4.0005,8 L0,10.743004 L0,11.580811 C0,11.8115363 0.1655,12 0.3665,12 L10.6335,12 C10.835,12 11,11.8115363 11,11.580811 L11,10.743004 L11,10.7418618 L6.9995,8" id="Stroke-1"></path>
+                            <path d="M7.4995,8 C9.00249999,6.7616 8.99999999,4.56746667 8.99999999,4.56746667 L8.99849999,2.28426667 C8.78249999,0.987733333 7.3155,0 6.00000001,0 L6.00000001,0.00106666667 C4.68400002,0.00106666667 3.21750003,0.9888 3.00150003,2.28533333 L3.00000003,4.56853333 C3.00000003,4.56853333 2.99750003,6.7616 4.50050002,8" id="Stroke-3"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

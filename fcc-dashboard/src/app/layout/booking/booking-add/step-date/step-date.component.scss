@@ -1,0 +1,23 @@
+@import "~styles/variables";
+@import "~styles/base";
+.booking-add-button-group{
+    &__button {
+        cursor: pointer;
+        @include font-style($color: $light-gray-2, $size: 16px);
+        background-color: $mint;
+        border: none;
+        border-radius: 4px;
+        padding: 16px 0;
+        // margin-bottom: 20px;
+        min-height: 56px;
+        box-sizing: border-box;
+        width: 100px;
+        &:focus {
+          outline: none;
+        }
+    }
+    &__button:disabled{
+        background-color: #475868 !important;
+        cursor: not-allowed;
+    }
+}

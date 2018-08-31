@@ -1,0 +1,6 @@
+<div class = 'booking-add-button-group'>
+    <!-- <button (click)="prev()" class="booking-add-button-group__button pull-left" type="button" name="button">{{'PREV_BUTTON' | translate }}</button> -->
+    <button (click)="next()" class="booking-add-button-group__button pull-right" type="button" name="button" [disabled]="!selectedDate && !selectedDate1">{{'NEXT_BUTTON' | translate }}</button>    
+</div>
+<dp-day-calendar [(ngModel)]="selectedDate" [theme]="'date-picker'" [config]="datePickerConfig" (click)= "dateclick(0)"></dp-day-calendar>
+<dp-day-calendar [(ngModel)]="selectedDate1" [displayDate]="nextMonth" [theme]="'date-picker'" [config]="datePickerConfig" (click)= "dateclick(1)"></dp-day-calendar>

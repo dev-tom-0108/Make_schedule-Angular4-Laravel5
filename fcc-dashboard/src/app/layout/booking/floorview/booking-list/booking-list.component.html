@@ -1,0 +1,90 @@
+<div id="bookingList" class="floor-menu">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div class="floor-menu__search">
+    <input class="floor-menu__search-input" placeholder="{{'BOOKING_FLOORVIEW_SEARCH_BOOKINGS' | translate}}" type="text" [(ngModel)]="searchStr" (keyup.enter)="search()" />
+  </div>
+  <mat-tab-group>
+    <mat-tab label="{{'BOOKING_FLOORVIEW_BOOKINGS'| translate}}">
+      <div class="floor-menu__bookings">
+          <div *ngFor = "let bookstate of bookingStates" class="floor-menu__group">
+            <ng-container *ngIf = "getLengthBookingsOfStatus( bookstate.id ) > 0">
+              <div class="floor-menu__group-title">
+                <div class="floor-menu__group-title-text">{{ bookstate.name | translate }}</div>
+                <div class="floor-menu__group-title-count">{{ getLengthBookingsOfStatus( bookstate.id ) }}</div>
+              </div>
+              <ng-container *ngFor = "let booking of getBookingsOfStatus(bookstate.id)">
+                <div [class.floor-menu__bookings-item_active]="booking.id==selectedBookingId" class="floor-menu__bookings-item" (click)="selectBooking(booking.id)">
+                  <div class="floor-menu__bookings-item-thumbnail" [ngStyle] = "{'background-color': bookstate.color}">
+                    <img src="{{ bookstate.img }}" alt="{{ bookstate.name | translate }}">
+                  </div>
+                  <div class="floor-menu__bookings-item-content">
+                    <div class="floor-menu__bookings-item-name" [class.floor-menu__bookings-item-name_vip] = "booking.is_vip == '1'" >{{ booking.name }} - {{ booking.booking_number }}</div>
+                    <div class="floor-menu__bookings-item-info">
+                      <div class="floor-menu__bookings-item-info-left">
+                        <div class="floor-menu__bookings-item-time">{{ convertTimeString( booking.time ) }}</div>
+                        <div class="floor-menu__bookings-item-guests">{{ booking.number_of_people }}</div>
+                      </div>
+                    </div>
+                    <div class="floor-menu__bookings-item-info">
+                      <ng-container *ngIf = "booking.tables.length > 0">
+                        <div class="floor-menu__bookings-item-table">{{ getTablesNameString(booking.tables) }}</div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>              
+              </ng-container>
+            </ng-container>                          
+          </div>        
+      </div>
+    </mat-tab>
+    <mat-tab label="{{'BOOKING_FLOORVIEW_STAFFS'| translate}}">
+      <div class="floor-menu__staffs">
+        <div class="floor-menu__group">
+          <div class="floor-menu__group-title">
+            <div class="floor-menu__group-title-text">{{'BOOKING_FLOORVIEW_STAFFS_ASSIGNED'| translate}}</div>
+            <div class="floor-menu__group-title-count">{{ getLengthStaffsFromAssignStatus( true ) }}</div>
+          </div>
+          <ng-container *ngFor="let staff of getStaffsFromAssignStatus(true)">
+            <div [class.floor-menu__staffs-item_active]="staff.id==selectedStaffId" class="floor-menu__staffs-item" (click)="selectStaff(true, staff.id)">
+              <div class="floor-menu__staffs-item-left">
+                <div class="floor-menu__staffs-item-thumbnail">
+                  <img [src]="staff.profile_image ==  null ? defaultAvatar : staff.profile_image" alt="">
+                </div>
+                <div class="floor-menu__staffs-item-content">
+                  <div class="floor-menu__staffs-item-name">{{ staff.firstname }} {{ staff.lastname }}</div>
+                  <div class="floor-menu__staffs-item-info">
+                    <div class="floor-menu__staffs-item-info-left">
+                      <div class="floor-menu__staffs-item-time">07:45 PM</div>
+                      <div class="floor-menu__staffs-item-table">{{ getTablesNameString(staff.tables) }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="floor-menu__staffs-color floor-menu__staffs-color_orange" [ngStyle] = "{'background-color': staff.table_color ?staff.table_color :'green'}"></div>              
+            </div>            
+          </ng-container>          
+
+        </div>
+        <div class="floor-menu__group">
+          <div class="floor-menu__group-title">
+            <div class="floor-menu__group-title-text">{{'BOOKING_FLOORVIEW_STAFFS_NOT_ASSIGNED'| translate}}</div>
+            <div class="floor-menu__group-title-count">{{ getLengthStaffsFromAssignStatus( false ) }}</div>
+          </div>
+          <ng-container *ngFor="let staff of getStaffsFromAssignStatus(false)">
+            <div [class.floor-menu__staffs-item_active]="staff.id==selectedStaffId" class="floor-menu__staffs-item" (click)="selectStaff(false, staff.id)">
+              <div class="floor-menu__staffs-item-left">
+                <div class="floor-menu__staffs-item-thumbnail">
+                  <img [src]="staff.profile_image ==  null ? defaultAvatar : staff.profile_image" alt="">
+                </div>
+                <div class="floor-menu__staffs-item-content">
+                  <div class="floor-menu__staffs-item-name">{{ staff.firstname }} {{ staff.lastname }}</div>
+                </div>
+              </div>
+              <div class="floor-menu__staffs-color floor-menu__staffs-color_orange" [ngStyle] = "{'background-color': staff.table_color ?staff.table_color :'green'}"></div>              
+            </div>            
+          </ng-container>  
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

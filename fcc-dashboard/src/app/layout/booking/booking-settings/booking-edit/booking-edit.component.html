@@ -1,0 +1,112 @@
+<div id="bookingEdit" class="booking-edit">
+  <ngx-loading [show]="loading"></ngx-loading>
+  <form [formGroup]="editForm" novalidate>    
+    <div class="booking-edit__title">
+      <div>
+        <div class="booking-edit__name">
+            {{'BOOKING_EDIT_BOOKING' | translate}}
+        </div>
+        <div class="booking-edit__info">
+            {{'BOOKING_CURRENT_BOOKING_DETAILS' | translate}}
+        </div>
+      </div>
+      <div>
+        <button (click)="save()" [disabled]="editForm.invalid || editForm.pending" class="booking-edit__save-btn">
+            {{ 'SAVE' | translate }}
+        </button>
+        <button (click)="close()" class="booking-edit__save-btn">
+            {{ 'CANCEL' | translate }}
+        </button>
+      </div>      
+    </div>
+    <div class="booking-edit__content">
+      <div class="booking-edit__row">
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{'DATE' | translate}}</div>
+          <div class="booking-edit__input-dropdown">
+            <dp-date-picker formControlName="date" (close) = "changeDate()" [(ngModel)]="booking.date" [placeholder]="'Date...'" [theme]="'date-picker'" [config]="datePickerConfig" required></dp-date-picker>
+            <p><show-errors [control]="editForm.controls.date"></show-errors></p>            
+          </div>
+        </div>
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{ 'SHIFT' | translate }}</div>
+          <div class="booking-edit__input-dropdown">
+            <ng-select formControlName="shift_id" [clearable]="false" (change) = "changeShift()" [(ngModel)]="booking.shift_id" [items]="shifts" bindValue="id" bindLabel="name" placeholder="Shifts..."></ng-select>
+            <p><show-errors [control]="editForm.controls.shift_id"></show-errors></p>              
+          </div>
+        </div>      
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{'TIME' | translate}}</div>
+          <div class="booking-edit__input-dropdown">
+            <ng-select formControlName="time" [clearable]="false" (change) = "changeTimeSlot()" [(ngModel)]="booking.time" [items]="timeSlots" bindValue="id" bindLabel="name" [placeholder]="booking.time"></ng-select>
+            <p><show-errors [control]="editForm.controls.time"></show-errors></p>            
+          </div>
+        </div>
+      </div>
+      <div class="booking-edit__row">
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{ 'GUESTS' | translate }}</div>
+          <div class="booking-edit__input-dropdown booking-edit__input-dropdown_no-arrow">
+            <input formControlName="number_of_people" class="booking-edit__text-input" type="number" [(ngModel)]="booking.number_of_people" placeholder="Guests...">
+            <p><show-errors [control]="editForm.controls.number_of_people"></show-errors></p>             
+          </div>
+        </div>      
+        <div class="booking-edit__input booking-edit__input_lg">
+          <div class="booking-edit__input-label">{{ 'ASSIGN_TABLE' | translate }}</div>
+          <div class="booking-edit__input-dropdown">
+            <ng-select formControlName="tables" [multiple] ="true" [clearable] = "false" [(ngModel)]="booking.tables" [items]="tables" bindValue="id" bindLabel="table_name" placeholder="Tables...">
+                <ng-template ng-label-tmp let-item="item" let-index="index" let-clear="clear">
+                    <div class="booking-edit__tables-info-tag">
+                      <span>
+                        {{item.table_name}}
+                      </span>
+                      <span class="ng-value-icon booking-edit__tables-info-tag_clear" (click)="clear(item)">×</span>
+                    </div>
+                  </ng-template>
+            </ng-select>
+            <p><show-errors [control]="editForm.controls.tables"></show-errors></p>             
+          </div>
+        </div>
+      </div>
+      <div class="booking-edit__row">
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{ 'STATUS' | translate }}</div>
+          <div class="booking-edit__input-dropdown statusIcon">
+            <ng-select formControlName="status" class="booking-edit__status-select" [clearable] = "false" [items]="viewStatus" bindValue="id" bindLabel="name" placeholder="Status..." [(ngModel)]="booking.status">
+              <ng-template ng-label-tmp let-item="item" let-index="index" let-clear="clear">
+                  {{ item.name | translate }}
+              </ng-template>          
+              <ng-template ng-option-tmp let-item="item" let-index="index" class="statusOption">
+                  <span *ngIf="item.class" class="optionChild">{{ item.name | translate }}</span>
+              </ng-template>
+            </ng-select>
+            <p><show-errors [control]="editForm.controls.status"></show-errors></p>             
+          </div>
+        </div>      
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{ 'HOURS' | translate }}</div>
+          <div class="booking-edit__input-dropdown">
+              <input formControlName="hours" class="booking-edit__text-input" type="number" [(ngModel)]="booking.hours" placeholder="Hours...">
+              <p><show-errors [control]="editForm.controls.hours"></show-errors></p>                
+          </div>
+        </div>
+        <div class="booking-edit__input booking-edit__input_md">
+          <div class="booking-edit__input-label">{{ 'REFERENCED_BY' | translate }}</div>
+          <div class="booking-edit__input-dropdown booking-edit__input-dropdown_no-arrow">
+            <input formControlName="referenced_by" class="booking-edit__text-input" type="text" [(ngModel)]="booking.referenced_by" placeholder="Enter name...">
+            <p><show-errors [control]="editForm.controls.referenced_by"></show-errors></p>                       
+          </div>
+        </div>
+      </div>
+      <div class="booking-edit__row">
+        <div class="booking-edit__input booking-edit__input_full">
+          <div class="booking-edit__input-label">{{ 'NOTES_BY_STAFF' | translate }}</div>
+          <div class="booking-edit__input-dropdown booking-edit__input-dropdown_no-arrow">
+            <textarea formControlName="notes_by_staff" class="booking-edit__text-input booking-edit__text-input_textarea" [(ngModel)]="this.booking.notes_by_staff" placeholder="Enter notes, if any..."></textarea>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,102 @@
+
+<div *ngIf="isShow()" [formGroup]="staffForm">
+  <div  id="staffEdit" class="staff-edit">
+    <ngx-loading [show]="loading"></ngx-loading>    
+    <div class="staff-edit__title">      
+      <file-uploader [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc] = "staff.profile_image"
+        (imageChange)="staff.profile_image=$event"></file-uploader>
+      <div>
+        <div class="staff-edit__title-text">{{ ( isCreate() ? 'CREATE' : 'EDIT' )|translate }} {{'STAFF_MEMBER' |translate}}</div>
+        <div *ngIf = "!isCreate()" class="staff-edit__name">{{staff.firstname}} {{staff.lastname}}</div>
+      </div>
+      <div class="staff-edit__buttons">
+        <button *ngIf = "!isCreate()" class="staff-edit__action-btn staff-edit__action-btn_lock icon-key" 
+          [class.active] = "isSetPassword"
+          (click)="setPassword(!isSetPassword)"></button>
+        <button *ngIf = "!isCreate()" class="staff-edit__action-btn staff-edit__action-btn_delete icon-delete"
+          (click)="delete()"></button>
+          <button (click)="showView()" class="staff-edit__cancel-btn">{{'CANCEL' | translate}}</button>
+        <button (click)="save()" [disabled]="staffForm.invalid || staffForm.pending" class="staff-edit__save-btn">{{'SAVE' | translate }}</button>
+      </div>
+    </div>
+    <div class="staff-edit__content">
+      <div class="staff-edit__fields">
+        <div class="staff-edit__col-50">
+          <div class="staff-edit__field">
+            <div class="staff-edit__field-name">{{'FIRST_NAME' | translate}}</div>
+            <input formControlName="firstname" class="staff-edit__field-input" type="text" [(ngModel)]="staff.firstname" required pattern="[a-zA-Z ]*">
+            <show-errors [control]="staffForm.controls.firstname"></show-errors>           
+          </div>
+        </div>
+        <div class="staff-edit__col-50">
+          <div class="staff-edit__field  staff-edit__field_right">
+            <div class="staff-edit__field-name">{{'LAST_NAME' | translate}}</div>
+            <input formControlName="lastname" class="staff-edit__field-input" type="text" [(ngModel)]="staff.lastname" required pattern="[a-zA-Z ]*">
+            <show-errors [control]="staffForm.controls.lastname"></show-errors>  
+          </div>
+        </div>        
+
+      </div>
+      <div class="staff-edit__fields">
+        <div class="staff-edit__col-50">
+          <div class="staff-edit__field">
+            <div class="staff-edit__field-name">{{'EMAIL_ADDRESS' | translate}}</div>
+            <input formControlName="email" placeholder="me@addr.ess" class="staff-edit__field-input" type="text" [(ngModel)]="staff.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+            <show-errors [control]="staffForm.controls.email"></show-errors>
+          </div>
+        </div>
+        <div class="staff-edit__col-50">    
+          <div class="staff-edit__field staff-edit__field_right">
+            <div class="staff-edit__field-name">{{'PHONE_NUMBER' | translate}}</div>
+            <input formControlName="phone" class="staff-edit__field-input" type="text" [(ngModel)]="staff.phone" placeholder="+8885559999" required pattern="[\+]\d{11,13}">
+            <show-errors [control]="staffForm.controls.phone"></show-errors>
+          </div>          
+        </div>
+      </div>
+     
+      <div class="staff-edit__fields">
+        <div class="staff-edit__col-50">       
+          <div class="staff-edit__field">
+            <div class="staff-edit__field-name">{{'ACCOUNT_NAME' | translate}}</div>
+            <input formControlName="account_name" class="staff-edit__field-input" type="text" [(ngModel)]="staff.account_name" required pattern="[a-zA-Z0-9 ]*">
+            <show-errors [control]="staffForm.controls.account_name"></show-errors>               
+          </div>
+        </div>
+        <div class="staff-edit__col-50">
+          <div class="staff-edit__field staff-edit__field_right">
+            <div class="staff-edit__field-name">{{'ROLE' | translate}}</div>
+            <ng-select [clearable] = "false" class = "staff-edit__field-select" [items]="roles" bindLabel="name" bindValue="id"
+            [(ngModel)]="staff.role" formControlName="roles" required></ng-select>
+          </div>                    
+        </div>
+      </div>
+      <div [hidden] = "!isSetPassword" class="staff-edit__fields">
+          <div class="staff-edit__col-50">
+            <div class="staff-edit__field">
+              <div class="staff-edit__field-name">{{'PASSWORD' | translate}}</div>
+              <input formControlName="password" class="staff-edit__field-input" type="password" [(ngModel)]="password" minlength="8">
+              <show-errors [control]="staffForm.controls.password"></show-errors>  
+            </div>
+          </div>
+          <div class="staff-edit__col-50">    
+            <div class="staff-edit__field staff-edit__field_right">
+              <div class="staff-edit__field-name">{{'CONFIRM' | translate}}</div>
+              <input formControlName="confirm" class="staff-edit__field-input" type="password" [(ngModel)]="confirm">
+              <show-errors [control]="staffForm"></show-errors>  
+            </div>          
+          </div>
+        </div>
+      <div class="staff-edit__access-table-header">
+        <div class="staff-edit__access-table-col-name">{{'STAFF_VIEW_ONLY' | translate}}</div>
+        <div class="staff-edit__access-table-col-name">{{'STAFF_EDITABLE' | translate}}</div>
+      </div>
+      <div class="staff-edit__access-table">
+        <div class="staff-edit__row" *ngFor="let pm of staff.permissions" >
+          <div class="staff-edit__access-name">{{pm.name | uppercase}}</div>
+          <mat-slide-toggle class="staff-edit__access-toggle" [(ngModel)]="pm.is_read" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+          <mat-slide-toggle class="staff-edit__access-toggle" [(ngModel)]="pm.is_write" [disabled]="!pm.is_read" [ngModelOptions]="{standalone: true}"></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

@@ -1,0 +1,26 @@
+<div class="guest-list">
+ 
+  <div class="guest-list__search icon-search">
+      <ngx-loading [show]="loading"></ngx-loading>     
+    <input class="guest-list__search-input" placeholder="{{'GUESTS_SEARCH_GUESTS' | translate}}" type="text" #searchBox (keyup.enter)="search(searchBox.value)" [(ngModel)]="searchText"/>
+  </div>
+  <div class="guest-list__results">
+    <div class="guest-list__title"> {{all_count}} {{ 'GUESTS' | translate }}</div>
+    
+    <div class="guest-list__guests">
+        <div
+        infiniteScroll            
+        [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="100"
+        [infiniteScrollContainer]="selector"
+        [fromRoot]="true"
+        (scrolled)="onScrollDown()" >
+            <div *ngFor="let guest of guests" [class.guest-list__guest_active]="guest.id==selectedGuest?.id" class="guest-list__guest"
+            (click)="selectGuest(guest.id)">
+                <div class="guest-list__guest-name">{{guest.name}}</div>
+                <div class="guest-list__guest-phone">{{guest.phone}}</div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

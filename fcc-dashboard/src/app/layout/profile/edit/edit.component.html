@@ -1,0 +1,106 @@
+
+<div *ngIf="isEdit()" [formGroup]="profileForm">  
+  <div  id="profileEdit" class="profile-edit">
+    <ngx-loading [show]="loading"></ngx-loading>    
+    <div class="profile-edit__title">
+      <div class = "profile-edit__title_left">      
+        <file-uploader class = "profile-edit__title_left_fu" [activeColor]="'orangered'" [baseColor]="'lightgray'" [imageSrc] = "profile.profile_image"
+          (imageChange)="profile.profile_image=$event"></file-uploader>
+        <div class = "profile-edit__title_left_text">
+          <div class="profile-edit__title-text">{{ 'PROFILE_EDIT' |translate }}</div>
+          <div class="profile-edit__name">{{profile.firstname}} {{profile.lastname}}</div>
+        </div>
+      </div>
+      <div class="profile-edit__buttons">
+        <button class="profile-edit__action-btn profile-edit__action-btn_lock icon-key" 
+          [class.active] = "isSetPassword"
+          (click)="setPassword()"></button>
+          <button (click)="showView()" class="profile-edit__cancel-btn">{{'CANCEL' | translate}}</button>
+        <button (click)="save()" [disabled]="profileForm.invalid || profileForm.pending" class="profile-edit__save-btn">{{'SAVE' | translate }}</button>
+      </div>
+    </div>
+    <div class="profile-edit__content">
+      <div class="profile-edit__fields">
+        <div class="profile-edit__col-50">
+          <div class="profile-edit__field">
+            <div class="profile-edit__field-name">{{'FIRST_NAME' | translate}}</div>
+            <input formControlName="firstname" class="profile-edit__field-input" type="text" [(ngModel)]="profile.firstname" required pattern="[a-zA-Z ]*">
+            <show-errors [control]="profileForm.controls.firstname"></show-errors>  
+          </div>          
+        </div>
+        <div class="profile-edit__col-50">
+          <div class="profile-edit__field  profile-edit__field_right">
+            <div class="profile-edit__field-name">{{'LAST_NAME' | translate}}</div>
+            <input formControlName="lastname" class="profile-edit__field-input" type="text" [(ngModel)]="profile.lastname" required pattern="[a-zA-Z ]*">
+            <show-errors [control]="profileForm.controls.lastname"></show-errors>  
+          </div>           
+        </div>
+      </div>
+      <div class="profile-edit__fields">
+        <div class="profile-edit__col-50"> 
+          <div class="profile-edit__field">
+            <div class="profile-edit__field-name">{{'EMAIL_ADDRESS' | translate}}</div>
+            <input formControlName="email" placeholder="me@addr.ess" class="profile-edit__field-input" type="text" [(ngModel)]="profile.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" readonly>
+            <show-errors [control]="profileForm.controls.email"></show-errors>
+          </div>        
+        </div>
+        <div class="profile-edit__col-50">        
+          <div class="profile-edit__field profile-edit__field_right">
+            <div class="profile-edit__field-name">{{'PHONE_NUMBER' | translate}}</div>
+            <input formControlName="phone" class="profile-edit__field-input" type="text" [(ngModel)]="profile.phone" placeholder="+8885559999" required pattern="[\+]\d{11,13}">
+            <show-errors [control]="profileForm.controls.phone"></show-errors>
+          </div>          
+        </div>
+      </div>
+      <div class="profile-edit__fields">
+        <div class="profile-edit__col-50"> 
+          <div class="profile-edit__field">
+            <div class="profile-edit__field-name">{{'ACCOUNT_NAME' | translate}}</div>
+            <input formControlName="account_name" class="profile-edit__field-input" type="text" [(ngModel)]="profile.account_name" required pattern="[a-zA-Z0-9 ]*" readonly>
+            <show-errors [control]="profileForm.controls.account_name"></show-errors>  
+          </div>         
+        </div>
+        <div class="profile-edit__col-50">
+          <div class="profile-edit__field profile-edit__field_right">
+            <div class="profile-edit__field-name">{{'LANGUAGE' | translate}}</div>
+            <div class="profile-edit__field-select">
+              <ng-select [clearable] = "false" formControlName="language" [items]="language" bindLabel="name" bindValue="id" [(ngModel)]="profile.language">
+                <ng-template ng-label-tmp let-item="item" let-index="index" let-clear="clear">
+                      {{ item.name | translate }}
+                  </ng-template>          
+                <ng-template ng-option-tmp let-item="item" let-index="index" >
+                    {{ item.name | translate }}
+                </ng-template>
+              </ng-select>
+            </div>
+            <show-errors [control]="profileForm.controls.language"></show-errors>  
+          </div>          
+        </div>
+      </div>
+      <div class="profile-edit__fields">
+        <div class="profile-edit__col-50"> 
+          <div class="profile-edit__field">
+            <div class="profile-edit__field-name">{{'EMAIL_NOTIFICATION' | translate}}</div>
+            <mat-slide-toggle name="email_notification" formControlName="email_notification" [(ngModel)]="profile.email_notification" class="profile-edit__access-toggle"></mat-slide-toggle>  
+          </div>         
+        </div>
+      </div>             
+      <div [hidden] = "!isSetPassword" class="profile-edit__fields">
+        <div class="profile-edit__col-50">
+          <div class="profile-edit__field">
+            <div class="profile-edit__field-name">{{'PASSWORD' | translate}}</div>
+            <input formControlName="password" class="profile-edit__field-input" type="password" [(ngModel)]="password"  minlength="8" autofocus>
+            <show-errors [control]="profileForm.controls.password"></show-errors>  
+          </div>          
+        </div>
+        <div class="profile-edit__col-50">
+          <div class="profile-edit__field profile-edit__field_right">
+            <div class="profile-edit__field-name">{{'CONFIRM' | translate}}</div>
+            <input formControlName="confirm" class="profile-edit__field-input" type="password" [(ngModel)]="confirm" >
+            <show-errors [control]="profileForm"></show-errors>  
+          </div>           
+        </div>
+      </div>      
+    </div>
+  </div> 
+</div>

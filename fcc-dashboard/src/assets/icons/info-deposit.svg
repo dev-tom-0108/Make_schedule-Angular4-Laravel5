@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Deposit</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---1" transform="translate(-889.000000, -532.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(444.000000, 100.000000)">
+                <g id="8" transform="translate(446.000000, 420.000000)">
+                    <g id="Deposit" transform="translate(0.000000, 13.000000)">
+                        <g>
+                            <polygon id="Stroke-1" stroke-width="2" points="0 12 15 12 15 3 0 3"></polygon>
+                            <polyline id="Stroke-3" stroke-width="2" points="2 0 18 0 18 10"></polyline>
+                            <path d="M9,7.4890329 C9,8.3225324 8.5244,9 7.9812,9 C7.4384,9 7,8.3225324 7,7.4890329 C7,6.6555334 7.4484,6 7.9916,6 C8.5348,6 9,6.6555334 9,7.4890329 Z" id="Stroke-4" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

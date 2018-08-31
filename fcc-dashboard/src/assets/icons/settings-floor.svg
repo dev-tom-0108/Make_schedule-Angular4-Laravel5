@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Tables</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Settings---General" transform="translate(-103.000000, -373.000000)">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="4" transform="translate(0.000000, 267.000000)">
+                    <g id="Tables" transform="translate(30.000000, 33.000000)">
+                        <g transform="translate(-1.000000, -1.000000)">
+                            <rect id="Rectangle-19" fill="#54606E" x="7" y="0" width="6" height="2" rx="1"></rect>
+                            <rect id="Rectangle-19-Copy" fill="#54606E" x="7" y="18" width="6" height="2" rx="1"></rect>
+                            <rect id="Rectangle-20" fill="#54606E" x="0" y="7" width="2" height="6" rx="1"></rect>
+                            <rect id="Rectangle-20-Copy" fill="#54606E" x="18" y="7" width="2" height="6" rx="1"></rect>
+                            <rect id="Rectangle-21" stroke="#54606E" stroke-width="2" x="4" y="4" width="12" height="12" rx="2"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

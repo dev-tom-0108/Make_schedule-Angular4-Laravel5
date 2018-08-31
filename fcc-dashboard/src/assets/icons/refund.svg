@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>cancel &amp; refund status</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Booking-Status" transform="translate(-126.000000, -834.000000)">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="9" transform="translate(30.000000, 741.000000)">
+                    <g id="cancel-&amp;-refund-status" transform="translate(22.000000, 19.000000)">
+                        <g>
+                            <path d="M12.867506,5.42313955 L13.9587834,4.3 C11.2287834,1.6 6.80878343,1.5 4.07878343,4.2 C1.34878343,6.91 1.34878343,11.28 4.07878343,13.99 C6.80878343,16.7 11.2287834,16.7 13.9587834,13.99 C15.3187834,12.65 15.9987834,10.98 15.9987834,9 L17.9987834,9 C17.9987834,10.98 17.1187834,13.65 15.3587834,15.39 C11.8487834,18.87 6.14878343,18.87 2.63878343,15.39 C-0.861216566,11.92 -0.891216566,6.28 2.61878343,2.81 C6.12878343,-0.66 11.7587834,-0.66 15.2687834,2.81 L16.2815405,1.76756507 L16.2815405,1.76756507 C16.6663853,1.37144274 17.2994843,1.36230051 17.6956066,1.74714534 C17.8894227,1.93544348 17.9987834,2.19416458 17.9987834,2.46438827 L17.9987834,6.12 L17.9987834,6.12 C17.9987834,6.67228475 17.5510682,7.12 16.9987834,7.12 L13.5847127,7.12 L13.5847127,7.12 C13.032428,7.12 12.5847127,6.67228475 12.5847127,6.12 C12.5847127,5.85976555 12.6861589,5.60978145 12.867506,5.42313955 Z" id="Icon" fill="#D8DEE8"></path>
+                            <path d="M7,6 L8.7958,8.6004" id="Stroke-3" stroke="#D8DEE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <polyline id="Stroke-5" stroke="#D8DEE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="8.79592 12 8.80432 8.6004 10.60012 6"></polyline>
+                            <path d="M10,9.8 L7.6,9.8" id="Stroke-7" stroke="#D8DEE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

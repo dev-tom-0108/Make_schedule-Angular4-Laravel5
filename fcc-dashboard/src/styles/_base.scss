@@ -1,0 +1,18 @@
+@mixin font-style($size: false, $color: false, $weight: false, $lh: false, $ls: false) {
+  font-family: 'Heebo';
+  @if $size {
+    font-size: $size;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+  @if $ls {
+    letter-spacing: $ls;
+  }
+}

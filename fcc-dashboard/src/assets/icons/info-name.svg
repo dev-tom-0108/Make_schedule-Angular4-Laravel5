@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Name</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-444.000000, -272.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="1" transform="translate(0.000000, 162.000000)">
+                    <g id="Name" transform="translate(0.000000, 11.000000)">
+                        <g>
+                            <path d="M6.26165217,11.7391304 L0,15.498 L0,16.646087 C0,16.9622609 0.259043478,17.2205217 0.573652174,17.2205217 L16.6437391,17.2205217 C16.9591304,17.2205217 17.2173913,16.9622609 17.2173913,16.646087 L17.2173913,15.498 L17.2173913,15.4964348 L10.9557391,11.7391304" id="Stroke-1" stroke-width="2"></path>
+                            <path d="M10.9557391,11.7391304 C13.3082609,9.92191304 13.3043478,6.70226087 13.3043478,6.70226087 L13.302,3.35191304 C12.963913,1.4493913 10.6677391,0 8.60869565,0 L8.60869565,0.00156521739 C6.54886957,0.00156521739 4.25347826,1.45095652 3.9153913,3.35347826 L3.91304348,6.70382609 C3.91304348,6.70382609 3.90913043,9.92191304 6.26165217,11.7391304" id="Stroke-3" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

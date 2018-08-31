@@ -1,0 +1,95 @@
+<div class="booking-details">
+  <div *ngIf = "isTableBooking" class="booking-details__header">
+    <div class="booking-details__name">
+      {{ tablename }}
+    </div>
+    <button (click)="close()" class="booking-details__close booking-details__close_floor icon-close">
+    </button>
+  </div>
+  <div class="booking-details__content">
+    <div class="booking-details__wrapper">
+      <div *ngIf = "isTableBooking" class="booking-details__party_title">
+        {{ 'BOOKING_CURRENT' | translate }}
+      </div>
+      <div class="booking-details__title" [class.icon-badge] = "booking.is_vip == '1'">
+        <div>
+          <div class="booking-details__name">
+              {{ booking.name }} - {{ booking.booking_number }}
+          </div>
+          <div class="booking-details__info">
+            <div class="booking-details__time">
+                {{ convertTimeString( booking.time ) }}
+            </div>
+            <div class="booking-details__guests icon-person">
+                {{ booking.number_of_people }}
+            </div>
+          </div>
+          <div class="booking-details__info">
+              <ng-container *ngIf = "booking.tables && booking.tables.length > 0">
+                  <div class="booking-details__table">{{ getTablesNameString( booking.tables ) }}</div>
+              </ng-container>
+          </div>
+        </div>
+        <button *ngIf = "!isTableBooking" (click)="close()" class="booking-details__close icon-close">
+        </button>
+      </div>
+      <div class=" booking-details__buttons ">
+        <button (click)="showStatus() " class="booking-details__button booking-details__button_status {{ getStatusClass(booking.status) }}" type="button " name="booking-status ">{{ getStatusName(booking.status) | translate }}</button>
+        <!--<button class="booking-details__button" type="button " name="move-table ">{{'BOOKING_MOVE_TABLE' | translate }}</button> -->
+        <button (click) = "changeToFinishStatus()"class="booking-details__button" type="button " name="move-table ">{{'FINISH' | translate }}</button>          
+        <button (click) = "toggleEdit()" class="booking-details__button" type="button " name="edit-booking " [class.bookingEditState]="isShowMore">{{ ( isShowEdit ? 'BOOKING_CLOSE_EDIT_BOOKING' : 'BOOKING_EDIT_BOOKING') | translate }}</button>
+      </div>
+      <div class="booking-details__owner ">
+        <div class="booking-details__phone-number ">
+          <div class="booking-details__field-name">{{ 'PHONE_NUMBER' | translate }} :</div> {{ booking.phone }}
+        </div>
+        <div class="booking-details__email">
+          <div class="booking-details__field-name">{{ 'EMAIL_ADDRESS' | translate }} :</div> {{ booking.email }}
+        </div>
+        <div class="booking-details__sub-menu ">
+          <div class="booking-details__field-name">{{ 'GUESTS_TAGS' | translate }} :</div>
+          <div *ngIf="booking.guest_tags?.length">
+            <div *ngFor="let tag of booking.guest_tags" class="booking-details__guest-info-tag">
+              <span>
+                <img [src]="tag.icon_image" width="20px" height="20px" class="booking-details__guest-info-tag-icon">
+              </span>
+              {{tag.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="toggleMoreDetails(booking, true )" class="booking-details__button booking-details__button_more-details " type="button " name="more-details " [class.booking-details__button_close]="isShowMore">{{ ( isShowMore && isCurrentMore ? 'BOOKING_LESS_DETAILS' : 'BOOKING_MORE_DETAILS' ) | translate }}</button>
+    </div>
+  </div>
+  <div *ngIf = "isTableBooking && upcoming" class="booking-details__content">
+    <div class="booking-details__wrapper">
+      <div class="booking-details__party_title">
+          {{ 'BOOKING_UPCOMING' | translate }}
+        </div>
+        <div class="booking-details__title" [class.icon-badge] = "upcoming.is_vip == '1'">
+          <div>
+            <div class="booking-details__name">
+                {{ upcoming.name }} - {{ upcoming.booking_number }}
+            </div>
+            <div class="booking-details__info">
+              <div class="booking-details__time">
+                  {{ convertTimeString( upcoming.time ) }}
+              </div>
+              <div class="booking-details__guests icon-person">
+                  {{ upcoming.number_of_people }}
+              </div>
+            </div>
+            <div class="booking-details__info">
+                <ng-container *ngIf = "upcoming.tables && upcoming.tables.length > 0">
+                    <div class="booking-details__table">{{ getTablesNameString( upcoming.tables ) }}</div>
+                </ng-container>
+            </div>
+          </div>
+        </div>
+      <button (click)="toggleUpMoreDetails(upcoming, false )" class="booking-details__button booking-details__button_more-details " type="button " name="more-details " [class.booking-details__button_close]="isShowMore">{{ ( isShowMore && !isCurrentMore ? 'BOOKING_LESS_DETAILS' : 'BOOKING_MORE_DETAILS' ) | translate }}</button>
+    </div>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>    
+</div>
+<app-booking-status></app-booking-status>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>book status</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Booking-Details" transform="translate(-126.000000, -227.000000)" fill="#D8DEE8">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="Status" transform="translate(30.000000, 133.000000)">
+                    <g id="book-status" transform="translate(22.000000, 20.000000)">
+                        <g id="Combined-Shape">
+                            <path d="M0,0.914285714 C1.31083308e-15,0.539615351 0.0777463337,0.352821181 0,-8.8817842e-16 C0.354525057,0.0773726786 0.54222131,-8.8817842e-16 0.9,-8.8817842e-16 C3.26836481,0.0459763581 5.7668665,0.570959849 8.1,1.82857143 L8.1,15.5428571 C5.78297982,14.5005577 3.27982887,13.9301514 0.9,13.7142857 C0.330384047,13.8652238 0,13.5364276 0,12.8 L0,0.914285714 Z M17.1,-8.8817842e-16 C17.6695919,-8.8817842e-16 18,0.32882416 18,0.914285714 L18,12.8 C18,13.537579 17.6695919,13.8664031 17.1,13.7142857 C14.7202269,13.9310296 12.2171121,14.5010309 9.9,15.5428571 L9.9,1.82857143 C12.2331655,0.570970741 14.7316252,0.0460472933 17.1,-8.8817842e-16 Z" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

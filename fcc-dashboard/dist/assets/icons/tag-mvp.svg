@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>MVP</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-564.000000, -532.000000)" stroke="#545F6D">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Tags" transform="translate(0.000000, 420.000000)">
+                    <g id="2" transform="translate(99.000000, 0.000000)">
+                        <g id="MVP" transform="translate(21.000000, 13.000000)">
+                            <g>
+                                <path d="M8.90909091,4.45454545 C8.90909091,1.99372727 6.91536364,0 4.45454545,0 C1.99372727,0 0,1.99372727 0,4.45454545 C0,6.91409091 1.99372727,8.90909091 4.45454545,8.90909091 C6.91536364,8.90909091 8.90909091,6.91409091 8.90909091,4.45454545 Z" id="Stroke-1" stroke-width="2"></path>
+                                <polyline id="Stroke-3" stroke-width="2" points="7 8.27272727 7 14 4.45454545 12.0909091 1.90909091 14 1.90909091 8.27272727"></polyline>
+                                <path d="M3.88156364,6.36363636 L5.15429091,6.36363636" id="Stroke-7" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

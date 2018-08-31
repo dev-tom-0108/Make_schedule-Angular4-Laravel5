@@ -1,0 +1,10 @@
+@import "~styles/variables";
+@import "~styles/base";
+
+.show_error{
+  margin:0;
+  &_item{
+    color:lightgreen;
+    font-size:15px;
+  }
+}

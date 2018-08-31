@@ -1,0 +1,19 @@
+@import "~styles/variables";
+@import "~styles/base";
+
+::-webkit-scrollbar
+{
+  width: 20px;  /* for vertical scrollbars */
+  height: 20px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+

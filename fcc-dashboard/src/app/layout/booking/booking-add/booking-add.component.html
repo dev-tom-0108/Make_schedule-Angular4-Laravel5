@@ -1,0 +1,36 @@
+<div *ngIf = "isShow" id="addBooking" class="add-booking">
+  <div class="add-booking__title">
+    <div class="add-booking__title-text">{{ 'BOOKING_ADD_TITLE' | translate }}</div>
+    <button (click)="closeAddBooking()" class="add-booking__close-btn icon-close"></button>
+  </div>
+  <mat-tab-group [(selectedIndex)]="selectedIndex">
+    <mat-tab label="{{ 'DATE' |  translate }}" disabled>
+      <div class="add-booking__wrapper">
+        <div class="add-booking__container">
+          <app-step-date></app-step-date>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'TIME' |  translate }}" disabled>
+        <div class="add-booking__wrapper">
+          <div class="add-booking__container">
+            <app-step-time></app-step-time>
+          </div>
+        </div>
+    </mat-tab>
+    <mat-tab label="{{ 'GUESTS' |  translate }}" disabled>
+      <div class="add-booking__wrapper">
+        <div class="add-booking__container">
+          <app-step-guests></app-step-guests>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab class="account-tab" label="{{ 'ACCOUNT' |  translate }}" disabled>
+      <div class="add-booking__wrapper account_content">
+        <div class="add-booking__container">
+          <app-step-account></app-step-account>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

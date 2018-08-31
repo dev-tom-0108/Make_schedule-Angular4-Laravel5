@@ -1,0 +1,302 @@
+@import "~styles/variables";
+@import "~styles/base";
+.floor-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 340px;
+  background-color: $gray;
+  border-right: 2px solid $dark-gray-6;
+  overflow: auto;
+  flex-direction: column;
+  &__title {
+    padding: 25px 30px 28px 70px;
+    background-color: $dark-gray-2;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 39px;
+      left: 29px;
+      width: 20px;
+      height: 20px;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 29px;
+    top: 39px;
+    border: none;
+    background: none;
+    padding: 0;
+    color: $gray-8;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  &__text {
+    @include font-style($color: $light-gray-2, $size: 18px)
+  }
+  &__desc {
+    @include font-style($color: $light-gray-3, $size: 15px)
+  }
+  &__content {
+    height: 100%;
+    position: relative;
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $gray;
+    overflow-y: auto;
+  }
+  &__floor-info,
+  &__floor-edit,
+  &__table-edit,
+  &__confirm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__floor-edit,
+  &__table-edit,
+  &__confirm {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  &__floor-edit {
+    left: 0;
+  }
+
+  &__floor-name-label {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__floor-name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+    margin-top: 2px;
+    margin-bottom: 30px;
+  }
+  &__input {
+    @include font-style($color: $light-gray, $size: 17px);
+    padding: 14px 17px;
+    background-color: $gray;
+    border: 1px solid $gray-2;
+    border-radius: 4px;
+    //margin-top: 13px;
+    //margin-bottom: 20px;
+    height: 56px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    &::placeholder {
+      @include font-style($color: $light-gray, $size: 17px);
+      opacity: 0.2;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__fields {
+    width: 100%;
+    min-height: fit-content;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+  }
+  &__row {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  &__col {
+    width: 46%;
+    box-sizing: border-box;
+  }
+  &__field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__field-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  
+  &__field-dropdown {
+    margin-top: 13px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 24px;
+      top: 23px;
+      width: 15px;
+      height: 9px;
+      pointer-events: none;
+      background-image: url("/assets/icons/drop-down.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }  
+  &__btn {
+    height: 56px;
+    width: 100%;
+    text-align: center;
+    @include font-style($color: $light-gray-2, $size: 16px, $lh: 56px);
+    border-radius: 4px;
+    background-color: $dark-gray-4;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
+    margin-top:20px;
+    &_accent {
+      background-color: $mint;
+    }
+    &_red {
+      @include font-style($color: $red);
+      background-color: $gray;
+      border: 1px solid $red;
+    }
+    &_green {
+      @include font-style($color: $mint);
+      background-color: $gray;
+      border: 1px solid $mint;
+    }
+    &_edit{
+      background-color: $blue;      
+    }
+    &_mobile-view {
+      display: none;
+    }
+  }
+  &__btn:disabled{
+    opacity: .4;
+    cursor:not-allowed;
+  }  
+  &__publish-status {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__publish-status-text {
+    @include font-style($color: $light-gray-2, $size: 16px)
+  }
+  &__publish-status-desc {
+    @include font-style($color: $light-gray-3, $size: 15px)
+  }
+  &__table-styles {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 13px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  &__table-style {
+    display: none;
+    &:checked+label {
+      &:before {
+        content: '';
+      }
+    }
+  }
+  &__table-style {
+    &_square+label {
+      border-radius: 4px;
+    }
+    &_round+label {
+      border-radius: 50%;
+    }
+  }
+  &__table-style+label {
+    cursor: pointer;
+    display: block;
+    margin-right: 20px;
+    background-color: $dark-gray-2;
+    border: none;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    &:before {
+      position: absolute;
+      left: 17px;
+      top: 16px;
+      width: 19px;
+      height: 19px;
+      background-image: url("/assets/icons/check-mint.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  &__confirm-title {
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    @include font-style($color: $light-gray-2, $size: 18px);
+    margin-top: 10px;
+    padding-bottom: 37px;
+  }
+  &__confirm-text {
+    @include font-style($color: $light-gray-2, $size: 18px, $weight: 300);
+    text-align: center;
+    padding: 0 37px;
+    margin-top: 80px;
+    span {
+      margin-left: -5px;
+      @include font-style($color: $light-gray-2, $size: 18px, $weight: 400);
+    }
+  }
+  &__back-btn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 0;
+    border: none;
+    background: none;
+    padding: 0;
+    color: $gray-8;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  &__buttons {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 132px;
+  }
+}
+
+@media #{$mobile} {
+  .floor-menu {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+    z-index: 2;
+    &__btn {
+      &_mobile-view {
+        display: block;
+        margin-top: 12px;
+      }
+    }
+  }
+}

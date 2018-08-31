@@ -1,0 +1,45 @@
+<div class="table-details" [hidden]="isShowBlock">
+  <div class="talbe-details-prev">
+    <div class="table-details__table_title">
+      <div class="table-details__title_header">
+        {{ table.name }}
+      </div>
+      <div class="table-details__available" [class.table-details__overlap]="isOverlap()" [class.table-details__block]="isBlock()" >
+        {{ table.name }} {{ getStringofStatus() | translate }}
+      </div>
+      <button (click)="close()" class="table-details__close icon-close">
+      </button>
+    </div>
+    <div class="table-details__buttons">
+      <button (click)="showAddBooking()" class="table-details__button table-details__button_green" type="button" name="add-booking">{{'BOOKING_ADD_BOOKING' | translate }}</button>
+      <button (click)="showBlock()"class="table-details__button" type="button" name="block-table">{{'BOOKING_BLOCK_TABLE' | translate }}</button>
+    </div>
+  </div>
+  <div *ngIf = "upcoming" class="table-details__wrapper">
+      <div class="table-details__party_title">
+        {{ 'BOOKING_UPCOMING' | translate }}
+      </div>
+      <div class="table-details__title" [class.icon-badge] = "upcoming.is_vip=='1'">
+        <div>
+          <div class="table-details__name">
+              {{ upcoming.name }} - {{ upcoming.booking_number }}
+          </div>
+          <div class="table-details__info">
+            <div class="table-details__time">
+                {{ convertTimeString( upcoming.time ) }}
+            </div>
+            <div class="table-details__guests icon-person">
+                {{ upcoming.number_of_people }}
+            </div>
+          </div>
+          <div class="table-details__info">
+              <ng-container *ngIf = "upcoming.tables && upcoming.tables.length > 0">
+                  <div class="table-details__table">{{ getTablesNameString( upcoming.tables ) }}</div>
+              </ng-container>
+          </div>
+        </div>
+      </div>
+      <button (click)="toggleMoreDetails(upcoming)" class="table-details__button table-details__button_more-details " type="button" name="more-details " [class.table-details__button_close]="isShowMore">{{ ( isShowMore ? 'BOOKING_LESS_DETAILS' : 'BOOKING_MORE_DETAILS' ) | translate }}</button>
+    </div> 
+</div>
+<app-block-table [hidden]="!isShowBlock"></app-block-table>

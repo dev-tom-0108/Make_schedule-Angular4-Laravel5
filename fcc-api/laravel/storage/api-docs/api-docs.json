@@ -1,0 +1,2718 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "FCC API",
+        "description": "This is a online API Documentation for FCC",
+        "contact": {
+            "name": "CJ"
+        },
+        "version": "1.0.0"
+    },
+    "host": "fcc-api.wodebox.com",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/admin/bookings": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all bookings",
+                "description": "",
+                "operationId": "api.admin.getallbookings",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a booking",
+                "description": "",
+                "operationId": "api.admin.createtable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "date": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a table successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/bookings/total": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get total count of all bookings",
+                "description": "",
+                "operationId": "api.admin.gettotalcountallbookings",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/bookings/guest/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get a booking by guest id",
+                "description": "",
+                "operationId": "api.app.getbooking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/bookings/table/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get a booking by table id",
+                "description": "",
+                "operationId": "api.app.getbookingbytableid",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update the asigned table",
+                "description": "",
+                "operationId": "api.admin.updateasignedtable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Booking id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "table_id": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/bookings/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get a booking",
+                "description": "",
+                "operationId": "api.admin.getbooking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a booking",
+                "description": "",
+                "operationId": "api.admin.updatebooking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "date": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a booking",
+                "description": "",
+                "operationId": "api.admin.deletebooking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/bookings/status/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a booking",
+                "description": "",
+                "operationId": "api.admin.updatebookingstatus",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "status": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/timeslots": {
+            "get": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Get timeslots",
+                "description": "",
+                "operationId": "api.guest.timeslots",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/tables": {
+            "get": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Get available tables count",
+                "description": "",
+                "operationId": "api.guest.tables",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "time",
+                        "in": "query",
+                        "description": "Time",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "seats",
+                        "in": "query",
+                        "description": "Seats",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/sms": {
+            "post": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Send code by sms",
+                "description": "",
+                "operationId": "api.guest.sms",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "phone": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sms is sent successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/guests": {
+            "get": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Get all guestinfo",
+                "description": "",
+                "operationId": "api.guest.guestallinfo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Token",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Create a guest by sms",
+                "description": "",
+                "operationId": "api.guest.create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "vlad",
+                                    "example": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": "my@email.com",
+                                    "example": ""
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "default": "768543",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a guest successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/guests": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a guest",
+                "description": "",
+                "operationId": "api.admin.create",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "vlad",
+                                    "example": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": "my@email.com",
+                                    "example": ""
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "default": "768543",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a guest successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/login": {
+            "post": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Login by phone",
+                "description": "",
+                "operationId": "api.guest.login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "phone": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "default": "768543",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logged in successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/guests/{id}": {
+            "get": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Get a guestinfo",
+                "description": "",
+                "operationId": "api.guest.guestinfo",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Get guest by ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Token",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Update a guestinfo",
+                "description": "",
+                "operationId": "api.guest.updateguest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "vlad",
+                                    "example": ""
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "default": "my@email.com",
+                                    "example": ""
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "wechat_account": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "company_name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "alipay_accoun_id": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "alipay_account_name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a guest",
+                "description": "",
+                "operationId": "api.app.deleteguest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/block_guests/{id}": {
+            "put": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "block a guestinfo",
+                "description": "",
+                "operationId": "api.guest.blockguest",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "is_block": {
+                                    "type": "string",
+                                    "default": "vlad",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/general/shiftpackage/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update the default shift package",
+                "description": "",
+                "operationId": "api.admin.updatedefaultshiftpackage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Default Shift Package ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/general/floorpackage/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update the default floor package",
+                "description": "",
+                "operationId": "api.admin.updatedefaultfloorpackage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Default Floor Package ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/general": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get general settings",
+                "description": "",
+                "operationId": "api.admin.getgeneralsettings",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a staff",
+                "description": "",
+                "operationId": "api.admin.updatestaff",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "DefaultShiftPackage": {
+                                    "type": "integer",
+                                    "default": "1",
+                                    "example": ""
+                                },
+                                "DefaultFloorPackage": {
+                                    "type": "integer",
+                                    "default": "1",
+                                    "example": ""
+                                },
+                                "BookingAppTimer": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "MaximumNumberofPeoplePerBooking": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "MinimumNumberofPeoplePerBooking": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "EarliestBookingAllowedinAdvance": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/rules": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all rules",
+                "description": "",
+                "operationId": "api.admin.getallrules",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a rule",
+                "description": "",
+                "operationId": "api.admin.createrules",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "start": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "end": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "repeat": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a rule successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/rules/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a rule",
+                "description": "",
+                "operationId": "api.admin.updaterule",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "start": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "end": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "repeat": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a rule",
+                "description": "",
+                "operationId": "api.admin.deleterule",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/shift_packages": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all shift packages",
+                "description": "",
+                "operationId": "api.admin.getallshiftpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a shift package",
+                "description": "",
+                "operationId": "api.admin.createshiftpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_publish": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a shfit package successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/shift_packages/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a shift packages",
+                "description": "",
+                "operationId": "api.admin.updateshiftpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_publish": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a shiftpackages",
+                "description": "",
+                "operationId": "api.admin.deleteshiftpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/shifts": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all shifts",
+                "description": "",
+                "operationId": "api.admin.getallshifts",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a shift",
+                "description": "",
+                "operationId": "api.admin.createshift",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "time_slots": {
+                                    "type": "json",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "shift_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "shift_atb": {
+                                    "type": "float",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_enabled": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a shfit successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/shifts/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get the shifts by shift package id",
+                "description": "",
+                "operationId": "api.admin.getshifts",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Shift Package ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a shift",
+                "description": "",
+                "operationId": "api.admin.updateshifts",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "time_slots": {
+                                    "type": "json",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "shift_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "shift_atb": {
+                                    "type": "float",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_enabled": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a shift",
+                "description": "",
+                "operationId": "api.admin.deleteshifts",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings//shifts/package/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update the shifts for shift package id",
+                "description": "",
+                "operationId": "api.admin.updateshiftsforshiftpackageid",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Shift Package ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "json",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/floor_packages": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all floor packages",
+                "description": "",
+                "operationId": "api.admin.getallfloorpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a floor package",
+                "description": "",
+                "operationId": "api.admin.createfloorpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_publish": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a floor package successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/floor_packages/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a shift packages",
+                "description": "",
+                "operationId": "api.admin.updateshiftpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_publish": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a floor package",
+                "description": "",
+                "operationId": "api.admin.deletefloorpackages",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/floors": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all floors",
+                "description": "",
+                "operationId": "api.admin.getallfloors",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a floor",
+                "description": "",
+                "operationId": "api.admin.createfloor",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "number": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a floor successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/floors/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a floor",
+                "description": "",
+                "operationId": "api.admin.updatefloor",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "number": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a floor",
+                "description": "",
+                "operationId": "api.admin.deletefloor",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tables": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all tables",
+                "description": "",
+                "operationId": "api.admin.getalltables",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Create a table",
+                "description": "",
+                "operationId": "api.admin.createtable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "table_number": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "table_name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seats": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seat_from": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seat_to": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "style": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created a table successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tables/package/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all tables by package id",
+                "description": "",
+                "operationId": "api.admin.getalltablesbypackageid",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Package ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update tables by floor package id",
+                "description": "",
+                "operationId": "api.admin.updatetablesfloorpackageid",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Floor Package ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tables/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a table",
+                "description": "",
+                "operationId": "api.admin.updatetable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "table_number": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "table_name": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seats": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seat_from": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "seat_to": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "style": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "floor_package_id": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a table",
+                "description": "",
+                "operationId": "api.admin.deletetable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tables/block": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all block tables",
+                "description": "",
+                "operationId": "api.admin.getallblocktables",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Block a table",
+                "description": "",
+                "operationId": "api.admin.blocktable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "block_date": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "is_allday": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "time_range_from": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "time_range_to": {
+                                    "type": "integer",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tables/unblock/{id}": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Unblock a table",
+                "description": "",
+                "operationId": "api.admin.unblocktable",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Table id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/table_draw_data/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a table drawing data",
+                "description": "",
+                "operationId": "api.admin.updatetabledrawdata",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "table_layout",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/app/settings": {
+            "get": {
+                "tags": [
+                    "Guests"
+                ],
+                "summary": "Get settings(Rules & General)",
+                "description": "",
+                "operationId": "api.guest.settings",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/tags": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all tags",
+                "description": "",
+                "operationId": "api.admin.getalltags",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/settings/permissions": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get all permissions",
+                "description": "",
+                "operationId": "api.admin.getallpermissions",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/login": {
+            "post": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Staff login",
+                "description": "",
+                "operationId": "api.admin.login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "login": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login successfully"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/staffs": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get All staffs",
+                "description": "",
+                "operationId": "api.admin.getallstaff",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/staffs/{id}": {
+            "get": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Get a staff by ID",
+                "description": "",
+                "operationId": "api.admin.getstaff",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Update a staff",
+                "description": "",
+                "operationId": "api.admin.updatestaff",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Delete a staff",
+                "description": "",
+                "operationId": "api.admin.deletestaff",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        },
+        "/admin/staffs/table/{id}": {
+            "put": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Assigned tables to a staff",
+                "description": "",
+                "operationId": "api.admin.assignedtables",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Staff ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "tables": {
+                                    "type": "string",
+                                    "default": "",
+                                    "example": ""
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Assigned tables to a staff",
+                "description": "",
+                "operationId": "api.admin.assignedtables",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Staff ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    },
+                    "400": {
+                        "description": "Logic Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

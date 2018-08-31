@@ -1,0 +1,73 @@
+<div class="tableview">
+    <ngx-datatable
+        class="material"
+        [rows]="bookings"
+        [columns]="columns"
+        [columnMode]="'flex'"
+        [messages]="custom_messages"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [externalPaging]="true"
+        [count]="totalElements"
+        [offset]="pageNumber"
+        [limit]="pageSize"
+        (page)='setPage($event)'
+        (activate)='selectBooking($event)'>
+    </ngx-datatable>
+
+    <!-- <mat-table #table [(dataSource)]="dataSource">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_ID' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.id}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="booking_number">
+            <mat-header-cell *matHeaderCellDef>{{ 'NUMBER' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.booking_number}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_DATE' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.date | date }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="time">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_TIME' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.time}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="hours">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_HOURS' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.hours}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="number_of_people">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_NO_OF_GUESTS' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{ booking.number_of_people }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_STATUS' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.status}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_NAME' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_PHONE' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.phone}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_EMAIL' | translate }}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="link">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let booking">
+            <a href="{{booking.link}}">{{ 'GUESTS_BOOKINGS_MORE' | translate }}</a>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[20]">
+    </mat-paginator>         -->
+</div>

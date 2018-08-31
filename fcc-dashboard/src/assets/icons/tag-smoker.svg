@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="18px" viewBox="0 0 19 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Smoker</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-1126.000000, -530.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Tags" transform="translate(0.000000, 420.000000)">
+                    <g id="6" transform="translate(663.000000, 0.000000)">
+                        <g id="Smoker" transform="translate(29.000000, 18.333333) rotate(24.000000) translate(-29.000000, -18.333333) translate(21.000000, 13.000000)">
+                            <g>
+                                <polygon id="Stroke-1" stroke-width="2" points="2.18181818 10.5 16 10.5 16 7.5 2.18181818 7.5"></polygon>
+                                <path d="M0,10.5 L0,7.5" id="Stroke-3" stroke-width="2"></path>
+                                <path d="M11.6363636,10.5 L11.6363636,7.5" id="Stroke-4" stroke-width="2"></path>
+                                <path d="M1.13563636,4.5 C0.644727273,4.00425 0.644727273,3.20175 1.13563636,2.706 C1.62509091,2.211 2.42072727,2.211 2.91163636,2.706" id="Stroke-5" stroke-width="2"></path>
+                                <path d="M2.91192727,2.7063 C2.29810909,2.0868 2.29810909,1.0833 2.91192727,0.46455 C3.52429091,-0.1542 4.51774545,-0.1542 5.13156364,0.46455" id="Stroke-6" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

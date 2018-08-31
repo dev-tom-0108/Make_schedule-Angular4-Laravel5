@@ -1,0 +1,6 @@
+<div class="booking">
+  <app-booking-settings></app-booking-settings>
+  <app-timeline  *ngIf = "isBookingTimeLine()"  class="booking__timeline"></app-timeline>
+  <app-floorview *ngIf = "isBookingFloorView()" class="booking__floor"></app-floorview>
+  <app-tableview *ngIf = "isBookingList()"      class="booking__table"></app-tableview>
+</div>

@@ -1,0 +1,238 @@
+@import "~styles/variables";
+@import "~styles/base";
+
+.booking-details {
+  width: 342px;
+  height: 100%;
+  background-color: $gray;
+  border-right: 2px solid $dark-gray-6;
+  display: flex;
+  flex-direction: column;
+  //padding: 26px 0;
+  padding-bottom:26px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: relative;
+  overflow: auto;
+  &_floor {
+    padding: 122px 0;
+    height: calc(100vh - 74px);
+  }
+  &__content {
+    height: 100%;
+    //overflow: auto;
+    &::-webkit-scrollbar {
+      width: 3px;
+    }
+  }
+  &__wrapper{
+    padding: 0 30px;
+    height: 100%;
+  }
+  &__header,
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 96px;
+    //background-color: $dark-gray-4;
+    padding: 26px 30px;
+    box-sizing: border-box;
+  }
+  &__header{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+  }
+  &__footer {
+    top: unset;
+    bottom: 0;
+    cursor: pointer;
+  }
+  &__party_title{
+    font-family: 'Heebo';
+    font-size: 20px;
+    color: #D8DEE8;
+    margin-top: 20px;
+  }
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 34px;
+    padding-top:20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    &:before {
+      color: $golden;
+      position: absolute;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      left: 0;
+      top: 25px;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: $light-gray-3;
+    &_floor {
+      position: absolute;
+      top: 28px;
+      right: 30px;
+    }
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px)
+  }
+  &__info {
+    display: flex;
+  }
+  &__time {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    margin-right: 15px;
+  }
+  &__guests {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    position: relative;
+    padding-left: 22px;
+    &:before {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 0px;
+      line-height: 20px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 0 39px;
+  }
+  &__button {
+    cursor: pointer;
+    @include font-style($color: $light-gray-2, $size: 16px);
+    background-color: $dark-gray-4;
+    border: none;
+    border-radius: 4px;
+    padding: 16px 0;
+    margin-bottom: 20px;
+    min-height: 56px;
+    box-sizing: border-box;
+    width: 100%;
+    &_more-details {
+      border: 1px solid $dark-gray-4;
+      background-color: $gray;
+      @include font-style($color: $gray-3);
+      margin-top: 20px;
+    }
+    &_close {
+      border: 2px solid $mint;
+      background-color: $gray;
+      @include font-style($color: $mint);
+      height: 52px;
+    }
+    &_status {
+      background-color: $mint;
+      text-align: left;
+      padding-left: 60px;
+      position: relative;
+      font-weight: 400;
+      &:before {
+        font-size: 18px;
+        position: absolute;
+        left: 22px;
+        top: 19px;
+        width: 18px;
+        height: 18px;
+      }
+      &:after {
+        font-family: 'fcc-icons';
+        content: '\e908';
+        position: absolute;
+        right: 19px;
+        top: 20px;
+        width: 15px;
+        height: 15px;
+        font-size: 15px;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    &:last-child {
+      margin-bottom: 5px;
+    }
+  }
+  &__owner {
+    @include font-style($color: $light-gray-2, $size: 16px);
+  }
+  &__email {
+    margin-top: 4px;
+  }
+  &__field-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__sub-menu {
+    margin-top: 18px;
+    a {
+      @include font-style($color: $light-gray-3, $size: 16px);
+      text-decoration: none;
+      margin-right: 13px;
+    }
+  }
+  &__guest-info-tag {
+    @include font-style($color: $gray-3, $size: 15px);
+    background-color: $dark-gray-4;
+    border-radius: 100px;
+    padding: 9px 22px 10px;
+    margin-right: 13px;
+    margin-bottom: 8px;
+    display: inline-block;
+    position: relative;
+    &:before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: 17px;
+      top: 11px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    img {
+      width: 23px;
+      height: 23px;
+      border-radius: 2px;
+      margin: -7px;
+      margin-right: 2px;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .booking-details {
+    height: calc(100vh - 56px);
+  }
+}
+
+@media #{$mobile} {
+  .booking-details {
+    overflow-y: auto;
+    border-right: none;
+    width: 100vw;
+    height: calc(100vh - 96px);
+  }
+}

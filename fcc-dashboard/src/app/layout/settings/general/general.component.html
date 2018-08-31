@@ -1,0 +1,34 @@
+<form [formGroup]="myForm" (ngSubmit)="saveGeneral()" novalidate>
+<ngx-loading [show]="isLoading"></ngx-loading>    
+<div id="generalSettings" class="general-settings-view">
+  <div class="general-settings-view__fields">
+    <div class="general-settings-view__col-50">
+      <div class="general-settings-view__field">
+        <div class="general-settings-view__field-name">{{ 'SETTINGS_GENERAL_BOOKING_APP_TIMER' | translate}}</div>
+          <input type="text" formControlName="input_app_timer" type="number" [(ngModel)]="generalInfo.BookingAppTimer">
+            <p><show-errors [control]="myForm.controls.input_app_timer"></show-errors></p> 
+      </div>
+      <div class="general-settings-view__field">
+        <div class="general-settings-view__field-name">{{ 'SETTINGS_GENERAL_BOOKING_MIN_PEOPLE' | translate}}</div>
+        <input type="text" formControlName="input_min_people" type="number" min = "1" [(ngModel)]="generalInfo.MinimumNumberofPeoplePerBooking">
+        <p><show-errors [control]="myForm.controls.input_min_people"></show-errors></p>               
+      </div>
+    </div>
+    <div class="general-settings-view__col-50">
+      <div class="general-settings-view__field general-settings-view__field_right">
+        <div class="general-settings-view__field-name">{{ 'SETTINGS_GENERAL_BOOKING_ADVANCED_DAYS' | translate}}</div>
+
+        <input type="text" formControlName="input_advanced_days" type="number" [(ngModel)]="generalInfo.EarliestBookingAllowedinAdvance">
+        <p><show-errors [control]="myForm.controls.input_advanced_days"></show-errors></p>            
+      </div>
+      <div class="general-settings-view__field general-settings-view__field_right">
+          <div class="general-settings-view__field-name">{{ 'SETTINGS_GENERAL_BOOKING_MAX_PEOPLE' | translate}}</div>
+          <input type="text" formControlName="input_max_people" type="number" [(ngModel)]="generalInfo.MaximumNumberofPeoplePerBooking">
+          <p><show-errors [control]="myForm.controls.input_max_people"></show-errors></p>
+        </div>             
+    </div> 
+  </div>
+  <p><show-errors [control]="myForm"></show-errors></p>        
+  <button type="submit" [disabled]="myForm.invalid || myForm.pending" class="general-settings-view__save-btn" >{{ 'SAVE' | translate }}</button>
+</div>
+</form>

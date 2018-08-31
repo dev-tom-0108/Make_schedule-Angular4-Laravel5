@@ -1,0 +1,171 @@
+<div [hidden]="!isShow" id="moreDetailsView" class="more-details">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div class="more-details__title">
+    <div>
+      <div class="more-details__name">
+        {{ booking.name }}
+      </div>
+      <div class="more-details__id">
+          {{ 'BOOKING_ID' | translate }}:
+        <span>{{ booking.booking_number }}</span>
+      </div>
+    </div>
+    <div class="more-details__buttons">
+      <button (click)="showEdit()" class="more-details__edit-btn">
+          {{ 'EDIT' | translate }}
+      </button>
+      <button (click)="close()" class="more-details__close">{{ 'CLOSE' | translate }}</button>
+    </div>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="{{ 'BOOKING_INFO' | translate }}">
+      <div class="more-details__booking-info">
+        <div class="more-details__col-50">
+          <div class="more-details__booking-info-item icon-calendar">
+            <div class="more-details__booking-info-item-name">{{ 'DATE' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ convertDateString( booking.date )}}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-people">
+            <div class="more-details__booking-info-item-name">{{ 'GUESTS' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.number_of_people }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-shifts">
+            <div class="more-details__booking-info-item-name">{{ 'SHIFT' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.shift_name }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-table">
+            <div class="more-details__booking-info-item-name">{{ 'ASSIGNED_TABLE' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ getTablesNameString( booking.tables ) }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-check">
+            <div class="more-details__booking-info-item-name">{{ 'PAYMENT_METHOD' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.deposit_method }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-guests">
+            <div class="more-details__booking-info-item-name">{{ 'NOTES_BY_GUEST' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.notes_by_guest }}</div>
+          </div>
+        </div>
+        <div class="more-details__col-50">
+          <div class="more-details__booking-info-item icon-clock">
+            <div class="more-details__booking-info-item-name">{{ 'TIME' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ convertTimeString( booking.time ) }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-status">
+            <div class="more-details__booking-info-item-name">{{ 'STATUS' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ getStatusName( booking.status ) | translate }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-hours">
+            <div class="more-details__booking-info-item-name">{{ 'HOURS' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.hours }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-deposit">
+            <div class="more-details__booking-info-item-name">{{ 'DEPOSIT' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.deposit_amount }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-quote">
+            <div class="more-details__booking-info-item-name">{{ 'REFERENCED_BY' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.referenced_by }}</div>
+          </div>
+          <div class="more-details__booking-info-item icon-staffs">
+            <div class="more-details__booking-info-item-name">{{ 'NOTES_BY_STAFF' | translate }}</div>
+            <div class="more-details__booking-info-item-value">{{ booking.notes_by_staff }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{ 'GUESTS_GUEST_INFO' | translate }}">
+      <div class="more-details__guest-info">
+        <div class="more-details__col-50">
+          <div class="more-details__guest-info-item icon-person">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_FULL_NAME' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{guest.name}}</div>
+          </div>
+          <div class="more-details__guest-info-item icon-email">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_EMAIL_ADDRESS' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{guest.email}}</div>
+          </div>
+          <div class="more-details__guest-info-item icon-badge">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_IS_VIP' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{(guest.is_vip ? 'GUESTS_YES': 'GUESTS_NO') | translate}}</div>
+          </div>
+        </div>
+        <div class="more-details__col-50">
+          <div class="more-details__guest-info-item icon-phone">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_PHONE_NUMBER' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{guest.phone}}</div>
+          </div>
+          <div class="more-details__guest-info-item icon-company">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_COMPANY' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{guest.company_name}}</div>
+          </div>
+          <div class="more-details__guest-info-item icon-chat">
+            <div class="more-details__guest-info-item-name">{{ 'GUESTS_WECHAT' | translate }}</div>
+            <div class="more-details__guest-info-item-value">{{(guest?.wechat_account?.length > 0 ? 'GUESTS_WECHAT_CONNECTED': 'GUESTS_WECHAT_DISCONNECTED') | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="guest.tags?.length" class="more-details__guest-info-tags">
+          <div *ngFor="let tag of guest.tags" class="more-details__guest-info-tag">
+            <span>
+              <img [src]="tag.icon_image" class="more-details__guest-info-tag-icon">
+            </span>
+            {{tag.name}}
+          </div>
+        </div>      
+    </mat-tab>
+    <mat-tab label="{{ 'GUESTS_PREVIOUS_BOOKINGS' | translate }}">
+      <div class="more-details__prev-bookings">
+        <div class="more-details__col-30">
+          <div class="more-details__prev-bookings-counter">
+            <div class="more-details__prev-bookings-counter-name">{{ 'GUESTS_BOOKINGS_TOTAL_VISIT' | translate }}</div>
+            <div class="more-details__prev-bookings-counter-value">{{sizeOfTotalBookings}}</div>
+          </div>
+        </div>
+        <div class="more-details__col-30">
+          <div class="more-details__prev-bookings-counter">
+            <div class="more-details__prev-bookings-counter-name">{{ 'GUESTS_BOOKINGS_NO_SHOWS' | translate }}</div>
+            <div class="more-details__prev-bookings-counter-value">{{sizeOfNoShows}}</div>
+          </div>
+        </div>
+        <div class="more-details__col-30">
+          <div class="more-details__prev-bookings-counter">
+            <div class="more-details__prev-bookings-counter-name">{{ 'GUESTS_BOOKINGS_CANCELLATION' | translate }}</div>
+            <div class="more-details__prev-bookings-counter-value">{{sizeOfCanceledBookings}}</div>
+          </div>
+        </div>
+      </div>
+      <mat-table #table [(dataSource)]="dataSource">
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_ID' | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let preBooking"> {{preBooking.booking_number}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_DATE' | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let preBooking"> {{preBooking.date | date }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="time">
+          <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_TIME' | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let preBooking"> {{preBooking.time}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="guests">
+          <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_NO_OF_GUESTS' | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let preBooking"> {{preBooking.number_of_people}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>{{ 'GUESTS_BOOKINGS_STATUS' | translate }}</mat-header-cell>
+          <mat-cell *matCellDef="let preBooking"> {{getStatusName(preBooking.status) | translate}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="link">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let preBooking">
+            <a (click)="selectBooking(preBooking.id)">{{ 'GUESTS_BOOKINGS_MORE' | translate }}</a>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-tab>
+  </mat-tab-group>
+  <app-booking-edit [hidden]="!isShowEdit"></app-booking-edit>
+</div>

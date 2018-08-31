@@ -1,0 +1,191 @@
+<div *ngIf = "isSettingsShiftPackages()" id="shifts" class="shift">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div *ngIf = "isView()" id="shiftView" class="shift-view">
+    <button class="shift-view__close-btn icon-close"></button>
+    <div class="shift-view__shifts">
+      <div *ngIf = "selectShifts.length > 0">
+        <div class="shift-view__shift" *ngFor = "let shift of selectShifts">
+          <div class="shift-view__col-50">
+            <div class="shift-view__info-item icon-shifts">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_SHIFTS' | translate | uppercase }}</div>
+              <div class="shift-view__info-item-value">{{ shift.name }}</div>
+            </div>
+            <div class="shift-view__info-item icon-table">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_FLOOR_PACKAGE' | translate | uppercase }}</div>
+              <div class="shift-view__info-item-value">{{ getFloorPackageNamebyId(shift.floor_package_id) }}</div>
+            </div>
+            <div class="shift-view__info-item icon-deposit">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_DEPOSIT' | translate | uppercase }}</div>
+              <div class="shift-view__info-item-value">{{ shift.deposit_amount | number }} {{ 'CURRENCY_RMB' | translate }}</div>
+            </div>
+          </div>
+          <div class="shift-view__col-50">
+            <div class="shift-view__info-item icon-clock">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_TIME' | translate | uppercase }}</div>
+              <div class="shift-view__info-item-value">{{  convertArrayOfTimeToString ( shift.time_slots ) }}</div>
+            </div>
+            <div class="shift-view__info-item icon-hours">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_AVG_TIME_PER_BOOKING' | translate | uppercase }}</div>
+              <div class="shift-view__info-item-value">{{ shift.shift_atb }} {{ 'HOURS' | translate }}</div>
+            </div>
+            <div class="shift-view__info-item icon-status">
+              <div class="shift-view__info-item-name">{{ 'SETTINGS_SHIFT_STATUS' | translate | uppercase }}</div>
+              <mat-slide-toggle class="shift-view__info-item-toggle" [ngModel]="shift.is_enabled" disabled></mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf = "isEdit()" id="shiftEdit" class="shift-edit">
+    <form [formGroup]="editShiftsForm">
+    <div class="shift-edit__title">
+      <div>
+        <div class="shift-edit__name">{{ 'SETTINGS_SHIFT_EDIT_SHIFT' | translate }}</div>
+        <div class="shift-edit__desc">{{ 'SETTINGS_SHIFT_EDIT_SHIFT_PACKAGE' | translate }}</div>
+      </div>
+      <button class="shift-edit__add-btn" (click)="addShift(false)">{{ 'SETTINGS_SHIFT_ADD_A_SHIFT' | translate }}</button>
+    </div>
+    <div class="shift-edit__shifts" formArrayName="editShifts">
+      <div class="shift-edit__shift" *ngFor = "let shift of editShifts; let i=index;">
+        <div [formGroupName]="i">
+          <div class="shift-edit__row">
+            <button class="shift-edit__time-delete icon-close" (click)="removeShift(false, shift)"></button>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_ADD_A_SHIFT' | translate }}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="text" name = "input_shift_name"  formControlName="input_shift_name" [(ngModel)]="shift.name" >
+                  <p><show-errors [control]="editShiftsForm.controls.editShifts.controls[i].controls.input_shift_name"></show-errors></p>
+
+                </div>
+              </div>
+            </div>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_TIME_SLOTS' | translate }}</div>
+                <div class="shift-edit__field-time">
+                  <div class="shift-edit__time" *ngFor="let timeslot of shift.time_slots let j=index;">{{ convertStrToTimeSlot(timeslot) }}
+                    <button class="shift-edit__time-delete icon-close" (click)="removeSlot(false, i, j)"></button>
+                  </div>
+                  <input class="shift-edit__text-input shift-edit__slot_length" type="input" name = "input_timeslots_length"  formControlName="input_timeslots_length" [ngModel]="shift.time_slots.length" autofocus>                
+                  <dp-date-picker name = "timepicker_addTime" formControlName="timepicker_addTime" #editDatePicker (close)="addTime(false, i, editDatePicker)" (open)="showTimePicker(false, i)" [theme]="'date-picker'" [mode]="'time'" [config]="timePickerConfig" ></dp-date-picker>
+                  <p><show-errors [control]="editShiftsForm.controls.editShifts.controls[i].controls.input_timeslots_length"></show-errors></p>              
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shift-edit__row">
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_FLOOR_PACKAGE' | translate }}</div>
+                <div class="shift-edit__field-control">
+                  <ng-select name = "select_floor_package" formControlName="select_floor_package" [items]="floorPackages" bindLabel="name" bindValue="id" [(ngModel)]="shift.floor_package_id" ></ng-select>
+                  <p><show-errors [control]="editShiftsForm.controls.editShifts.controls[i].controls.select_floor_package"></show-errors></p>
+                </div>
+              </div>
+            </div>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_AVG_TIME_PER_BOOKING' | translate}}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="number" name = "input_avg_time"  formControlName="input_avg_time" [(ngModel)]="shift.shift_atb" >
+                  <p><show-errors [control]="editShiftsForm.controls.editShifts.controls[i].controls.input_avg_time"></show-errors></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shift-edit__row">
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_DEPOSIT_AMOUNT' | translate }}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="number" name="input_deposit" formControlName="input_deposit" [(ngModel)]="shift.deposit_amount" >
+                  <p><show-errors [control]="editShiftsForm.controls.editShifts.controls[i].controls.input_deposit"></show-errors></p>
+                </div>
+              </div>
+            </div>
+            <mat-slide-toggle class="shift-edit__shift-status" formControlName="check_is_enabled" [(ngModel)]="shift.is_enabled"></mat-slide-toggle>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+
+  <div *ngIf = "isCreate()" id="shiftCreate" class="shift-edit">
+    <form [formGroup]="createShiftsForm">
+    <div class="shift-edit__title">
+      <div>
+        <div class="shift-edit__name">{{ 'SETTINGS_SHIFT_CREATE_SHIFT' | translate }}</div>
+        <div class="shift-edit__desc">{{ 'SETTINGS_SHIFT_CREATE_SHIFT_PACKAGE' | translate }}</div>
+      </div>
+      <button class="shift-edit__add-btn" (click)="addShift(true)">{{ 'SETTINGS_SHIFT_ADD_A_SHIFT' | translate }}</button>
+    </div>
+    <div class="shift-edit__shifts" formArrayName="createShifts">
+      <div class="shift-edit__shift" *ngFor = "let shift of createShifts; let i=index;">
+        <div [formGroupName]="i">
+          <div class="shift-edit__row">
+            <button class="shift-edit__time-delete icon-close" (click)="removeShift(true, shift)"></button>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_ADD_A_SHIFT' | translate }}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="text" name = "input_shift_name"  formControlName="input_shift_name" [(ngModel)]="shift.name">
+                  <p><show-errors [control]="createShiftsForm.controls.createShifts.controls[i].controls.input_shift_name"></show-errors></p>                 
+                </div>
+              </div>
+            </div>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_TIME_SLOTS' | translate }}</div>
+                <div class="shift-edit__field-time">
+                  <div class="shift-edit__time" *ngFor="let timeslot of shift.time_slots let j=index;">{{ convertStrToTimeSlot(timeslot) }}
+                    <button class="shift-edit__time-delete icon-close" (click)="removeSlot(true, i, j)"></button>
+                  </div>
+                  <input class="shift-edit__text-input shift-edit__slot_length" type="text" name = "input_timeslots_length"  formControlName="input_timeslots_length" [ngModel]="shift.time_slots.length" autofocus>
+                  <dp-date-picker name = "timepicker_addTime" formControlName="timepicker_addTime" #editDatePicker (close)="addTime(true, i, editDatePicker)" (open)="showTimePicker(true, i)" [theme]="'date-picker'" [mode]="'time'" [config]="timePickerConfig"></dp-date-picker>
+                  <p><show-errors [control]="createShiftsForm.controls.createShifts.controls[i].controls.input_timeslots_length"></show-errors></p>                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shift-edit__row">
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_FLOOR_PACKAGE' | translate }}</div>
+                <div class="shift-edit__field-control">
+                    <ng-select name = "select_floor_package" formControlName="select_floor_package" [items]="floorPackages" (blur)="blurSelect(true,i)" bindLabel="name" bindValue="id" [(ngModel)]="shift.floor_package_id"></ng-select>
+                    <p><show-errors [control]="createShiftsForm.controls.createShifts.controls[i].controls.select_floor_package"></show-errors></p>
+                </div>
+              </div>
+            </div>
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_AVG_TIME_PER_BOOKING' | translate}}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="number" name = "input_avg_time"  formControlName="input_avg_time" [(ngModel)]="shift.shift_atb" >
+                  <p><show-errors [control]="createShiftsForm.controls.createShifts.controls[i].controls.input_avg_time"></show-errors></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="shift-edit__row">
+            <div class="shift-edit__col-50">
+              <div class="shift-edit__field">
+                <div class="shift-edit__field-name">{{ 'SETTINGS_SHIFT_DEPOSIT_AMOUNT' | translate }}</div>
+                <div class="shift-edit__field-control">
+                  <input class="shift-edit__text-input" type="number" name="input_deposit" formControlName="input_deposit" [(ngModel)]="shift.deposit_amount" >
+                  <p><show-errors [control]="createShiftsForm.controls.createShifts.controls[i].controls.input_deposit"></show-errors></p>
+                </div>
+              </div>
+            </div>
+            <mat-slide-toggle class="shift-edit__shift-status" formControlName="check_is_enabled" [(ngModel)]="shift.is_enabled"></mat-slide-toggle>
+          </div> 
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

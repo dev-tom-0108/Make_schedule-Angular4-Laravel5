@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>Staffs</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Timeline" transform="translate(-24.000000, -316.000000)" stroke="#454B56">
+            <g id="Menu" transform="translate(0.000000, 71.000000)">
+                <g id="4" transform="translate(0.000000, 221.000000)">
+                    <g id="Staffs" transform="translate(25.000000, 25.000000)">
+                        <g>
+                            <path d="M8.0361,6 L8.0341,10" id="Stroke-1" stroke-width="2"></path>
+                            <path d="M14.0342,10 L14.0322,6" id="Stroke-2" stroke-width="2"></path>
+                            <path d="M14.0342,6 C13.8192,4.863 12.3502,4 11.0342,4 L11.0342,4.002 C9.7172,4.002 8.2492,4.865 8.0342,6" id="Stroke-3" stroke-width="2"></path>
+                            <path d="M14.0283,10 C14.0283,10 14.1713,11.691 13.0333,13" id="Stroke-5" stroke-width="2"></path>
+                            <path d="M8.04,10 C8.04,10 7.897,11.691 9.035,13" id="Stroke-7" stroke-width="2"></path>
+                            <polyline id="Stroke-9" stroke-width="2" points="18.0342 15.9844 18.0342 15.9844 13.0332 12.9844"></polyline>
+                            <path d="M9.0352,13 L4.0342,15.984" id="Stroke-11" stroke-width="2"></path>
+                            <path d="M4.0342,15.9844 L4.0342,16.9844 C4.0342,17.5344 4.4842,17.9844 5.0342,17.9844 L17.0342,17.9844 C17.5842,17.9844 18.0342,17.5344 18.0342,16.9844 L18.0342,15.9844" id="Stroke-13" stroke-width="2"></path>
+                            <path d="M20.5332,0 C21.3402,0 22.0002,0.66 22.0002,1.467 L22.0002,20.533 C22.0002,21.34 21.3402,22 20.5332,22 L1.4672,22 C0.6602,22 0.0002,21.34 0.0002,20.533 L0.0002,1.467 C0.0002,0.66 0.6602,0 1.4672,0 L20.5332,0 Z" id="Stroke-15" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

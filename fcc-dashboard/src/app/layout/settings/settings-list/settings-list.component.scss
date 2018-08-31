@@ -1,0 +1,49 @@
+@import "~styles/variables";
+@import "~styles/base";
+.settings-list {
+  height: 100%;
+  width: 340px;
+  background-color: $gray;
+  border-right: 2px solid $dark-gray-6;
+  overflow: auto;
+  overflow-y: auto;
+  position: relative;
+  &__item {
+    cursor: pointer;
+    padding: 19px 30px 20px 70px;
+    border-bottom: 1px solid $dark-gray-5;
+    position: relative;
+    &:hover {
+      background-color: $dark-gray-2;
+    }
+    &:before {
+      position: absolute;
+      top: 32px;
+      left: 29px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 20px;
+      color: $gray-8;
+    }
+    &_active {
+      background-color: $dark-gray-2;
+    }
+  }
+  &__item-name {
+    @include font-style($color: $light-gray, $size: 18px);
+  }
+  &__item-desc {
+    @include font-style($color: $light-gray-3, $size: 15px);
+  }
+}
+
+@media #{$mobile} {
+  .settings-list {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+  }
+}

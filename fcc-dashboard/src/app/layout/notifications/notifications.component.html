@@ -1,0 +1,17 @@
+<div class="notifications">
+    <ngx-loading [show]="loading"></ngx-loading>  
+
+    <div class="notifications-list"
+    infiniteScroll            
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="100"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()" >
+        <div *ngFor="let notification of notifications" class="notifications-list__notify">
+            <!-- <div class="notifications-list__notify-id">{{notification.id}}</div> -->
+            <!-- <div class="notifications-list__notify-type">{{notification.Type }}&nbsp;</div>
+            <div class="notifications-list__notify-comment">({{notification.Comment}})&nbsp;</div> -->
+            <div class="notifications-list__notify-comment">{{ notification.template | translate:{ params1: notification.params1, params2: notification.params2 } }}</div>
+        </div>
+    </div>
+</div>

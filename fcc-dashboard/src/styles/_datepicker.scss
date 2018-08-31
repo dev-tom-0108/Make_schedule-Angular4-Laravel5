@@ -1,0 +1,1106 @@
+#addBooking {
+  .date-picker {
+    .dp-popup {
+      background: none;
+    }
+    background-color: $gray;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0;
+    }
+    .dp-day-calendar-container {
+      border: none;
+      background-color: $gray;
+      border-radius: 4px;
+      padding-bottom: 12px;
+    }
+    .dp-calendar-wrapper {
+      border: none;
+      padding: 0 35px;
+    }
+    .dp-weekdays {
+      padding: 0 25px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dp-calendar-weekday {
+      @include font-style($color: $light-gray-3, $size: 15px);
+      border: none;
+      margin-right: 38px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .dp-selected {
+      background-color: $mint !important;
+    }
+    .dp-calendar-nav-container {
+      border: none;
+      border-radius: 4px;
+      padding: 27px 30px;
+      display: flex;
+      box-sizing: unset;
+      justify-content: center;
+      background-color: $gray;
+      button {
+        display: none;
+      }
+    }
+    .dp-calendar-nav-container-left {
+      left: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-week {
+      margin-bottom: 13px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .dp-calendar-nav-container-right {
+      right: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-nav-left {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-calendar-nav-right {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      margin-right: 35px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-nav-header {
+      @include font-style($color: $light-gray-2, $size: 18px);
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-left: 5px;
+    }
+    .dp-calendar-day {
+      @include font-style($color: $light-gray-2, $size: 20px, $lh: 28px, $weight: 200);
+      padding: 0;
+      background-color: $gray;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      position: relative;
+      &:disabled {
+        &:after {
+          content: '';
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          bottom: 6px;
+          right: 43%;
+          border-radius: 50%;
+          background-color: $red;
+        }
+        &:hover {
+          background-color: unset;
+        }
+        cursor: not-allowed;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: $mint;
+      }
+    }
+  }
+}
+#rules{
+  .date-picker {
+    dp-day-time-calendar{
+      position: absolute;
+      top:0;
+    }
+    .dp-nav-btns-container {
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dp-popup {
+      background: none;
+      box-shadow: 0px 0px 0px 0 rgba(0, 0, 0, 0.1);
+      border:0;
+    }
+    .dp-input-container {
+      margin-right: 14px;
+    }
+    .dp-picker-input {
+      @include font-style($color: $light-gray, $size: 15px);
+      cursor: pointer;
+      width: 240px;
+      //padding: 11px 17px;
+      //background-color: $dark-gray;
+      //border: 1px solid $dark-gray-7;
+      border-radius: 4px;
+      height: 100%;
+      &::placeholder {
+        @include font-style($color: $light-gray);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .dp-current-location-btn {
+      display: none;
+    }
+    dp-day-calendar {
+      display: inline-block;
+      //position: absolute;
+      //top: 11px;
+      margin-top:11px;
+    }
+    dp-time-select {
+      //display: inline-block;
+      position: relative;
+      //top: 342px;
+      width: 272px;
+      height: 87px;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+      border: 0;
+      .dp-time-select-display-hours,
+      .dp-time-select-display-meridiem,
+      .dp-time-select-display-minutes,
+      .dp-time-select-separator {
+        @include font-style($color: $light-gray-2, $size: 18px);
+      }
+      .dp-time-select-control-down,
+      .dp-time-select-control-up {
+        background-color: $gray;
+        border: none;
+        &:before {
+          border-color: $light-gray-2;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .dp-time-select-controls {
+        border-radius: 4px;
+        background-color: $gray;
+        //padding: 20px;
+      }
+      .dp-picker-input {
+        // cursor: pointer;
+        // box-sizing: border-box;
+        // height: 58px;
+        // width: 58px;
+        // border-radius: 50%;
+        // &:focus {
+        //   outline: none;
+        // }
+        display: none;
+      }
+      .dp-current-location-btn {
+        display: none;
+      }
+    }
+    .dp-day-calendar-container {
+      border: none;
+      background-color: $gray;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+      //padding-bottom: 12px;
+    }
+    .dp-calendar-wrapper {
+      border: none;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .dp-weekdays {
+      margin-bottom: 15px;
+      margin-top: 15px;
+      //padding-left: 10px;
+    }
+    .dp-calendar-weekday {
+      @include font-style($color: $light-gray-3, $size: 15px);
+      border: none;
+      //margin-right: 38px;
+      width:36px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .dp-selected {
+      background-color: $mint !important;
+    }
+    .dp-calendar-nav-container {
+      border: none;
+      border-radius: 4px;
+      padding: 18px 30px;
+      display: flex;
+      box-sizing: unset;
+      justify-content: center;
+      background-color: $dark-gray-2;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: $dark-gray-2;
+        transform: rotate(45deg);
+        top: -4px;
+        left: 83px;
+      }
+    }
+    .dp-calendar-nav-container-left {
+      left: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-week {
+      margin-bottom: 5px;//16px;
+    }
+    .dp-calendar-nav-container-right {
+      right: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-nav-left {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      margin-left: 30px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-calendar-nav-right {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      margin-right: 35px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-nav-header {
+      @include font-style($color: $light-gray-2, $size: 18px);
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-left: 5px;
+    }
+    .dp-calendar-day {
+      @include font-style($color: $light-gray-2, $size: 15px, $lh: 28px, $weight: 200);
+      padding: 0;
+      //margin-right: 15.5px;
+      background-color: $gray;
+      border: none;
+      border-radius: 50%;
+      width: 36px;//52px;
+      height: 36px;//52px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: $mint;
+      }
+    }
+  }
+}
+#header {
+  z-index: 100;
+  .date-picker {
+    .dp-nav-btns-container {
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dp-popup {
+      background: none;
+    }
+    .dp-input-container {
+      //margin-right: 14px;
+    }
+    .dp-picker-input {
+      @include font-style($color: $light-gray, $size: 15px);
+      cursor: pointer;
+      width: 145px;
+      padding: 11px 17px;
+      background-color: $dark-gray;
+      border: 1px solid $dark-gray-7;
+      border-radius: 4px;
+      &::placeholder {
+        @include font-style($color: $light-gray);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .dp-current-location-btn {
+      display: none;
+    }
+    dp-day-calendar {
+      display: inline-block;
+      position: absolute;
+      top: 11px;
+    }
+    .dp-day-calendar-container {
+      border: none;
+      background-color: $gray;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+      padding-bottom: 12px;
+    }
+    .dp-calendar-wrapper {
+      border: none;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    .dp-weekdays {
+      margin-bottom: 15px;
+      margin-top: 31px;
+      padding-left: 10px;
+    }
+    .dp-calendar-weekday {
+      @include font-style($color: $light-gray-3, $size: 15px);
+      border: none;
+      margin-right: 38px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .dp-selected {
+      background-color: $mint !important;
+    }
+    .dp-calendar-nav-container {
+      border: none;
+      border-radius: 4px;
+      padding: 18px 30px;
+      display: flex;
+      box-sizing: unset;
+      justify-content: center;
+      background-color: $dark-gray-2;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: $dark-gray-2;
+        transform: rotate(45deg);
+        top: -4px;
+        left: 83px;
+      }
+    }
+    .dp-calendar-nav-container-left {
+      left: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-week {
+      margin-bottom: 16px;
+    }
+    .dp-calendar-nav-container-right {
+      right: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+    .dp-calendar-nav-left {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      margin-left: 30px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-calendar-nav-right {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      margin-right: 35px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-nav-header {
+      @include font-style($color: $light-gray-2, $size: 18px);
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-left: 5px;
+    }
+    .dp-calendar-day {
+      @include font-style($color: $light-gray-2, $size: 20px, $lh: 28px, $weight: 200);
+      padding: 0;
+      margin-right: 15.5px;
+      background-color: $gray;
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: $mint;
+      }
+    }
+  }
+}
+#shiftCreate,
+#shiftEdit{
+  dp-date-picker {
+    width: 100%;
+  }
+  .date-picker {
+    width: 58px;
+    height: 58px;
+    .dp-input-container{
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      box-sizing: border-box;
+      cursor: pointer;
+      border: 1px solid $gray-2;
+      color: $mint;
+      &:before{
+        font-family: 'fcc-icons';
+        content: '\e903';
+        font-size: 20px;
+        line-height: 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .dp-popup {
+      background: none;
+    }
+    .dp-popup {
+      background: none;
+    }
+    dp-time-select {
+      width: 165px;
+      height: 130px;
+      position: absolute;
+      top: 11px;
+      left: -55px;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+    }
+    .dp-time-select-display-hours,
+    .dp-time-select-display-meridiem,
+    .dp-time-select-display-minutes,
+    .dp-time-select-separator {
+      @include font-style($color: $light-gray-2, $size: 18px);
+    }
+    .dp-time-select-control-down,
+    .dp-time-select-control-up {
+      background-color: $dark-gray-2;
+      border: none;
+      &:before {
+        border-color: $light-gray-2;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .dp-time-select-controls {
+      border-radius: 4px;
+      background-color: $dark-gray-2;
+      padding: 20px;
+    }
+    .dp-picker-input {
+      // cursor: pointer;
+      // box-sizing: border-box;
+      // height: 58px;
+      // width: 58px;
+      // border-radius: 50%;
+      // &:focus {
+      //   outline: none;
+      // }
+      display: none;
+    }
+    .dp-current-location-btn {
+      display: none;
+    }
+  }
+}
+#bookingEdit,
+#blockTable
+{
+  dp-date-picker {
+    width: 100%;
+  }
+  .date-picker {
+    .dp-nav-btns-container {
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    .dp-popup {
+      background: none;
+    }
+    .dp-popup {
+      background: none;
+    }
+    dp-time-select {
+      position: absolute;
+      top: 11px;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+      &::before {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: $dark-gray-2;
+        transform: rotate(45deg);
+        top: -4px;
+        left: 44px;
+      }
+    }
+    .dp-time-select-display-hours,
+    .dp-time-select-display-meridiem,
+    .dp-time-select-display-minutes,
+    .dp-time-select-separator {
+      @include font-style($color: $light-gray-2, $size: 18px);
+    }
+    .dp-time-select-control-down,
+    .dp-time-select-control-up {
+      background-color: $dark-gray-2;
+      border: none;
+      &:before {
+        border-color: $light-gray-2;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .dp-time-select-controls {
+      border-radius: 4px;
+      background-color: $dark-gray-2;
+      padding: 20px;
+    }
+    .dp-picker-input {
+      @include font-style($color: $light-gray, $size: 15px);
+      cursor: pointer;
+      box-sizing: border-box;
+      height: 56px;
+      width: 100%;
+      padding: 16px 17px;
+      background-color: $gray;
+      border: 1px solid $gray-2;
+      border-radius: 4px;
+      &::placeholder {
+        @include font-style($color: $light-gray);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    .dp-current-location-btn {
+      display: none;
+    }
+    dp-day-calendar {
+      display: inline-block;
+      position: absolute;
+      top: 11px;
+    }
+    .dp-day-calendar-container {
+      border: none;
+      background-color: $gray;
+      border-radius: 4px;
+      box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+      padding-bottom: 1px;
+    }
+    .dp-calendar-wrapper {
+      border: none;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .dp-weekdays {
+      margin-bottom: 5px;
+      margin-top: 15px;
+      padding-left: 0;
+    }
+    .dp-calendar-weekday {
+      @include font-style($color: $light-gray-3, $size: 15px);
+      border: none;
+      margin-right: 19px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .dp-selected {
+      background-color: $mint !important;
+    }
+    .dp-calendar-nav-container {
+      border: none;
+      border-radius: 4px;
+      padding: 18px 30px;
+      display: flex;
+      box-sizing: unset;
+      justify-content: center;
+      background-color: $dark-gray-2;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: $dark-gray-2;
+        transform: rotate(45deg);
+        top: -4px;
+        left: 83px;
+      }
+    }
+    .dp-calendar-nav-container-left {
+      left: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-left: 10px;
+    }
+    .dp-calendar-week {
+      margin-bottom: 14px;
+    }
+    .dp-calendar-nav-container-right {
+      right: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-right: 20px;
+    }
+    .dp-calendar-nav-left {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-calendar-nav-right {
+      background-color: $dark-gray-2;
+      border: none;
+      margin-top: 5px;
+      &:focus {
+        outline: none;
+      }
+      &::before {
+        border-color: $light-gray-2;
+      }
+    }
+    .dp-nav-header {
+      @include font-style($color: $light-gray-2, $size: 18px);
+      position: unset;
+      top: unset;
+      left: unset;
+      transform: unset;
+      margin-left: 5px;
+    }
+    .dp-calendar-day {
+      @include font-style($color: $light-gray-2, $size: 17px, $lh: 28px, $weight: 200);
+      padding: 0;
+      margin-right: 15.5px;
+      background-color: $gray;
+      border: none;
+      border-radius: 50%;
+      width: 33px;
+      height: 33px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:hover {
+        background-color: $mint;
+      }
+    }
+  }
+}
+
+@media #{$mobile} {
+  #header {
+    .date-picker {
+      width: 100%;
+      .dp-popup {
+        background: none;
+      }
+      .dp-input-container {
+        margin-right: 0;
+        width: 100%;
+      }
+      .dp-picker-input {
+        width: 100%;
+        height: 46px;
+        box-sizing: border-box;
+      }
+      dp-day-calendar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      .dp-day-calendar-container {
+        height: 100%;
+      }
+      .dp-calendar-wrapper {
+        padding: 0 5px;
+        margin-top: 50px;
+      }
+      .dp-weekdays {
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+        width: 35px;
+      }
+      .dp-calendar-day {
+        width: 35px;
+        height: 35px;
+        margin-right: 0;
+      }
+      .dp-calendar-week {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  #bookingEdit {
+    .date-picker {
+      .dp-popup {
+        background: none;
+      }
+      dp-time-select {
+        position: absolute;
+        top: 11px;
+        left: -6px;
+        border-radius: 4px;
+        box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+        width: 100vw;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background-color: $dark-gray-2;
+          transform: rotate(45deg);
+          top: -4px;
+          left: 44px;
+        }
+      }
+      .dp-time-select-display-hours,
+      .dp-time-select-display-meridiem,
+      .dp-time-select-display-minutes,
+      .dp-time-select-separator {
+        @include font-style($color: $light-gray-2, $size: 18px);
+      }
+      .dp-time-select-control-down,
+      .dp-time-select-control-up {
+        background-color: $dark-gray-2;
+        border: none;
+        &:before {
+          border-color: $light-gray-2;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .dp-time-select-controls {
+        border-radius: 4px;
+        background-color: $dark-gray-2;
+        padding: 20px;
+      }
+      width: 100%;
+      .dp-picker-input {
+        height: 56px;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      dp-day-calendar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      .dp-day-calendar-container {
+        height: 100%;
+      }
+      .dp-calendar-wrapper {
+        padding: 0 5px;
+        margin-top: 50px;
+      }
+      .dp-weekdays {
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+        width: 35px;
+      }
+      .dp-calendar-day {
+        width: 35px;
+        height: 35px;
+        margin-right: 0;
+      }
+      .dp-calendar-week {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  #addBooking {
+    .date-picker {
+      .dp-day-calendar-container {
+        padding-bottom: 0;
+      }
+      .dp-calendar-wrapper {
+        padding: 0;
+      }
+      .dp-calendar-nav-container {
+        padding: 20px 20px;
+      }
+      .dp-weekdays {
+        padding: 0;
+        justify-content: space-around;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+      }
+      .dp-calendar-day {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+@media #{$tablet} {
+  #header {
+    .date-picker {
+      width: 100%;
+      .dp-popup {
+        background: none;
+      }
+      .dp-input-container {
+        margin-right: 0;
+        width: 100%;
+      }
+      .dp-picker-input {
+        width: 100%;
+        height: 46px;
+        box-sizing: border-box;
+      }
+      dp-day-calendar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      .dp-day-calendar-container {
+        height: 100%;
+      }
+      .dp-calendar-wrapper {
+        padding: 0 5px;
+        margin-top: 50px;
+      }
+      .dp-weekdays {
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+        width: 35px;
+      }
+      .dp-calendar-day {
+        width: 35px;
+        height: 35px;
+        margin-right: 0;
+      }
+      .dp-calendar-week {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  #bookingEdit {
+    .date-picker {
+      .dp-popup {
+        background: none;
+      }
+      dp-time-select {
+        position: absolute;
+        top: 11px;
+        left: -6px;
+        border-radius: 4px;
+        box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+        width: 100vw;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          background-color: $dark-gray-2;
+          transform: rotate(45deg);
+          top: -4px;
+          left: 44px;
+        }
+      }
+      .dp-time-select-display-hours,
+      .dp-time-select-display-meridiem,
+      .dp-time-select-display-minutes,
+      .dp-time-select-separator {
+        @include font-style($color: $light-gray-2, $size: 18px);
+      }
+      .dp-time-select-control-down,
+      .dp-time-select-control-up {
+        background-color: $dark-gray-2;
+        border: none;
+        &:before {
+          border-color: $light-gray-2;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .dp-time-select-controls {
+        border-radius: 4px;
+        background-color: $dark-gray-2;
+        padding: 20px;
+      }
+      width: 100%;
+      .dp-picker-input {
+        height: 56px;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      dp-day-calendar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+      .dp-day-calendar-container {
+        height: 100%;
+      }
+      .dp-calendar-wrapper {
+        padding: 0 5px;
+        margin-top: 50px;
+      }
+      .dp-weekdays {
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+        width: 35px;
+      }
+      .dp-calendar-day {
+        width: 35px;
+        height: 35px;
+        margin-right: 0;
+      }
+      .dp-calendar-week {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  #addBooking {
+    .date-picker {
+      .dp-day-calendar-container {
+        padding-bottom: 0;
+      }
+      .dp-calendar-wrapper {
+        padding: 0;
+      }
+      .dp-calendar-nav-container {
+        padding: 20px 20px;
+      }
+      .dp-weekdays {
+        padding: 0;
+        justify-content: space-around;
+      }
+      .dp-calendar-weekday {
+        margin-right: 0;
+      }
+      .dp-calendar-day {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}

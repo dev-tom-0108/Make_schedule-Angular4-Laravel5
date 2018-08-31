@@ -1,0 +1,84 @@
+  
+<div *ngIf = "isShow()" id="guestEdit" class="guest-edit">
+<form novalidate [formGroup]="guestForm">
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="guest-edit__title">
+    <div class="guest-edit__title-info">
+      <div class="guest-edit__name">
+        {{guestCreateState ? ('GUESTS_REGISTER_A_GUEST' | translate) : guest.name}}
+      </div>
+      <div *ngIf="guestEditState" class="guest-edit__id">
+        {{'GUESTS_GUEST_ID' | translate}}:
+        <span>{{guest.id}}</span>
+      </div>
+    </div>
+    <div class="guest-edit__buttons">
+
+      <button *ngIf = "!isCreate()" (click)="delete()" class="guest-edit__action-btn guest-edit__action-btn_delete icon-delete" ></button> 
+      <button *ngIf = "!isCreate()" [class.active] = "guest.is_block" (click)="block()" class="guest-edit__save-btn icon-block" > {{ ( !guest.is_block ? 'BLOCK' : 'UNBLOCK') | translate }}</button>      
+      <button (click)="showView()" class="guest-edit__cancel-btn">{{'CANCEL' | translate}}</button>      
+      <button (click) = "save(guestForm)"[disabled]="guestForm.invalid || guestForm.pending" class="guest-edit__save-btn">{{'GUESTS_SAVE' | translate }}</button>
+    </div>
+  </div>
+  <div class="guest-edit__content">
+    <div class="guest-edit__fields">
+      <div class="guest-edit__col-50">
+        <div class="guest-edit__field">
+          <div class="guest-edit__field-name">{{'GUESTS_FULL_NAME' | translate}}</div>
+          <input formControlName="name" class="guest-edit__field-input" type="text" [(ngModel)]="guest.name" required pattern="[a-zA-Z ]*">
+          <p><show-errors [control]="guestForm.controls.name"></show-errors></p>
+        </div>
+        <div class="guest-edit__field">
+          <div class="guest-edit__field-name">{{'GUESTS_EMAIL_ADDRESS' | translate}}</div>
+          <input formControlName="email" placeholder="me@addr.ess" class="guest-edit__field-input" type="text" [(ngModel)]="guest.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <p><show-errors [control]="guestForm.controls.email"></show-errors></p>
+        </div>
+        <div class="guest-edit__field">
+          <div class="guest-edit__field-name">{{'GUESTS_IS_VIP' | translate}}</div>
+          <mat-slide-toggle name="is_vip" formControlName="is_vip" [(ngModel)]="guest.is_vip" class="guest-edit__access-toggle"></mat-slide-toggle>
+        </div>
+      </div>
+      <div class="guest-edit__col-50">
+        <div class="guest-edit__field guest-edit__field_right">
+          <div class="guest-edit__field-name">{{'GUESTS_PHONE_NUMBER' | translate}}</div>
+          <input formControlName="phone" placeholder="+8885559999" class="guest-edit__field-input" type="text" [(ngModel)]="guest.phone" required pattern="[\+]\d{11,13}">
+          <p><show-errors [control]="guestForm.controls.phone"></show-errors></p>
+        </div>
+        <div class="guest-edit__field guest-edit__field_right">
+          <div class="guest-edit__field-name">{{'GUESTS_COMPANY' | translate}}</div>
+          <input formControlName="company_name" class="guest-edit__field-input" type="text" [(ngModel)]="guest.company_name">
+        </div>
+        <!--<div class="guest-edit__field guest-edit__field_right">
+          <div class="guest-edit__field-name">{{'GUESTS_WECHAT' | translate}}</div>
+          <input formControlName="wechat_account" class="guest-edit__field-input" type="text" [(ngModel)]="guest.wechat_account" required>
+          <show-errors [control]="guestForm.controls.wechat_account"></show-errors>  
+        </div> -->
+        
+      </div>
+    </div>
+    <div class="guest-edit__fields_tags">
+      <div class="guest-edit__field">
+        <div class="guest-edit__field-name guest-edit__fields_name_tags">{{'GUESTS_TAGS' | translate}}</div>
+        <ng-select formControlName="tags" [items]="tags" [multiple]="true" [typeahead]="typeahead" bindLabel="name" bindValue="name" [(ngModel)]="selectedTags" placeholder="">
+          <ng-template ng-label-tmp let-item="item" let-index="index" let-clear="clear">
+            <div class="guest-edit__guest-info-tag">
+              <span>
+                <img [src]="item.icon_image" width="20px" height="20px" class="guest-edit__guest-info-tag-icon"> {{item.name}}
+              </span>
+              <span class="ng-value-icon" (click)="clear(item)">×</span>
+            </div>
+          </ng-template>
+ 
+          <ng-template ng-option-tmp let-item="item" let-index="index" >
+            <span class="guest-edit__guest-info-tag-option">
+              <img [src]="item.icon_image" width="20px" height="20px"> {{item.name}}
+            </span>
+          </ng-template>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+

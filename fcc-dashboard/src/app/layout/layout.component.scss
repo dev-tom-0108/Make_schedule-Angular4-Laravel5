@@ -1,0 +1,21 @@
+@import "~styles/variables";
+@import "~styles/base";
+.content {
+  height: calc(100% - 74px);
+  display: flex;
+}
+
+@media #{$mobile} {
+  .content {
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 40px;
+    position: relative;
+  }
+}
+
+@media #{$tablet} {
+  .content {
+    height: calc(100% - 56px);
+  }
+}

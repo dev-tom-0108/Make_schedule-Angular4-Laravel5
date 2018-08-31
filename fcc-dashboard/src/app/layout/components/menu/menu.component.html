@@ -1,0 +1,32 @@
+<div [ngStyle]="{'left':mobileMenuState?'0':'-100%'}" (window:resize)="onResize($event)" id="menu" class="menu">
+  <div class="menu__main-menu">
+    <div class="menu__mobile-header">
+      <div class="menu__mobile-header-title">{{ 'MENU' | translate }}</div>
+      <button (click)="closeMenu()" class="menu__mobile-header-close icon-close"></button>
+    </div>
+    <!--<a (click)="closeMenu()" class="icon-dashboard" routerLinkActive="menu__active-item">
+      <div class="menu__item-text">{{ 'DASHBOARD' | translate }}</div>
+    </a> -->
+    <a (click)="clickBooking()" class="icon-booking" routerLink="/booking" routerLinkActive="menu__active-item" *ngIf="checkPermission('bookings')" >
+      <div class="menu__item-text">{{ 'BOOKING' | translate }}</div>
+    </a>
+    <a (click)="clickGuests()" class="icon-guests" routerLink="/guests" routerLinkActive="menu__active-item" *ngIf = "checkPermission('guests')">
+      <div class="menu__item-text">{{ 'GUESTS' | translate }}</div>
+    </a>
+    <a (click)="clickStaffs()" class="icon-staffs" routerLink="/staffs" routerLinkActive="menu__active-item" *ngIf = "checkPermission('staffs')">
+      <div class="menu__item-text">{{ 'STAFFS' | translate }}</div>
+    </a>
+    <a (click)="clickSettings()" class="icon-settings" routerLink="/settings" routerLinkActive="menu__active-item" *ngIf = "checkPermission('settings')" >
+      <div class="menu__item-text">{{ 'SETTINGS' | translate }}</div>
+    </a>
+  </div>
+  <div class="menu__sub-menu">
+    <a (click)="clickNotifications()" class="icon-bell" [ngClass]="{'badge' : isReceived}" routerLink="/notifications" routerLinkActive="menu__active-item">
+    </a>
+    <a (click)="clickProfile()" class="icon-profile"  routerLink="/profile" routerLinkActive="menu__active-item">
+      <div class="menu__item-text">{{ 'PROFILE' | translate }}</div>
+    </a>
+    <a (click)="logout()" class="icon-logout" (click)="logout()" routerLink="/login" routerLinkActive="menu__active-item">
+    </a>
+  </div>
+</div>

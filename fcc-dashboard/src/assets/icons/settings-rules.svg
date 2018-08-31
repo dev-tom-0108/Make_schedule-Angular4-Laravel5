@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="20px" viewBox="0 0 17 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Rules</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Settings---General" transform="translate(-103.000000, -195.000000)" stroke="#54606E">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="2" transform="translate(0.000000, 89.000000)">
+                    <g id="Rules" transform="translate(30.000000, 33.000000)">
+                        <g>
+                            <path d="M2,18 L13,18 L13,18 C14.1045695,18 15,17.1045695 15,16 L15,4 L15,4 C15,2.8954305 14.1045695,2 13,2 L2,2 L2,2 C0.8954305,2 -1.3527075e-16,2.8954305 0,4 L0,16 L0,16 C1.3527075e-16,17.1045695 0.8954305,18 2,18 Z" id="Stroke-1" stroke-width="2"></path>
+                            <path d="M6,2 L6,1.33333333 C6,0.597 6.671625,0 7.5,0 C8.328375,0 9,0.597 9,1.33333333 L9,2" id="Stroke-3" stroke-width="2"></path>
+                            <path d="M10,3 L10,4 C10,4.5495 9.74972222,5 9,5 L6,5 C5.25027778,5 5,4.5495 5,4 L5,3" id="Stroke-4" stroke-width="2"></path>
+                            <path d="M3,9 L11,9" id="Line-2" stroke-width="2"></path>
+                            <path d="M3,12 L9,12" id="Line-2-Copy" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

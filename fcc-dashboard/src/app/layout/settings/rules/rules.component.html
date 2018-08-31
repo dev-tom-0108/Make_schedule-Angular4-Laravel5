@@ -1,0 +1,55 @@
+<div *ngIf = "isSettingRules()" id="rulesView" class="rules-view">
+    <ngx-loading [show]="loading"></ngx-loading>    
+    <div class="rules-view__header ">
+      <div class="rules-view__header-group ">
+        <div class="rules-view__header-date ">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</div>
+        <div class="rules-view__header-date-change rules-view__header-date-change_prev " mwlCalendarPreviousView [view]="view " [(viewDate)]="viewDate "(click)="ViewChange()">
+        </div>
+        <div class="rules-view__header-date-change rules-view__header-date-change_next " mwlCalendarNextView [view]="view " [(viewDate)]="viewDate " (click)="ViewChange()">
+        </div>
+      </div>
+      <div class="rules-view__header-buttons ">
+        <div class="rules-view__header-button " mwlCalendarToday [(viewDate)]="viewDate">
+          {{ 'CALENDAR_TODAY' | translate }}
+        </div>
+        <div class="rules-view__header-button " (click)="view='month';ViewChange();" [class.active]="view==='month' ">
+            {{ 'CALENDAR_MONTH' | translate }}
+        </div>
+        <div class="rules-view__header-button " (click)="view='week';ViewChange();" [class.active]="view==='week' ">
+            {{ 'CALENDAR_WEEK' | translate }}
+        </div>
+        <div class="rules-view__header-button " (click)="view='day';ViewChange();" [class.active]="view==='day' ">
+            {{ 'CALENDAR_DAY' | translate }}
+        </div>
+      </div>
+    </div>
+    <ng-template #monthViewHeader let-days="days " let-locale="locale ">
+      <div class="cal-cell-row cal-header ">
+        <div class="cal-cell ">{{ 'CALENDAR_SUN' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_MON' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_TUE' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_WED' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_THU' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_FRI' | translate }}</div>
+        <div class="cal-cell ">{{ 'CALENDAR_SAT' | translate }}</div>
+      </div>
+    </ng-template>
+    <ng-template #monthDayTemplate let-day="day " let-locale="locale " let-tooltipPlacement = "tooltipPlacement " let-highlightDay="highlightDay " let-unhighlightDay="unhighlightDay " let-eventClicked = "eventClicked" 
+     let-tooltipTemplate="tooltipTemplate " let-tooltipAppendToBody="tooltipAppendToBody ">
+      <div class="cal-events " *ngIf="day.events.length> 0">
+        <div class="cal-event" *ngFor="let event of day.events" [style.backgroundColor]="event.color.primary" [ngClass]="event?.cssClass">{{event.title }}
+        </div>
+      </div>
+      <div class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</div>
+    </ng-template>
+      
+    <div [ngSwitch]="view">
+      <mwl-calendar-month-view *ngSwitchCase="'month'" [headerTemplate]="monthViewHeader" [cellTemplate]="monthDayTemplate" [(viewDate)]="viewDate" [events]="events" [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-month-view>
+      <mwl-calendar-week-view *ngSwitchCase="'week'" [(viewDate)]="viewDate" [events]="events" [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-week-view>
+      <mwl-calendar-day-view *ngSwitchCase="'day'" [(viewDate)]="viewDate" [events]="events" [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+      </mwl-calendar-day-view>
+    </div>
+  </div>
+  

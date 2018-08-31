@@ -1,0 +1,49 @@
+<div *ngIf = "profile" id="profileView" class="profile-view">
+  <ngx-loading [show]="loading"></ngx-loading>   
+  <div class="profile-view__title">
+    <div class="profile-view__thumbnail">
+      <img [src]="profile?.profile_image ==  null || profile?.profile_image == '' ? defaultAvatar : profile?.profile_image" alt="">
+    </div>
+    <div>
+      <div class="profile-view__name">{{ profile?.firstname }}</div>
+      <div class="profile-view__role">{{ profile?.lastname }}</div>
+    </div>
+    <button (click)="showEdit()" class="profile-view__edit-btn">{{'EDIT' | translate}}</button>
+    <button class="profile-view__close icon-close"></button>
+  </div>
+  <div class="profile-view__profile-info">
+    <div class="profile-view__col-50">
+      <div class="profile-view__profile-info-item icon-person">
+        <div class="profile-view__profile-info-item-name">{{'FULL_NAME' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{ profile?.firstname }} {{ profile?.lastname }}</div>
+      </div>
+      <div class="profile-view__profile-info-item icon-email">
+        <div class="profile-view__profile-info-item-name">{{'EMAIL_ADDRESS' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{profile?.email}}</div>
+      </div>
+      <div class="profile-view__profile-info-item icon-role">
+        <div class="profile-view__profile-info-item-name">{{'ROLE' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{ getRole() | translate }}</div>
+      </div>
+      <div class="profile-view__profile-info-item icon-bell">
+        <div class="profile-view__profile-info-item-name">{{'EMAIL_NOTIFICATION' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{(profile?.email_notification ? 'GUESTS_YES': 'GUESTS_NO') | translate }}</div>
+      </div>
+    </div>
+    <div class="profile-view__col-50">
+      <div class="profile-view__profile-info-item icon-phone">
+        <div class="profile-view__profile-info-item-name">{{'PHONE_NUMBER' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{profile?.phone}}</div>
+      </div>
+      <div class="profile-view__profile-info-item icon-account">
+        <div class="profile-view__profile-info-item-name">{{'ACCOUNT_NAME' | translate}}</div>
+        <div class="profile-view__profile-info-item-value">{{profile?.account_name}}</div>
+      </div>
+      <div class="profile-view__profile-info-item icon-account">
+          <div class="profile-view__profile-info-item-name">{{'LANGUAGE' | translate}}</div>
+          <div class="profile-view__profile-info-item-value">{{ getLang() | translate }}</div>
+        </div>      
+    </div>
+  </div>
+</div>
+<app-profile-edit></app-profile-edit>

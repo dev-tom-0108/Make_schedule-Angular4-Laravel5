@@ -1,0 +1,40 @@
+<div  *ngIf="staff" id="staffView" class="staff-view">
+  <div class="staff-view__title">
+    <div class="staff-view__thumbnail">
+      <img [src]="staff?.profile_image ==  null ? defaultAvatar : staff?.profile_image" alt="">
+    </div>
+    <div>
+      <div class="staff-view__name">{{ staff?.firstname }}</div>
+      <div class="staff-view__role">{{ staff?.lastname }}</div>
+    </div>
+    <button (click)="showEdit()" class="staff-view__edit-btn" *ngIf="enableEdit">{{'EDIT' | translate}}</button>
+    <button class="staff-view__close icon-close"></button>
+  </div>
+  <div class="staff-view__staff-info">
+    <div class="staff-view__col-50">
+      <div class="staff-view__staff-info-item icon-person">
+        <div class="staff-view__staff-info-item-name">{{'FULL_NAME' | translate}}</div>
+        <div class="staff-view__staff-info-item-value">{{ staff?.firstname }} {{ staff?.lastname }}</div>
+      </div>
+      <div class="staff-view__staff-info-item icon-email">
+        <div class="staff-view__staff-info-item-name">{{'EMAIL_ADDRESS' | translate}}</div>
+        <div class="staff-view__staff-info-item-value">{{staff?.email}}</div>
+      </div>
+      <div class="staff-view__staff-info-item icon-role">
+        <div class="staff-view__staff-info-item-name">{{'ROLE' | translate}}</div>
+        <div class="staff-view__staff-info-item-value">{{roles[staff?.role] | translate }}</div>
+      </div>
+    </div>
+    <div class="staff-view__col-50">
+      <div class="staff-view__staff-info-item icon-phone">
+        <div class="staff-view__staff-info-item-name">{{'PHONE_NUMBER' | translate}}</div>
+        <div class="staff-view__staff-info-item-value">{{staff?.phone}}</div>
+      </div>
+      <div class="staff-view__staff-info-item icon-account">
+        <div class="staff-view__staff-info-item-name">{{'ACCOUNT_NAME' | translate}}</div>
+        <div class="staff-view__staff-info-item-value">{{staff?.account_name}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-staffs-edit></app-staffs-edit>

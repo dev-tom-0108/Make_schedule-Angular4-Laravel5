@@ -1,0 +1,181 @@
+<div id = "rules" *ngIf = "isSettingRules()">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div *ngIf = "isList()" id="rulesMenu" class="rules-menu">
+    <div class="rules-menu__title icon-rules">
+      <div class="rules-menu__text">{{ 'SETTINGS_RULES' | translate }}</div>
+      <div class="rules-menu__desc">{{ 'SETTINGS_RULES_DESC' | translate }}</div>
+      <button class="rules-menu__calendar-btn icon-calendar"></button>
+      <button (click)="closeRulesSettings()" class="rules-menu__close icon-close"></button>
+    </div>
+    <div class="rules-menu__list"> 
+      <div *ngFor = "let rule of rules; let i=index;" (click)="showRulesItem( rule )" class="rules-menu__item">
+        <div class="rules-menu__color rules-menu__color_green" [ngStyle] = "{'background-color': rule.color ?rule.color :'green'}" ></div>
+        <div class="rules-menu__item-name">{{ rule.name }}</div>
+        <div class="rules-menu__item-date">{{ rule.updated_at | date }}</div>
+      </div>
+    </div>    
+  </div>
+  <div *ngIf = "isView()" id="rulesItem" class="rules-item">
+    <div class="rules-item__title">
+      <button (click)="showList()" class="rules-item__back icon-back"></button>
+      <div class="rules-item__name">{{ select_rule.name }}</div>
+      <div class="rules-item__date">{{ select_rule.updated_at | date }}</div>
+      <div class="rules-item__color"  [ngStyle] = "{'background-color': select_rule.color ? select_rule.color:'green'}"></div>
+    </div>
+    <div class="rules-item__content">
+      <div class="rules-item__info">
+        <div class="rules-item__field">
+          <div class="rules-item__field-label">{{ 'SETTINGS_RULES_START' | translate | uppercase }}</div>
+          <div class="rules-item__field-text">{{ select_rule.start | date:'medium' }}</div>
+        </div>
+        <div class="rules-item__field">
+          <div class="rules-item__field-label">{{ 'SETTINGS_RULES_END' | translate | uppercase }}</div>
+          <div class="rules-item__field-text">{{ select_rule.end   | date:'medium' }}</div>
+        </div>
+        <div class="rules-item__field">
+          <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT' | translate | uppercase }}</div>
+          <div class="rules-item__field-text">{{ select_rule.repeat }}</div>
+        </div>
+        <div class="rules-item__field">
+            <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT_END' | translate | uppercase }}</div>
+            <div class="rules-item__field-text">{{ select_rule.repeat_end  | date:'medium' }}</div>
+        </div>      
+        <div class="rules-item__field">
+          <div class="rules-item__field-label">{{ 'SETTINGS_RULES_SHIFT_PACKAGE' | translate | uppercase }}:
+            <div class="rules-item__field-text">
+              {{ getShiftPackageNamebyId( select_rule.shift_package_id ) }} 
+            </div>
+            <div *ngFor = "let shift of select_rule_shifts; let i=index;" class="rules-item__field-label">
+              {{ shift.name }}:{{  convertArrayOfTimeToString ( shift.time_slots ) }} 
+              <br>{{ 'SETTINGS_RULES_ATB' | translate | uppercase }}: {{ shift.shift_atb }}
+              <br>{{ 'SETTINGS_RULES_FLOOR_PACKAGE' | translate }}: {{ getFloorPackageNamebyId( shift.floor_package_id ) }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rules-item__buttons">
+        <button class="rules-item__btn  rules-item__btn_edit" (click)="showEdit()">{{ 'EDIT' | translate }}</button>
+        <button class="rules-item__btn rules-item__btn_red" (click) = "deleteRule()">{{ 'DELETE' | translate }}</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "isEdit()" id="rulesItem" class="rules-item">
+      <form [formGroup]="editRulesForm" novalidate>
+        <div class="rules-item__title">
+          <button (click)="showView()" class="rules-item__back icon-back"></button>
+          <div class="rules-item__field-label">{{ 'NAME' | translate | uppercase }}</div>
+          <div class="rules-item__name">
+              <input class="rules-item__input" type="text" formControlName="input_rule_name" [(ngModel)] = "edit_rule.name">
+              <p><show-errors [control]="editRulesForm.controls.input_rule_name"></show-errors></p>
+          </div>
+          <!-- <div class="rules-item__date rules-item__edit-date">{{ select_rule.updated_at | date }}</div> -->
+          <div class="rules-item__color rules-item__edit-color" [ngStyle] = "{'background-color': edit_rule.color ? edit_rule.color :'green'}"></div>
+        </div>
+        <div class="rules-item__content">
+          <div class="rules-item__field">
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_START' | translate | uppercase }}</div>
+              <div class="rules-item__field-text">
+                <div style="position: relative">                 
+                  <dp-date-picker formControlName="dtpicker_rule_start" [theme]="'date-picker'" [(ngModel)]="edit_rule.start" [mode]="'daytime'" [config]="dateTimePickerConfig" required></dp-date-picker>
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">            
+                </div>
+              </div>
+            </div>
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_END' | translate | uppercase }}</div>
+              <div style="position: relative">
+                <dp-date-picker formControlName="dtpicker_rule_end" [theme]="'date-picker'" [(ngModel)]="edit_rule.end" [mode]="'daytime'" [config]="dateTimePickerConfig"  required></dp-date-picker>
+                <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">             
+              </div>
+            </div>
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT' | translate | uppercase }}</div>
+              <ng-select formControlName="select_repeat" [items]="repeatType" bindLabel="name" bindValue="id" [(ngModel)]="edit_rule.repeat" (open) = "closeDatePickers()"></ng-select>
+            </div>
+            <div class="rules-item__field">
+                <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT_END' | translate | uppercase }}</div>
+                <div style="position: relative">
+                  <dp-date-picker #editEndDp formControlName="dtpicker_rule_repeat_end" [theme]="'date-picker'"  [(ngModel)]="edit_rule.repeat_end" [mode]="'daytime'" [config]="dateEndTimePickerConfig"></dp-date-picker>
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">
+                </div>                  
+            </div>      
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_SHIFT_PACKAGE' | translate | uppercase }}</div> 
+              <ng-select formControlName="select_shift_package" [items]="shift_packages" bindLabel="name" bindValue="id" [(ngModel)]="edit_rule.shift_package_id" (open) = "closeDatePickers()"></ng-select>
+            </div>
+            <div class="rules-item__field">
+                <div class="rules-item__field-label">{{ 'SETTINGS_RULES_COLOR' | translate | uppercase }}</div>
+                <div style="position: relative">  
+                  <input class="rules-item__input rules-item__color_input" formControlName="input_rule_color" [(colorPicker)]="edit_rule.color" [style.background]="edit_rule.color" [(ngModel)] = "edit_rule.color" [cpWidth]="'275px'" [cpPosition]="'top'">
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt =""> 
+                </div> 
+            </div>
+          </div>          
+          <div class="rules-item__buttons">
+            <button (click)="saveRule(false)" [disabled]="editRulesForm.invalid || editRulesForm.pending" class="rules-item__btn rules-item__btn_save">{{ 'SAVE' | translate }}</button>
+          </div>
+        </div>
+      </form>
+  </div>
+  <div *ngIf = "isCreate()" id="rulesItem" class="rules-item">
+      <form [formGroup]="createRulesForm" novalidate>
+        <div class="rules-item__title">
+          <button (click)="showList()" class="rules-item__back icon-back"></button>
+          <div class="rules-item__field-label">{{ 'NAME' | translate | uppercase }}</div>
+          <div class="rules-item__name">
+              <input class="rules-item__input" type="text" formControlName="input_rule_name" [(ngModel)] = "create_rule.name">
+              <p><show-errors [control]="createRulesForm.controls.input_rule_name"></show-errors></p>
+          </div>
+          <!-- <div class="rules-item__date rules-item__edit-date">{{ select_rule.updated_at | date }}</div> -->
+          <div class="rules-item__color rules-item__edit-color" [ngStyle] = "{'background-color': edit_rule.color ? edit_rule.color :'green'}"></div>
+        </div>
+        <div class="rules-item__content">
+          <div class="rules-item__field">
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_START' | translate | uppercase }}</div>
+              <div class="rules-item__field-text">
+                <div style="position: relative">                 
+                  <dp-date-picker formControlName="dtpicker_rule_start" [theme]="'date-picker'" [(ngModel)]="create_rule.start" [mode]="'daytime'" [config]="dateTimePickerConfig" required></dp-date-picker>
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">                                 
+                </div>
+              </div>
+            </div>
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_END' | translate | uppercase }}</div>
+              <div style="position: relative">
+                <dp-date-picker formControlName="dtpicker_rule_end" [theme]="'date-picker'" [(ngModel)]="create_rule.end" [mode]="'daytime'" [config]="dateTimePickerConfig" required></dp-date-picker>
+                <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">             
+              </div>
+            </div>
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT' | translate | uppercase }}</div>
+              <ng-select formControlName="select_repeat" [items]="repeatType" bindLabel="name" bindValue="id" [(ngModel)]="create_rule.repeat" (open) = "closeDatePickers()"></ng-select>
+            </div>
+            <div class="rules-item__field">
+                <div class="rules-item__field-label">{{ 'SETTINGS_RULES_REPEAT_END' | translate | uppercase }}</div>
+                <div style="position: relative">
+                  <dp-date-picker #createEndDp formControlName="dtpicker_rule_repeat_end" [theme]="'date-picker'"  [(ngModel)]="create_rule.repeat_end" [mode]="'daytime'" [config]="dateEndTimePickerConfig" ></dp-date-picker>
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">
+                </div>                  
+            </div>      
+            <div class="rules-item__field">
+              <div class="rules-item__field-label">{{ 'SETTINGS_RULES_SHIFT_PACKAGE' | translate | uppercase }}</div> 
+              <ng-select formControlName="select_shift_package" [items]="shift_packages" bindLabel="name" bindValue="id" [(ngModel)]="create_rule.shift_package_id" (open) = "closeDatePickers()"></ng-select>
+            </div>
+            <div class="rules-item__field">
+                <div class="rules-item__field-label">{{ 'SETTINGS_RULES_COLOR' | translate | uppercase }}</div>
+                <div style="position: relative"> 
+                  <input class="rules-item__input rules-item__color_input" formControlName="input_rule_color" [(colorPicker)]="create_rule.color" [style.background]="create_rule.color" [(ngModel)] = "create_rule.color" [cpWidth]="'275px'" [cpPosition]="'top'">
+                  <img class="rules-item__arrow" src="/assets/icons/drop-down.svg" alt ="">
+                </div>                
+            </div>
+          </div>          
+          <div class="rules-item__buttons">
+            <button (click)="saveRule(true)" [disabled]="createRulesForm.invalid || createRulesForm.pending" class="rules-item__btn rules-item__btn_save">{{ 'SAVE' | translate }}</button>        
+          </div>
+        </div>
+      </form>
+  </div>  
+</div>
+

@@ -1,0 +1,87 @@
+<div id="header" class="header">
+    <div class = "header__left">
+        <button (click)="toggleMobileMenu()" class="header__menu-btn"></button>
+        <div class="header__title">
+            {{title.main | translate }}
+            <span class="header__subtitle">
+                {{title.sub | translate }}
+            </span>        
+        </div>
+    </div>
+    <div *ngIf = "isBooking() && mobileSortingState"  id="bookingSorting" class="header__sorting">
+        <div class = "header__booking_filter">
+        <dp-date-picker [(ngModel)]="selectDate" [placeholder]="'Date...'" [theme]="'date-picker'" [config]="datePickerConfig" (close) = "changeDate()"></dp-date-picker>
+        <img class="header__sorting-item-arrow" src="/assets/icons/drop-down.svg" alt ="">
+        </div>
+        <div class = "header__booking_filter">
+            <ng-select [clearable] = "isBookingTimeLine() || isBookingList()" (change) = "changeShift()" [items]="shifts" bindLabel="name" bindValue="id" [(ngModel)]="selectSId"></ng-select>        
+        </div>
+        <div class = "header__booking_filter">
+            <ng-select [clearable] = "isBookingTimeLine() || isBookingList()" (change) = "changeFloor()" [items]="floors" bindLabel="name" bindValue="id" [(ngModel)]="selectFId"></ng-select>        
+        </div>
+        <button *ngIf = "isBookingList()" class="header__guest-btn header__guest-btn_export icon-export" (click)="exportTables()">{{ 'EXPORT' | translate }}</button>        
+        <button class="header__settings-btn header__settings-btn_add icon-plus" (click) = "addBooking()" *ngIf="checkAccessPermission('bookings', 1);"></button>        
+    </div>
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="header_wrap">
+        <div class="header__row">
+            <button *ngIf = "header.isBooking(page)" (click)="toggleSorting()" class="header__sorting-btn"></button>
+            <div *ngIf = "header.isBooking(page)" id="bookingViewButtons" class="header__buttons">
+            <button (click)="changeToBookingTimeline()" class="header__button icon-timeline" [class.header__button_active]="isBookingTimeLine()">
+            </button>
+            <button (click)="changeToBookingFloorView()" class="header__button icon-table" [class.header__button_active]="isBookingFloorView()">
+            </button>
+            <button (click)="changeToBookingList()" class="header__button icon-list" [class.header__button_active]="isBookingList()">
+            </button>
+            </div>
+        </div>
+
+        <div *ngIf = "header.isGuests(page)"  class="header__guest-buttons">
+            <button class="header__guest-btn header__guest-btn_export icon-export" (click)="exportGuest()">{{ 'EXPORT' | translate }}</button>
+            <button class="header__guest-btn header__guest-btn_add icon-plus" (click)="createGuest()" *ngIf="checkAccessPermission('guests', 1);"></button>
+        </div>
+        <div *ngIf = "header.isStaffs(page)" class="header__staff-buttons">
+            <button class="header__staff-btn header__staff-btn_add icon-plus" (click)="createStaff()" *ngIf="checkAccessPermission('staffs', 1);"></button>
+        </div>
+        <div  *ngIf = "header.isSettings(page)" class = "header-settings-buttons" >
+          <div *ngIf = "header.isSettingShiftPackages(page)" class="header__settings-buttons">
+              <mat-select [(value)]="selectSpId"  #mulLoc required (change)="changeShiftPackage($event)">
+                  <mat-optgroup label='PUBLISH'></mat-optgroup>
+                      <ng-container *ngFor = "let package of shiftPackages">
+                          <mat-option *ngIf = "package.is_publish" [value]="package.id">
+                          {{package.name}}
+                          </mat-option>
+                      </ng-container>
+                  <mat-optgroup label='DRAFT'></mat-optgroup>
+                      <ng-container *ngFor = "let package of shiftPackages">
+                          <mat-option *ngIf = "!package.is_publish" [value]="package.id">
+                              {{package.name}}
+                          </mat-option>
+                      </ng-container>                                 
+              </mat-select>   
+              <button class="header__settings-btn header__settings-btn_add icon-plus" (click) = "addShiftPackage()" *ngIf="checkAccessPermission('settings', 1);"></button>
+          </div>
+          <div *ngIf = "header.isSettingFloorPackages(page)" class="header__settings-buttons">
+              <mat-select [(value)]="selectFpId"  #mulLoc required (change)="changeFloorPackage($event)">
+                  <mat-optgroup label='PUBLISH'></mat-optgroup>
+                      <ng-container *ngFor = "let package of floorPackages">
+                          <mat-option *ngIf = "package.is_publish" [value]="package.id">
+                              {{package.name}}
+                          </mat-option>
+                      </ng-container>         
+                      <mat-optgroup label='DRAFT'></mat-optgroup>
+                          <ng-container *ngFor = "let package of floorPackages">
+                              <mat-option *ngIf = "!package.is_publish" [value]="package.id">
+                              {{package.name}}
+                              </mat-option>
+                          </ng-container>                                 
+              </mat-select>
+              
+              <button class="header__settings-btn header__settings-btn_add icon-plus" (click) = "addFloorPackage()" *ngIf="checkAccessPermission('settings', 1);"></button>
+          </div>
+          <div *ngIf = "header.isSettingRules(page)" class="header__settings-buttons">
+              <button class="header__settings-btn header__settings-btn_add icon-plus" (click) = "addRule()" *ngIf="checkAccessPermission('settings', 1);"></button>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,178 @@
+@import "~styles/variables";
+@import "~styles/base";
+
+.profile-view {
+  background-color: $gray;
+  padding: 26px 23px 27px 29px;
+  box-sizing: border-box;
+  position: absolute;
+  overflow: auto;
+  top: 74px;
+  left: calc(74px);
+  width: calc(100% - 74px );
+  height: calc(100% - 74px);
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 28px;
+    padding-left: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+  &__close {
+    display: none;
+  }
+  &__thumbnail {
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: auto;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__role {
+    @include font-style($color: $light-gray-3, $size: 14px, $weight: 300, $ls: 0.6px);
+  }
+  &__edit-btn {
+    @include font-style($color: $light-gray-2, $size: 16px);
+    padding: 10px 30px;
+    height: 44px;
+    box-sizing: border-box;
+    background-color: $mint;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 9px;
+    border: none;
+  }
+  &__col-50 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__profile-info {
+    display: flex;
+    padding-top: 40px;
+  }
+  &__profile-info-item {
+    margin-top: 40px;
+    padding-left: 43px;
+    position: relative;
+    &:before {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 0;
+      top: 11px;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__profile-info-item-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__profile-info-item-value {
+    @include font-style($color: $light-gray-2, $size: 17px, $weight: 300, $ls: 0.2px);
+    margin-top: 2px;
+  }
+}
+
+@media #{$mobile} {
+  .profile-view {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100vw;
+    padding: 10px 5px;
+    height: calc(100vh - 55px);
+    &__title {
+      padding-bottom: 10px;
+      justify-content: space-around;
+      padding-left: 35px;
+    }
+    &__close {
+      display: block;
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      line-height: 20px;
+      color: $gray-8;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+    &__buttons {
+      margin-top: 5px;
+    }
+    &__profile-info-item {
+      margin-top: 25px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__profile-info-item-value {
+      overflow-wrap: break-word;
+    }
+    &__col-30 {
+      align-items: center;
+    }
+    &__prev-bookings {
+      margin-top: 20px;
+    }
+    &__prev-bookings-counter-value {
+      text-align: center;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .profile-view {
+    padding: 10px 5px;
+    top: 56px;
+    left: 0;
+    width: calc(100%);
+    height: calc(100% - 56px);
+    &__title {
+      padding-bottom: 10px;
+      justify-content: space-between;
+      padding-left: 55px;
+    }
+    &__buttons {
+      margin-top: 5px;
+    }
+    &__profile-info-item {
+      margin-top: 25px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    &__profile-info-item-value {
+      overflow-wrap: break-word;
+    }
+    &__col-30 {
+      align-items: center;
+    }
+    &__prev-bookings {
+      margin-top: 20px;
+    }
+    &__prev-bookings-counter-value {
+      text-align: center;
+    }
+  }
+}

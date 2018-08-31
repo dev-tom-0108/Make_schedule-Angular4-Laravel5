@@ -1,0 +1,247 @@
+@import "~styles/variables";
+@import "~styles/base";
+.floor-menu {
+  width: 342px;
+  height: 100%;
+  position: relative;
+  overflow: auto;
+  background-color: $gray;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-right: 2px solid $dark-gray-6;
+  &__search {
+    width: 100%;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 29px;
+      left: 29px;
+      width: 20px;
+      height: 20px;
+      background-image: url("/assets/icons/search.svg");
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+  }
+  &__search-input {
+    @include font-style($color: $light-gray, $size: 16px);
+    padding: 25px 25px 23px 64px;
+    background-color: #24292F;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      @include font-style($color: $gray-3, $size: 16px);
+      opacity: 0.4;
+    }
+  }
+  &__bookings {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  &__group-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 19px 30px 17px;
+    background-color: $dark-gray-2;
+  }
+  &__group-title-text {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-4, $size: 13px);
+  }
+  &__group-title-count {
+    @include font-style($color: $gray-4, $size: 14px);
+  }
+  &__bookings-item {
+    display: flex;
+    padding: 20px 30px;
+    border-bottom: 1px solid $dark-gray-5;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    &:last-child {
+      border-bottom: 0;
+    }
+    &:hover {
+      background-color: $dark-gray-2;
+    }
+    &_active {
+      background-color: $dark-gray-2;
+    }    
+  }
+  &__bookings-item-thumbnail {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    border-radius: 50%;
+    &_gray {
+      background-color: $gray-5;
+    }
+    &_green {
+      background-color: $green;
+    }
+    &_lime {
+      background-color: $green-2;
+    }
+    &_blue {
+      background-color: $blue;
+    }
+    &_orange {
+      background-color: $orange;
+    }
+    &_violet {
+      background-color: $violet;
+    }    
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  &__bookings-item-content{
+    margin-left:10px;
+  }
+  &__bookings-item-name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+    width: fit-content;
+    &_vip {
+      padding-right: 22px;
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 6px;
+        right: -4px;
+        width: 16px;
+        height: 16px;
+        background-image: url("/assets/icons/badge.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+  &__bookings-item-time {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    margin-right: 15px;
+  }
+  &__bookings-item-guests {
+    @include font-style($color: $light-gray-3, $size: 15px);
+    position: relative;
+    padding-left: 20px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      background-image: url("/assets/icons/person.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  &__bookings-item-table {
+    @include font-style($color: $light-gray-3, $size: 15px);
+  }
+  &__bookings-item-info-left {
+    display: flex;
+  }
+  &__bookings-item-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__staffs {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  &__staffs-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    border-bottom: 1px solid $dark-gray-5;
+    position: relative;
+    &:last-child {
+      border-bottom: 0;
+    }
+    &:hover {
+      background-color: $dark-gray-2;
+    }
+    &_active {
+      background-color: $dark-gray-2;
+    }    
+  }
+  &__staffs-item-left{
+    display: flex;
+    align-items: center;
+  }
+  &__staffs-item-content{
+    display: flex;
+    flex-direction: column;
+    margin-left:10px;
+  }
+  &__staffs-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  &__staffs-item-thumbnail {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    border-radius: 50%;
+    img {
+      //width: 100%;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &__staffs-item-name {
+    @include font-style($color: $light-gray-2, $size: 18px);
+  }
+  &__staffs-item-time {
+    @include font-style($color: $light-gray-3, $size: 15px, $lh: 12px);
+    height: fit-content;
+    padding-right: 8px;
+    border-right: 2px solid $light-gray-3;
+    margin: 5px 8px 5px 0;
+  }
+  &__staffs-item-table {
+    @include font-style($color: $light-gray-3, $size: 15px);
+  }
+  &__staffs-item-info-left {
+    display: flex;
+  }
+}
+
+@media #{$mobile} {
+  .floor-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: calc(100% - 40px);
+    &__search-input {
+      padding: 10px 20px 10px 40px;
+    }
+    &__search {
+      &:before {
+        top: 13px;
+        left: 12px;
+      }
+    }
+  }
+}

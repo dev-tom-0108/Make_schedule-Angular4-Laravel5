@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Is VIP</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-444.000000, -443.000000)" stroke="#545F6D">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="5" transform="translate(0.000000, 334.000000)">
+                    <g id="Is-VIP" transform="translate(0.000000, 10.000000)">
+                        <g>
+                            <path d="M15.3,6.29958003 C15.3,2.82053196 12.48012,0 9,0 C5.52156,0 2.7,2.82053196 2.7,6.29958003 C2.7,9.77946804 5.52156,12.6 9,12.6 C12.48012,12.6 15.3,9.77946804 15.3,6.29958003 Z" id="Stroke-1" stroke-width="2"></path>
+                            <polyline id="Stroke-3" stroke-width="2" points="14.6610983 9 18 14.7646266 14.1184589 13.9557832 12.5658424 18 10.0573242 12.5503418"></polyline>
+                            <polyline id="Stroke-5" stroke-width="2" points="3.33734905 9 -4.60237859e-14 14.7646266 3.88154112 13.9557832 5.43415756 18 7.97420654 12.526062"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

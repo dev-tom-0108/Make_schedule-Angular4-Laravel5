@@ -1,0 +1,15 @@
+<div class="box-holder">
+    <div class="header-row"  [ngClass]="{'text-center-align': titleAlign=='center', 'text-right-align': titleAlign=='right' }"fxLayoutAlign="space-between center">
+        <h1 class="header-title ">
+            {{ title | translate }}
+        </h1>
+    </div>
+    <div class="content-holder" [ngClass]="{'text-center-align': messageAlign=='center', 'text-right-align': messageAlign=='right' }" fxLayoutAlign="start start">
+            {{ message | translate }}
+    </div>
+    <div class="action-container" fxLayoutAlign="end end">
+        <button type="button" md-raised-button class="od-button od-ripple action-button" (click)="dialogRef.close(true)">{{ 'OK' | translate }}</button>        
+        <button type="button" md-button class="od-button od-ripple action-button" (click)="dialogRef.close()">{{ 'CANCEL' | translate }}</button>
+
+    </div>
+</div>

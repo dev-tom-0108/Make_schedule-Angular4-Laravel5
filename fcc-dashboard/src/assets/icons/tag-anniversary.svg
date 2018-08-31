@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="13px" viewBox="0 0 16 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Anniversary</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-867.000000, -582.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Tags" transform="translate(0.000000, 420.000000)">
+                    <g id="10" transform="translate(404.000000, 48.000000)">
+                        <g id="Anniversary" transform="translate(19.000000, 15.000000)">
+                            <g>
+                                <path d="M5.36747273,1.90909091 C6.5072,2.25081818 7.78310909,3.21427273 8.37110909,4.30181818 C9.54647273,6.482 8.73383636,9.20118182 6.54856364,10.3784545 C4.36774545,11.5531818 1.64792727,10.7411818 0.472563636,8.55590909 C-0.348981818,7.03372727 -0.0263454545,5.15709091 0.879836364,3.81818182" id="Stroke-1" stroke-width="2"></path>
+                                <path d="M14,6.36363636 C14,3.90409091 12.0062727,1.90909091 9.54545455,1.90909091 C7.08590909,1.90909091 5.09090909,3.90409091 5.09090909,6.36363636 C5.09090909,8.82445455 7.08590909,10.8181818 9.54545455,10.8181818 C12.0062727,10.8181818 14,8.82445455 14,6.36363636 Z" id="Stroke-3" stroke-width="2"></path>
+                                <polygon id="Stroke-5" stroke-width="2" points="3.10850909 3.17061818 0.636236364 1.07761818 3.81805455 0.000254545455"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

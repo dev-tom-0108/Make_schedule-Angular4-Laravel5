@@ -1,0 +1,13 @@
+<div class = 'booking-add-button-group'>
+    <button (click)="prev()" class="booking-add-button-group__button pull-left" type="button" name="button">{{'PREV_BUTTON' | translate }}</button>
+    <button (click)="next()" class="booking-add-button-group__button pull-right" type="button" name="button" [disabled]="!person">{{'NEXT_BUTTON' | translate }}</button>    
+</div>
+<div class="step-guests">
+    <div class="step-guests__guests-count" *ngFor="let person_cnt of persons; let i=index;">
+        <input class="step-guests__radio" type="radio" name="guests" [checked]='person_cnt === person'>
+        <label for="1guest" (click)="selectedPerson(i)">{{person_cnt}} {{'GUEST' | translate}}</label>
+    </div>
+        <div class="step-guests__groups-count">
+        <input  [(ngModel)]="inputGuest" (keypress)="onlyNumberKey($event)" class="step-guests__text-input" type="text" name="" placeholder="Enter number of parties...">
+    </div>
+</div>

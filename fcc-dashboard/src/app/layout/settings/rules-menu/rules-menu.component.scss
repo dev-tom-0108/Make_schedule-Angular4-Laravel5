@@ -1,0 +1,297 @@
+  @import "~styles/variables";
+  @import "~styles/base";
+ .color-picker{
+    background-color: #292F35!important;
+    border-radius: 4px;
+    box-shadow: 0 10px 29px rgba(0, 0, 0, 0.25);
+    border: 0!important;
+    //margin-top:200px;
+    .box div, input{
+      @include font-style($color: $light-gray-2, $size: 15px!important);
+      background-color: #292F35;
+      border-radius: 4px;
+    }
+  }
+  .rules-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 340px;
+    background-color: $gray;
+    border-right: 2px solid $dark-gray-6;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    &__title {
+      padding: 25px 30px 28px 70px;
+      background-color: $dark-gray-2;
+      position: relative;
+      &:before {
+        position: absolute;
+        top: 39px;
+        left: 29px;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        line-height: 20px;
+        color: $gray-8;
+      }
+    }
+    &__calendar-btn {
+      display: none;
+    }
+    &__close {
+      cursor: pointer;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 29px;
+      top: 39px;
+      background: none;
+      border: none;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    &__text {
+      @include font-style($color: $light-gray-2, $size: 18px)
+    }
+    &__desc {
+      @include font-style($color: $light-gray-3, $size: 15px)
+    }
+    &__list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: $gray;
+      overflow-y: auto;
+    }
+    &__item {
+      padding: 19px 30px 20px 29px;
+      border-bottom: 1px solid $dark-gray-5;
+      position: relative;
+      cursor: pointer;
+      &:hover {
+        background-color: $dark-gray-2;
+      }
+    }
+    &__color {
+      top: 35px;
+      right: 30px;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      &_orange {
+        background-color: $orange;
+      }
+      &_green {
+        background-color: $green;
+      }
+      &_violet {
+        background-color: $violet;
+      }
+      &_red {
+        background-color: $red;
+      }
+    }
+    &__item-name {
+      @include font-style($color: $light-gray-2, $size: 18px);
+    }
+    &__item-date {
+      @include font-style($color: $light-gray-3, $size: 15px);
+    }
+  }
+
+  .rules-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 342px;
+    box-sizing: border-box;
+    padding: 25px 30px;
+    background-color: $gray;
+    border-right: 2px solid $dark-gray-6;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    &__title {
+      padding-left: 30px;
+      padding-bottom: 27px;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &__back {
+      position: absolute;
+      top: 18px;
+      left: -1px;
+      width: 20px;
+      height: 20px;
+      color: $gray-8;
+      font-size: 20px;
+      line-height: 20px;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    &__name {
+      @include font-style($color: $light-gray-2, $size: 18px)
+    }
+    &__date {
+      @include font-style($color: $light-gray-3, $size: 15px);
+    }
+    &__edit-date{
+      margin-top:20px;
+    }
+    &__color {
+      top: 15px;
+      right: -2px;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      &_orange {
+        background-color: $orange;
+      }
+      &_green {
+        background-color: $green;
+      }
+      &_violet {
+        background-color: $violet;
+      }
+      &_red {
+        background-color: $red;
+      }
+    }
+    &__edit-color{
+      top:36px;
+    }
+    &__content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__input_content{
+      width: 100%;
+      height: 100%;
+      margin:25px -30px;
+      padding:0 30px;
+      overflow-y:auto;
+      overflow-x:none;
+    }
+    &__info {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      overflow: auto;
+    }
+    &__field {
+      display: flex;
+      flex-direction: column;
+      margin-top: 31px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    &__field-label {
+      text-transform: uppercase;
+      @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+    }
+    &__field-text {
+      @include font-style($color: $light-gray-2, $size: 17px);
+      margin-top: 1px;
+      &_shift {
+        margin-top: 10px;
+        line-height: 29px;
+      }
+    }
+    &__input{
+      position: relative;
+      font-family: 'Heebo';
+      font-size: 17px;
+      color: #BEC4CD;
+      padding: 14px 17px;
+      background-color: #2d343a;
+      border: 1px solid #3A4149;
+      border-radius: 4px;
+      //margin-bottom: 20px;
+    }
+    &__color_input{
+      width:240px;
+    }
+    &__btn {
+      width: 100%;
+      border-radius: 4px;
+      @include font-style($color: $light-gray-2, $size: 16px, $lh: 56px);
+      text-align: center;
+      cursor: pointer;
+      box-sizing: border-box;
+      background-color: $dark-gray-4;
+      margin-top: 20px;
+      border: none;
+      &:first-child {
+        margin-top: 0;
+      }
+      &_red {
+        border: 1px solid $red;
+        @include font-style($color: $red);
+        background-color: $gray;
+      }
+      &_edit{
+        margin-top:10px;
+        background-color: $blue;
+      }
+      &_save{
+        margin-top:30px!important;
+        background-color: $mint;
+      }
+    }
+    &__btn:disabled{
+      opacity: .4;
+      cursor:not-allowed;
+    }
+    &__arrow{
+      position: absolute;
+      right: 18px;
+      top: 40%;
+      pointer-events: none;
+    }
+  }
+
+  @media #{$mobile} {
+    .rules-menu {
+      position: fixed;
+      top: 54px;
+      width: 100%;
+      height: calc(100% - 56px);
+      &__calendar-btn {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 75px;
+        top: 39px;
+        font-size: 20px;
+        line-height: 20px;
+        color: $gray-8;
+        background: none;
+        border: none;
+      }
+      .rules-item {
+        width: 100%;
+        height: unset;
+        &__buttons {
+          margin-top: 10px;
+        }
+      }
+    }
+  }

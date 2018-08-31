@@ -1,0 +1,41 @@
+<div *ngIf="isShow" class="table-assign">
+  <div class="table-assign__title">
+    <div class="table-assign__text">{{'ASSIGN' | translate }}</div>
+    <div (click)="close()" class="table-assign__close"></div>
+  </div>
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div class="table-assign__staffs">
+    <div class="table-assign__staffs-item">
+      <div class="table-assign__staffs-item-content">
+        <div class="table-assign__staffs-item-thumbnail">
+          <img [src]="staff?.profile_image ==  null ? defaultAvatar : staff?.profile_image" alt="">
+        </div>
+        <div class="table-assign__staffs-item-name">{{ staff?.firstname }} {{ staff?.lastname }}</div>
+      </div>
+      <div class="table-assign__staffs-color" [ngStyle] = "{'background-color': staff.table_color ? staff.table_color :'green'}"></div>      
+    </div>
+    <div class="table-assign__staffs-tables-item">
+      <div class="table-assign__staffs-item-title-text">{{ 'ASSIGNED_TABLE' | translate }} :</div>
+
+      <div class="talble-assign__staffs-item-tables">{{ getTablesNameString(staff.tables) }}</div>
+
+    </div>    
+  </div>
+  <div *ngIf = "!isChangeColor" class="table-assign__buttons">
+    <button class="table-assign__button table-assign__button_active" (click) = "changeAssign()">{{'BOOKING_ASSIGNED_CHANGE_ASSIGN' | translate }}</button>
+    <button class="table-assign__button" *ngIf="canDisableBtn"  (click) = "clearAllAssign()">{{'BOOKING_ASSIGNED_CLEAR_ALL_ASSIGN' | translate }}</button>
+    <button class="table-assign__button" (click) = "showColor()">{{'BOOKING_ASSIGNED_CHANGE_COLOR' | translate }}</button>
+  </div>
+  <div *ngIf = "isChangeColor" class="table-assign__colors">
+    <div class="table-assign__color">
+      <span 
+      [cpToggle]="true"
+      [cpDialogDisplay]="'inline'"
+      [(colorPicker)]="color" [cpWidth]="'275px'"></span>
+    </div>
+    <div class="table-assign__buttons">
+      <button class="table-assign__button table-assign__button_active" (click) = "saveColor()">{{'SAVE' | translate }}</button>
+      <button class="table-assign__button" (click) = "closeColor()">{{'CANCEL' | translate }}</button>
+    </div>            
+  </div>
+</div>

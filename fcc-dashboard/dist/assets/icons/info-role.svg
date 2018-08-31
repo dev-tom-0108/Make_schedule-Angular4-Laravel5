@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Role</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Staffs" transform="translate(-445.000000, -398.000000)" stroke="#545F6D">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="5" transform="translate(1.000000, 289.000000)">
+                    <g id="Role" transform="translate(0.000000, 10.000000)">
+                        <g>
+                            <path d="M6.18259091,11.9003091 L0,15.2987636 L0,16.4323545 C0,16.7453091 0.255772727,17.0003091 0.566409091,17.0003091 L10.0454545,17.0003091" id="Stroke-1" stroke-width="2"></path>
+                            <path d="M13.1363636,13.1363636 L10.8174091,11.8984545" id="Stroke-3" stroke-width="2"></path>
+                            <polyline id="Stroke-5" stroke-width="2" points="17 13.1363636 13.9090909 17 11.5909091 14.6818182"></polyline>
+                            <path d="M10.8174091,11.8987636 C13.1402273,10.0565818 13.1363636,6.7949 13.1363636,6.7949 L13.1340455,3.39721818 C12.8002273,1.46771818 10.5338182,0.000309090909 8.5,0.000309090909 L8.5,0.00185454545 C6.46618182,0.00185454545 4.19977273,1.46926364 3.86595455,3.39876364 L3.86363636,6.79567273 C3.86363636,6.79567273 3.85977273,10.0589 6.18259091,11.9003091" id="Stroke-7" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

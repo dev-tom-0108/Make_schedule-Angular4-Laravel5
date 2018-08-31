@@ -1,0 +1,19 @@
+<div *ngIf="isShow" id="bookingStatusMenu" class="booking-status">
+  <div class="booking-status__title">
+    <div class="booking-status__name">
+      {{ 'BOOKING_UPDATE_STATUS' | translate }}
+    </div>
+    <button (click)="close()" class="booking-status__back icon-back"></button>
+  </div>
+  <div class="booking-status__buttons">
+      <ng-container *ngFor="let bookingState of bookingStates">
+        <ng-container *ngIf = "isShowStatus(bookingState)" >
+          <input [id] = "bookingState.id" class="booking-status__radio" type="radio" [value]="bookingState.id" [(ngModel)]="bState">
+          <label for="{{bookingState.id}}">
+              <div [ngStyle] = "{'color':bookingState.color}" class="booking-status__radio-icon {{ bookingState.class}}"></div>{{ bookingState.name | translate }}</label>      
+        </ng-container>
+      </ng-container>
+  </div>
+  <button (click)="save()" class="booking-status__save">{{'SAVE' | translate }}</button>
+</div>
+<ngx-loading [show]="loading"></ngx-loading> 

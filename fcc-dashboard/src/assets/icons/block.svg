@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Block</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Guests" transform="translate(-1138.000000, -113.000000)" stroke="#54606E">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Header">
+                    <g id="Block" transform="translate(681.000000, 1.000000)">
+                        <g transform="translate(13.000000, 13.000000)">
+                            <g>
+                                <path d="M18,9 C18,13.9704545 13.9696364,18 9,18 C4.03036364,18 0,13.9704545 0,9 C0,4.02790909 4.03036364,0 9,0 C13.9696364,0 18,4.02790909 18,9 Z" id="Stroke-1" stroke-width="2"></path>
+                                <path d="M2.99945455,2.99904545 L14.9989091,14.9985" id="Stroke-3" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

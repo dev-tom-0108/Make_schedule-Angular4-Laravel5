@@ -1,0 +1,38 @@
+<div class="block-table" id="blockTable">
+    <div class="block-table-prev">
+        <div class="block-table__table_title">
+            <div class="block-table__title_header">
+            {{ table.name }}
+            </div>
+        <button (click)="close()" class="block-table__close icon-close">
+        </button>
+        </div>
+        <div class="block-table__row">
+            <div class="block-table__input block-table__input_md">
+                <div class="block-table__input-label">{{'BLOCK_DATE' | translate}}</div>
+                <div class="block-table__input-dropdown">
+                <dp-date-picker [(ngModel)]="date" [placeholder]="'Date...'" [theme]="'date-picker'" [config]="datePickerConfig" required></dp-date-picker>         
+                </div>
+            </div>
+        </div>
+        <div class="block-table__publish-status">
+            <div class="block-table__publish-status-info">
+              <div class="block-table__input-label">{{ 'IS_ALL_DAY' | translate }}</div>
+            </div>
+            <mat-slide-toggle class="block-table__publish-status-switch" [(ngModel)] = "is_all_day"></mat-slide-toggle>
+        </div>
+        <div *ngIf = "!is_all_day">
+            <div class="block-table__input-label">{{ 'BLOCK_START_TIME' | translate }}</div>
+            <dp-date-picker [(ngModel)]="start_time" name = "timepicker_startTime"  #editDatePicker  [theme]="'date-picker'" [mode]="'time'" [config]="timePickerConfig" ></dp-date-picker>
+        </div>
+        <div *ngIf = "!is_all_day">
+            <div class="block-table__input-label">{{ 'BLOCK_END_TIME' | translate }}</div>
+            <dp-date-picker [(ngModel)]="end_time" name = "timepicker_endTime"  #editDatePicker  [theme]="'date-picker'" [mode]="'time'" [config]="timePickerConfig" ></dp-date-picker>
+        </div>
+        <div class="block-table__buttons">
+            <button (click)="save()" class="block-table__button block-table__button_green" type="button" name="save">{{'SAVE' | translate }}</button>
+            <button (click)="unBlock()"class="block-table__button" type="button" name="unblock-table">{{'UNBLOCK_TABLE' | translate }}</button>
+        </div>
+    </div>
+    <ngx-loading [show]="loading"></ngx-loading> 
+</div>

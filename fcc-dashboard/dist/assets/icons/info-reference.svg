@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Referenced</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Booking-More-Details---1" transform="translate(-890.000000, -618.000000)" fill="#54606E">
+            <g id="Right-Panel" transform="translate(444.000000, 100.000000)">
+                <g id="10" transform="translate(446.000000, 506.000000)">
+                    <g id="Referenced" transform="translate(0.000000, 12.000000)">
+                        <path d="M7.92,9.984 C7.92,7.968 6.672,6.672 4.512,6.672 C4.08,6.672 3.744,6.768 3.504,6.912 C3.6,4.704 5.616,3.216 7.44,2.928 L7.44,0 C4.416,0.288 0,2.448 0,8.88 C0,11.424 1.632,13.488 4.176,13.488 C6.432,13.488 7.92,11.856 7.92,9.984 Z M17.376,9.984 C17.376,7.968 16.128,6.672 13.968,6.672 C13.536,6.672 13.2,6.768 12.96,6.912 C13.056,4.704 15.072,3.216 16.896,2.928 L16.896,0 C13.872,0.288 9.456,2.448 9.456,8.88 C9.456,11.424 11.088,13.488 13.632,13.488 C15.888,13.488 17.376,11.856 17.376,9.984 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

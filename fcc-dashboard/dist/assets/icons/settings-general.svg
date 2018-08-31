@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="19px" viewBox="0 0 17 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>General</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Settings---General" transform="translate(-103.000000, -107.000000)" stroke="#54606E">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="1">
+                    <g id="General" transform="translate(30.000000, 34.000000)">
+                        <g>
+                            <path d="M3,0 L11.5725305,0 C13.4632526,0 15,1.570625 15,3.5 C15,5.429375 13.4632526,7 11.5725305,7 L3,7" id="Stroke-1" stroke-width="2"></path>
+                            <path d="M12,17 L3.42746947,17 C1.53674738,17 0,15.429375 0,13.5 C0,11.570625 1.53674738,10 3.42746947,10 L12,10" id="Stroke-3" stroke-width="2"></path>
+                            <path d="M7,3.5 C7,5.432875 5.432875,7 3.5,7 C1.567125,7 -3.76948472e-13,5.432875 -3.76948472e-13,3.5 C-3.76948472e-13,1.567125 1.567125,9.74446218e-14 3.5,9.74446218e-14 C5.432875,9.74446218e-14 7,1.567125 7,3.5 Z" id="Stroke-5" stroke-width="2"></path>
+                            <path d="M15,13.5 C15,15.432875 13.432875,17 11.5,17 C9.567125,17 8,15.432875 8,13.5 C8,11.567125 9.567125,10 11.5,10 C13.432875,10 15,11.567125 15,13.5 Z" id="Stroke-7" stroke-width="2"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

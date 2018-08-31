@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="12px" viewBox="0 0 16 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Window seat</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Booking-More-Details---2" transform="translate(-1027.000000, -583.000000)">
+            <g id="Right-Panel" transform="translate(445.000000, 100.000000)">
+                <g id="Tags" transform="translate(0.000000, 420.000000)">
+                    <g id="11" transform="translate(564.000000, 48.000000)">
+                        <g id="Window-seat" transform="translate(20.000000, 12.000000)">
+                            <g transform="translate(-1.000000, 4.000000)">
+                                <polyline id="Stroke-7164" stroke="#54606E" stroke-width="2" points="0 0 1 6.01416016 1 10"></polyline>
+                                <polyline id="Stroke-7165" stroke="#54606E" stroke-width="2" points="1 6 5 6 5 10"></polyline>
+                                <polyline id="Stroke-7164-Copy" stroke="#54606E" stroke-width="2" points="14 0 13 5.09716797 13 10"></polyline>
+                                <path d="M7,3 L7,4" id="Stroke-7164-Copy-2" stroke="#54606E" stroke-width="2"></path>
+                                <polyline id="Stroke-7165-Copy" stroke="#54606E" stroke-width="2" transform="translate(11.000000, 8.000000) scale(-1, 1) translate(-11.000000, -8.000000) " points="9 6 13 6 13 10"></polyline>
+                                <path d="M9,2 L5,2" id="Stroke-1" stroke="#545F6D" stroke-width="2"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

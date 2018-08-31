@@ -1,0 +1,16 @@
+<div class = 'booking-add-button-group'>
+    <button (click)="prev()" class="booking-add-button-group__button pull-left" type="button" name="button">{{'PREV_BUTTON' | translate }}</button>
+    <button (click)="next()" class="booking-add-button-group__button pull-right" type="button" name="button" [disabled]="isHoliday" >{{'NEXT_BUTTON' | translate }}</button>    
+</div>
+<div class="step-time">
+    <ngx-loading [show]="loading"></ngx-loading>  
+    <div class="step-time__time-list">
+        <div *ngFor='let shift of shifts; let i=index;'>
+            <div class="step-time__separator">{{shift.name}}</div>
+            <div *ngFor="let time_slot of shift['time_slots']; let j=index;" class='time-slot-container'>
+                <input class="step-time__radio" type='radio' name='time' [checked]="shift.id === shift_id && time_slot === time"/>
+                <label for="time1" (click)="selectedTimeSlot(i, j)">{{time_slot | formatTimerHHMM}}</label>
+            </div>
+        </div>
+    </div>
+</div>

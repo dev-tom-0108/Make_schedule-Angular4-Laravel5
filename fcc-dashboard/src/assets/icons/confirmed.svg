@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>confirmed status</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Booking-Status" transform="translate(-126.000000, -302.000000)" fill="#D8DEE8">
+            <g id="Left-Panel" transform="translate(74.000000, 74.000000)">
+                <g id="2" transform="translate(30.000000, 209.000000)">
+                    <g id="confirmed-status" transform="translate(22.000000, 19.000000)">
+                        <g id="Icon">
+                            <path d="M9,0 C4.05,0 0,4.05 0,9 C0,13.95 4.05,18 9,18 C13.95,18 18,13.95 18,9 C18,4.05 13.95,0 9,0 L9,0 Z M7.0875,13.635 L3.375,9.96833333 L4.95,8.41277778 L7.0875,10.5238889 L13.05,4.635 L14.625,6.19055556 L7.0875,13.635 L7.0875,13.635 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

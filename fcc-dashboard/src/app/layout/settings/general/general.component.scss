@@ -1,0 +1,130 @@
+@import "~styles/variables";
+@import "~styles/base";
+p{
+  height:0;
+  margin:0;
+  margin-top:5px;
+}
+.general-settings-view {
+  background-color: $gray;
+  padding: 48px 23px 27px 29px;
+  box-sizing: border-box;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  &__fields {
+    display: flex;
+  }
+  &__col-50 {
+    width: 50%;
+    box-sizing: border-box;
+  }
+  &__field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0;
+    }
+    &_right {
+      margin-left: 10px;
+    }
+  }
+  &__field-name {
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 500, $ls: 0.2px);
+  }
+  &__field-dropdown {
+    margin-top: 13px;
+    margin-right: 16px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 24px;
+      top: 23px;
+      width: 15px;
+      height: 9px;
+      pointer-events: none;
+      background-image: url("/assets/icons/drop-down.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  &__save-btn {
+    @include font-style($color: $light-gray-2, $size: 16px, $lh: 56px);
+    text-align: center;
+    width: 280px;
+    height: 56px;
+    box-sizing: border-box;
+    background-color: $mint;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    margin-top: 50px;
+  }
+  &__save-btn:disabled{
+    opacity: .4;
+    cursor:not-allowed;
+  }
+}
+
+@media #{$mobile} {
+  .general-settings-view {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 56px);
+    padding: 15px 10px;
+    overflow-y: auto;
+    &__col-50 {
+      width: 100%;
+      margin-top: 20px;
+    }
+    &__fields {
+      flex-direction: column;
+    }
+    &__field {
+      margin-top: 20px;
+      &_right {
+        margin-left: 0;
+      }
+    }
+    &__field-dropdown {
+      margin-right: 0;
+      &:after {
+        top: 33px;
+      }
+    }
+    &__save-btn {
+      width: 100%;
+    }
+  }
+}
+
+@media #{$tablet} {
+  .general-settings-view {
+    width: 100%;
+    padding: 15px;
+    &__col-50 {
+      width: 100%;
+      margin-top: 20px;
+    }
+    &__fields {
+      flex-direction: column;
+    }
+    &__field {
+      margin-top: 20px;
+      &_right {
+        margin-left: 0;
+      }
+    }
+    &__field-dropdown {
+      margin-right: 0;
+    }
+    &__save-btn {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,953 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~styles/fonts";
+@import "~styles/fcc-icons.scss";
+@import "~styles/variables";
+@import "~styles/base";
+@import "~styles/datepicker";
+@import "~styles/dropdown";
+@import "~styles/general";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/angular-calendar/dist/css/angular-calendar.css";
+html {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  position: absolute;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $dark-gray;
+}
+
+::-webkit-resizer,
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner {
+  display: none;
+}
+
+app-root,
+body {
+  line-height: unset !important;
+  font-weight: 400 !important;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $gray !important;
+  -webkit-font-smoothing: unset !important;
+  -webkit-overflow-scrolling: touch!important;
+  position: fixed;
+  @include font-style($color: $gray-3, $size: 16px);
+}
+
+app-root {
+  width: 100%;
+}
+
+app-layout,
+app-settings,
+app-menu,
+app-guests,
+app-guests-list,
+app-booking,
+app-staffs,
+app-staffs-list,
+app-settings-list,
+app-table-details,
+app-booking-list,
+app-booking-more-details,
+app-booking-details {
+  height: 100%;
+}
+
+app-booking,
+app-settings,
+app-general {
+  width: calc(100% - 74px);
+}
+
+app-header *, .guests * ,
+.staffs * {
+  box-sizing: border-box;
+}
+
+#scheduler {
+  .sch-event {
+    height: 45px !important;
+    margin: 5px 0px;
+    border-radius: 100px;
+    border: none !important;
+    background-color: transparent !important;
+    &:hover {
+      border-color: transparent;
+    }
+    .eventBorder {
+      position: absolute;
+      padding: 0px 5px;
+      content: '';
+      width: calc(100% + 10px);
+      height: 55px;
+      border-radius: 100px;
+      top: -5px;
+      left: -5px;
+      border: 2px solid #C1CCE0;
+      display: none;
+      z-index: -1;
+    }
+    .event {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 20px 0 25px;
+    }
+  }
+  .sch-event-selected {
+    border-color: transparent;
+    box-shadow: none;
+    overflow: visible;
+    .eventBorder {
+      display: block;
+    }
+  }
+  .sch-event-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include font-style($color: $white, $size: 16px);
+  }
+  .x-box-inner {
+    height: 58px !important;
+  }
+  .x-grid-group-hd {
+    // border: none !important;
+    background-color: $dark-gray-12;
+    height: 44px;
+    border-color: $gray-11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .x-grid-group-title {
+    background: none !important;
+    padding: 0 !important;
+    text-transform: uppercase;
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 400);
+  }
+  .x-grid-scroll-container {
+    top: 58px !important;
+  }
+  .x-grid-inner-locked .x-column-header-last {
+    height: 58px;
+  }
+  .x-column-header {
+    border-width: 0px !important;
+  }
+  .x-grid-locked-split .x-grid-inner-normal {
+    left: 140px !important;
+    width: 100% !important;
+  }
+  .x-splitter {
+    display: none;
+  }
+  .sch-event {
+    opacity: 1 !important;
+  }
+  .x-grid-locking-body {
+    border-width: 0px !important;
+  }
+  .x-grid-cell-inner {
+    z-index: 0;
+  }
+  .x-grid-cell-last {
+    .x-grid-cell-inner {
+      color: $dark-gray-11 !important;
+      text-align: right !important;
+    }
+  }
+  .x-column-header-last {
+    .x-column-header-text {
+      color: $dark-gray-11 !important;
+      text-align: center;
+    }
+  }
+  .x-grid-with-col-lines .x-grid-cell {
+    border-width: 0px !important;
+  }
+  .sch-schedulerview {
+    .blocked {
+      background-color: #1C1F23;
+      opacity: 0.71;
+      position: relative;
+      &::before {
+        font-family: 'fcc-icons';
+        content: '\e90e';
+        color: $gray-12;
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        line-height: 24px;
+        left: 10px;
+        top: 15px;
+      }
+    }
+  }
+  .x-box-inner,
+  .x-grid-scroll-container,
+  .x-grid-scrollbar,
+  .x-grid-scroll-body {
+    background-color: $gray;
+  }
+  .x-dd-drag-current {
+    .x-dd-drag-ghost {
+      opacity: 1 !important;
+      .sch-event-selected {
+        box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.40);
+        &:before {
+          position: absolute;
+          right: calc(100% + 1px);
+          top: -10000px;
+          width: 200000px;
+          height: 200000px;
+          content: '';
+          background-color: #121416;
+          opacity: 0.6;
+        }
+        &:after {
+          position: absolute;
+          left: calc(100% + 1px);
+          top: -10000px;
+          width: 200000px;
+          height: 200000px;
+          content: '';
+          background-color: #121416;
+          opacity: 0.6;
+          z-index: -1;
+        }
+      }
+    }
+  }
+  .x-grid-item {
+    background-color: unset !important;
+    border-color: $gray-11;
+  }
+  .sch-timelineview .x-grid-item-container {
+    background-color: unset !important;
+    background-image: url("/assets/images/timeline-bg.png");
+    background-size: 50px;
+    background-repeat: repeat;
+    border-color: $gray-11;
+  }
+  .sch-column-header {
+    background-color: $dark-gray-10;
+    display: flex;
+    padding: 15px 15px !important;
+    border-right: 1px solid $gray-11;
+  }
+  .sch-simple-timeheader {
+    @include font-style($color: $light-gray-3, $size: 13px, $weight: 400);
+    padding: 0 !important;
+  }
+  .sch-header-row {
+    height: 58px;
+    tr {
+      display: flex;
+      height: 58px;
+    }
+  }
+  .sch-column-line {
+    border-color: $gray-11;
+  }
+  .x-grid-item .x-grid-cell-inner {
+    display: flex;
+    align-items: center;
+    @include font-style($color: $light-gray-3, $size: 15px, $weight: 400);
+    padding-left: 24px;
+  }
+  .x-grid-scrollbar-clipper>.x-grid-view,
+  .x-grid-scrollbar-clipper>.x-tree-view,
+  .x-column-header-inner,
+  .x-border-layout-ct {
+    background-color: $dark-gray-10;
+  }
+  .x-column-header-text {
+    @include font-style($color: $light-gray-3, $size: 15px, $weight: 400);
+  }
+  .sch-column-line {
+    border-color: $gray-11;
+  }
+  .sch-horizontal .sch-timeline {
+    border-width: 0 0 0 2px !important;
+  }
+  .sch-header-indicator {
+    width: fit-content;
+    height: fit-content;
+    bottom: 10px;
+    margin: 0 !important;
+    margin-left: -25px !important;
+    border: none !important;
+    background-color: transparent;
+    transform: rotate(0deg) !important;
+    @include font-style($color: $dark-yellow, $size: 12px, $weight: 400);
+    border-radius: none !important;
+    box-shadow: none !important;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 21px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: $dark-yellow;
+      box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+  }
+  .x-grid-locked-split .x-grid-inner-normal {
+    border-color: $gray-11;
+  }
+  .sch-timeline {
+    border-style: solid;
+    border-color: $dark-yellow;
+  }
+  .icon {
+    opacity: 0.8;
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    position: relative;
+    &:before {
+      top: 2px;
+      font-size: 18px;
+      position: absolute
+    }
+  }
+}
+
+.x-tip {
+  display: none !important;
+}
+
+#floorView {
+  overflow: auto;
+  .canvas-container {
+    height: 100% !important;
+  }
+}
+
+#moreDetailsView,
+#guestView {
+  .mat-tab-label {
+    @include font-style($color: $gray-3, $size: 16px);
+    padding: 12px 30px 20px 0 !important;
+    text-align: left !important;
+    //margin-right: 63px !important;
+    justify-content: flex-start !important;
+    border-bottom: 2px solid transparent;
+    min-width: fit-content !important;
+    height: fit-content !important;
+    opacity: 1 !important;
+    &:focus {
+      background-color: unset !important;
+    }
+  }
+  .mat-tab-label-active {
+    @include font-style($color: $mint);
+    border-bottom: 2px solid $mint !important;
+  }
+  .mat-ink-bar {
+    display: none !important;
+  }
+  .mat-tab-body,
+  .mat-tab-wrapper {
+    min-height: 100%;
+  }
+
+  .mat-tab-body-wrapper,
+  .mat-tab-body {
+    height: 100%;
+  }
+  .mat-tab-header-pagination-chevron {
+    border-color: $gray-3 !important;
+  }
+  .mat-tab-group {
+    height: calc(100% - 63px);
+  }
+  .mat-tab-label-container,
+  .mat-tab-labels,
+  .mat-tab-list {
+    height: 100%;
+  }
+  .mat-tab-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    height: 58px;
+  }
+  .mat-tab-body-content {
+    height: 100%;
+  }
+}
+
+#bookingList {
+  .mat-tab-label {
+    @include font-style($color: $gray-3, $size: 16px);
+    padding: 21px 0;
+    min-width: 50% !important;
+    height: fit-content !important;
+    opacity: 1 !important;
+    position: relative;
+    background-color: $gray !important;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 20px;
+      background-color: $dark-gray-5;
+      right: 0;
+      top: 22px;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+    &:focus {
+      background-color: unset !important;
+    }
+  }
+  .mat-tab-header {
+    border: none !important;
+  }
+  .mat-tab-label-active {
+    @include font-style($color: $mint);
+  }
+  .mat-ink-bar {
+    background-color: $mint !important;
+    width: 50% !important;
+  }
+}
+
+#addBooking {
+  .mat-tab-body-content,
+  .mat-tab-group {
+    height: 100%;
+  }
+  .mat-tab-header {
+    background-color: $dark-gray;
+    border-bottom: 2px solid $dark-gray-6;
+    box-sizing: border-box;
+  }
+  .mat-tab-labels {
+    justify-content: center;
+  }
+  .mat-tab-label {
+    @include font-style($color: $gray-8, $size: 16px);
+    height: 72px;
+    width: 180px;
+    box-sizing: border-box;
+    padding: 0 0 0 40px;
+    opacity: 1;
+    position: relative;
+    &:before {
+      position: absolute;
+      top: 26px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      font-size: 20px;
+      font-family: 'fcc-icons';
+    }
+    &:focus {
+      background-color: unset;
+    }
+  }
+  .mat-tab-label-active {
+    @include font-style($color: $mint);
+  }
+  .mat-tab-label-container {
+    display: -webkit-box;
+    justify-content: center;
+  }
+  .mat-tab-list {
+    max-width: fit-content;
+  }
+  .mat-ink-bar {
+    background-color: $mint !important;
+    width: 25% !important;
+  }
+  #mat-tab-label-0-0 {
+    &:before {
+      left: 51px;
+      content: "\e912";
+    }
+  }
+  #mat-tab-label-0-1 {
+    &:before {
+      left: 44px;
+      content: "\e92a";
+    }
+  }
+  #mat-tab-label-0-2 {
+    &:before {
+      left: 50px;
+      content: "\e917";
+    }
+  }
+  #mat-tab-label-0-3 {
+    &:before {
+      left: 39px;
+      content: "\e92e";
+    }
+  }
+}
+
+#floorMenu,
+#shiftEdit,
+#shiftCreate,
+#shiftView,
+#shiftMenu,
+#staffEdit,
+#blockTable,
+#profileEdit,
+#guestEdit {
+  .mat-slide-toggle-label {
+    height: 100%;
+    justify-content: center;
+  }
+  .mat-slide-toggle-ripple {
+    display: none;
+  }
+  .mat-slide-toggle-bar {
+    width: 52px;
+    height: 28px;
+    border-radius: 15.5px;
+  }
+  .mat-slide-toggle-bar {
+    background-color: $dark-gray-9;
+  }
+  .mat-slide-toggle-thumb {
+    background-color: $gray-9;
+  }
+  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: $light-gray-2;
+  }
+  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: $mint;
+  }
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+    transform: translate3d(24px, 0, 0);
+  }
+  .mat-slide-toggle-thumb-container {
+    top: 0;
+    cursor: pointer;
+  }
+  .mat-slide-toggle-thumb {
+    height: 28px;
+    width: 28px
+  }
+}
+#profileEdit,
+{
+  .mat-slide-toggle-label {
+    height: 100%;
+    justify-content: start;
+  }
+}
+#rulesView {
+  .cal-month-view {
+    .cal-day-view {
+      display: flex;
+      height: 100%;
+    }
+    .cal-hour-rows {
+      height: 100%;
+      overflow-y: none;
+    }
+    .cal-days {
+      border: none;
+      position: absolute;
+      height: calc(-164px + 100%);
+      width: 100%;
+      overflow-y: scroll;
+    }
+    .cal-open-day-events {
+      display: none;
+    }
+    .cal-day-cell {
+      min-height: 132px;
+    }
+    .cal-day-cell:not(:last-child) {
+      border-right: 1px solid $gray-2;
+    }
+    .cal-cell-row {
+      border-bottom: 1px solid $gray-2;
+      &:hover {
+        background-color: unset;
+      }
+    }
+    .cal-today {
+      background-color: unset;
+    }
+    .cal-out-month {
+      .cal-cell-top,
+      .cal-events,
+      .cal-day-number {
+        display: none;
+      }
+    }
+    .cal-has-events {
+      cursor: default;
+    }
+    .cal-cell {
+      background-color: unset !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10px;
+      padding-bottom: 15px;
+      &:hover {
+        background-color: unset;
+      }
+    }
+    .cal-events {
+      margin: 0;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cal-event {
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      border-radius: 100px;
+      margin: 2px 0;
+      @include font-style($color: $white, $size: 13px, $lh: 30px);
+      overflow: hidden;
+      text-overflow: clip;
+      cursor: pointer;
+    }
+    .cal-day-number {
+      margin: 0;
+      margin-right: 10px;
+      text-align: right;
+      @include font-style($color: $light-gray-2, $size: 16px);
+    }
+    .cal-header .cal-cell {
+      padding: 0 23px;
+      text-align: right;
+      text-transform: uppercase;
+      @include font-style($color: $light-gray-3, $size: 14px);
+      &:hover {
+        background-color: $dark-gray-2;
+      }
+    }
+    .cal-header {
+      height: 64px;
+      align-items: center;
+      background-color: $dark-gray-2;
+      &:hover {
+        background-color: $dark-gray-2;
+      }
+    }
+  }
+  .cal-week-view {
+    .cal-day-headers {
+      margin: none;
+      border: none;
+    }
+    .cal-header:not(:last-child) {
+      border-right: 1px solid $gray-2;
+    }
+    .cal-starts-within-week {
+      .cal-event {
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+      }
+    }
+    .cal-ends-within-week {
+      .cal-event {
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+      }
+    }
+    .cal-event {
+      text-align: center;
+      a {
+        @include font-style($color: $light-gray-2, $size: 13px);
+        text-decoration: none;
+      }
+    }
+    .cal-header,
+    .cal-weekend {
+      @include font-style($color: $light-gray-2, $size: 14px);
+      align-items: center;
+      background-color: $dark-gray-2;
+      &:hover {
+        background-color: $dark-gray-2;
+      }
+      span {
+        @include font-style($color: $light-gray-2, $size: 14px);
+      }
+    }
+  }
+  .cal-day-view {
+    .cal-event {
+      text-align: center;
+      border-radius: 0px;
+      .cal-event-title {
+        @include font-style($color: $light-gray-2, $size: 16px);
+        text-decoration: none;
+      }
+    }
+    .cal-hour-rows {
+      border: 0px solid #3A4149;
+      //border-radius: 4px;
+      position: absolute;
+      height: calc(-99px + 100%);
+      width: 100%;
+      overflow-y: scroll;
+    }
+    .cal-hour-segment {
+      border: none;
+      &:hover {
+        background-color: initial;
+      }
+    }
+    .cal-time {
+      @include font-style($color: $light-gray-2, $size: 16px);
+    }
+    .cal-hour:nth-child(odd) {
+      background-color: $dark-gray-2;
+    }
+  }
+}
+
+@media #{$mobile} {
+  #rulesView {
+    .cal-month-view {
+      .cal-header {
+        height: 40px;
+        justify-content: space-around;
+        .cal-cell {
+          padding: 0;
+          text-align: center;
+          @include font-style( $size: 12px);
+        }
+      }
+      .cal-cell {
+        padding: 0;
+        text-align: center;
+      }
+      .cal-day-cell {
+        height: 45px;
+        width: 20px;
+        padding-bottom: 0;
+        padding: 5px;
+        min-height: unset !important;
+        ;
+      }
+      .cal-day-number {
+        margin-right: 0;
+        @include font-style( $size: 12px);
+      }
+      .cal-events {
+        flex-direction: row;
+      }
+      .cal-event {
+        width: 10px;
+        height: 10px;
+        margin: 1px;
+        @include font-style($color: transparent);
+      }
+      .cal-open-day-events {
+        display: block;
+        box-shadow: none;
+        padding: 10px;
+        background-color: $dark-gray-2;
+      }
+      .cal-event-title {
+        @include font-style($color: $light-gray-3, $size: 14px);
+        text-decoration: none;
+      }
+    }
+    .cal-week-view {
+      .cal-event {
+        padding: 0 5px;
+        a {
+          @include font-style($size: 12px);
+        }
+      }
+      .cal-header {
+        display: flex;
+        justify-content: center;
+        b {
+          display: none;
+        }
+        span {
+          @include font-style($size: 12px);
+        }
+      }
+    }
+  }
+  app-booking,
+  app-settings,
+  app-general,
+  app-shift-package {
+    width: 100%;
+  }
+  #moreDetailsView {
+    .mat-tab-label {
+      padding: 0px 10px !important;
+      text-align: center !important;
+      margin-right: 0 !important;
+      height: 100% !important;
+    }
+    .mat-tab-header {
+      height: 48px;
+    }
+  }
+  #floorMenu {
+    .mat-tab-label {
+      padding: 14px 0;
+    }
+  }
+  #guestView {
+    .mat-tab-header {
+      height: 50px;
+    }
+    .mat-tab-label {
+      height: 100% !important;
+      width: fit-content;
+      padding: 10px !important;
+      margin-right: 0 !important;
+    }
+  }
+  #addBooking {
+    .mat-tab-header-pagination-chevron {
+      border-color: $gray-8;
+    }
+    .mat-tab-group {
+      height: calc(100% - 56px);
+    }
+    .mat-tab-label {
+      height: 50px;
+      width: 130px;
+      padding: 0px 0 0 45px;
+      &:before {
+        top: 15px;
+      }
+    }
+    #mat-tab-label-0-0 {
+      &:before {
+        left: 25px;
+      }
+    }
+    #mat-tab-label-0-1 {
+      &:before {
+        left: 25px;
+      }
+    }
+    #mat-tab-label-0-2 {
+      &:before {
+        left: 25px;
+      }
+    }
+    #mat-tab-label-0-3 {
+      &:before {
+        left: 20px;
+      }
+    }
+  }
+}
+
+@media #{$tablet} {
+  app-booking,
+  app-settings {
+    width: 100%;
+  }
+  #rulesView {
+    .cal-month-view {
+      .cal-header {
+        height: 40px;
+        justify-content: space-around;
+        .cal-cell {
+          padding: 0;
+          text-align: center;
+          @include font-style( $size: 12px);
+        }
+      }
+      .cal-cell {
+        padding: 0;
+        text-align: center;
+      }
+      .cal-day-cell {
+        height: 45px;
+        width: 20px;
+        padding-bottom: 0;
+        padding: 5px;
+        min-height: unset !important;
+        ;
+      }
+      .cal-day-number {
+        margin-right: 0;
+        @include font-style( $size: 12px);
+      }
+      .cal-events {
+        flex-direction: row;
+      }
+      .cal-event {
+        width: 10px;
+        height: 10px;
+        margin: 1px;
+        @include font-style($color: transparent);
+      }
+      .cal-open-day-events {
+        display: block;
+        box-shadow: none;
+        padding: 10px;
+        background-color: $dark-gray-2;
+      }
+      .cal-event-title {
+        @include font-style($color: $light-gray-3, $size: 14px);
+        text-decoration: none;
+      }
+    }
+    .cal-week-view {
+      .cal-event {
+        padding: 0 5px;
+        a {
+          @include font-style($size: 12px);
+        }
+      }
+      .cal-header {
+        display: flex;
+        justify-content: center;
+        b {
+          display: none;
+        }
+        span {
+          @include font-style($size: 12px);
+        }
+      }
+    }
+  }
+}
+
+
+@media #{$mobile} {
+  app-layout {
+    height: calc(100% - 40px);
+  }
+}

@@ -1,0 +1,117 @@
+<div *ngIf="guest" id="guestView" class="guest-view">
+  <div class="guest-view__title">
+    <div class="guest-view__title-info">
+      <div class="guest-view__name">
+        {{guest.name}}
+      </div>
+      <div class="guest-view__id">
+        {{'GUESTS_GUEST_ID' | translate}}:
+        <span>{{guest.id}}</span>
+      </div>
+      <button class="guest-view__close icon-close"></button>
+    </div>
+    <div class="guest-view__buttons" *ngIf="enableEdit">
+      <button class="guest-view__edit-btn" (click)="showEdit()">{{'GUESTS_EDIT' | translate}}</button>
+    </div>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="{{'GUESTS_GUEST_INFO' | translate}}">
+      <div class="guest-view__guest-info">
+        <div class="guest-view__col-50">
+          <div class="guest-view__guest-info-item icon-person">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_FULL_NAME' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{guest.name}}</div>
+          </div>
+          <div class="guest-view__guest-info-item icon-email">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_EMAIL_ADDRESS' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{guest.email}}</div>
+          </div>
+          <div class="guest-view__guest-info-item icon-badge">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_IS_VIP' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{(guest.is_vip ? 'GUESTS_YES': 'GUESTS_NO') | translate}}</div>
+          </div>
+        </div>
+        <div class="guest-view__col-50">
+          <div class="guest-view__guest-info-item icon-phone">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_PHONE_NUMBER' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{guest.phone}}</div>
+          </div>
+          <div class="guest-view__guest-info-item icon-company">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_COMPANY' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{guest.company_name}}</div>
+          </div>
+          <div class="guest-view__guest-info-item icon-chat">
+            <div class="guest-view__guest-info-item-name">{{'GUESTS_WECHAT' | translate}}</div>
+            <div class="guest-view__guest-info-item-value">{{(guest?.wechat_account?.length > 0 ? 'GUESTS_WECHAT_CONNECTED': 'GUESTS_WECHAT_DISCONNECTED') | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="guest.tags?.length" class="guest-view__guest-info-tags">
+        <div *ngFor="let tag of guest.tags" class="guest-view__guest-info-tag">
+          <span>
+            <img [src]="tag.icon_image" width="20px" height="20px" class="guest-view__guest-info-tag-icon">
+          </span>
+          {{tag.name}}
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="{{'GUESTS_PREVIOUS_BOOKINGS' | translate}}">
+      <ngx-loading [show]="loading"></ngx-loading>    
+      <!-- <mat-progress-spinner style="margin:15% auto;" mode="indeterminate" *ngIf="loading"></mat-progress-spinner> -->
+      <div *ngIf="!loading">
+        <div class="guest-view__prev-bookings">
+          <div class="guest-view__col-30">
+            <div class="guest-view__prev-bookings-counter">
+              <div class="guest-view__prev-bookings-counter-name">{{'GUESTS_BOOKINGS_TOTAL_VISIT' | translate}}</div>
+              <div class="guest-view__prev-bookings-counter-value">{{sizeOfTotalBookings}}</div>
+            </div>
+          </div>
+          <div class="guest-view__col-30">
+            <div class="guest-view__prev-bookings-counter">
+              <div class="guest-view__prev-bookings-counter-name">{{'GUESTS_BOOKINGS_NO_SHOWS' | translate}}</div>
+              <div class="guest-view__prev-bookings-counter-value">{{sizeOfNoShows}}</div>
+            </div>
+          </div>
+          <div class="guest-view__col-30">
+            <div class="guest-view__prev-bookings-counter">
+              <div class="guest-view__prev-bookings-counter-name">{{'GUESTS_BOOKINGS_CANCELLATION' | translate}}</div>
+              <div class="guest-view__prev-bookings-counter-value">{{sizeOfCanceledBookings}}</div>
+            </div>
+          </div>
+        </div>
+        <mat-table #table [(dataSource)]="dataSource">
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>{{'GUESTS_BOOKINGS_ID' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.booking_number}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>{{'GUESTS_BOOKINGS_DATE' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.date | date}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="time">
+            <mat-header-cell *matHeaderCellDef>{{'GUESTS_BOOKINGS_TIME' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.time}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="guests">
+            <mat-header-cell *matHeaderCellDef>{{'GUESTS_BOOKINGS_NO_OF_GUESTS' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{booking.number_of_people}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>{{'GUESTS_BOOKINGS_STATUS' | translate}}</mat-header-cell>
+            <mat-cell *matCellDef="let booking"> {{getBookingStatusName(booking.status) | translate}} </mat-cell>
+          </ng-container>
+          <!-- <ng-container matColumnDef="link">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let booking">
+              <a href="{{booking.link}}">{{'GUESTS_BOOKINGS_MORE' | translate}}</a>
+            </mat-cell>
+          </ng-container> -->
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<app-guests-edit></app-guests-edit>

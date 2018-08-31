@@ -1,0 +1,22 @@
+
+<div class="login">
+  <ngx-loading [show]="loadingShow"></ngx-loading>  
+  <div class="login__header">
+    <div class="login__header__title">
+      {{'LOGIN' | translate }}
+    </div>
+  </div>
+  <form [formGroup]="loginForm" novalidate>
+    <div class="login__container">
+      <div class="login__content">
+        <div class="login__inputs">
+          <input class="login__input" type="email" formControlName="username" placeholder="{{ 'USERNAME_OR_EMAIL' | translate }}" [(ngModel)]="model.username">
+          <input class="login__input" type="password" formControlName="password" placeholder="{{'PASSWORD' | translate}}" [(ngModel)]="model.password">
+        </div>
+        <show-errors [control]="loginForm"></show-errors>      
+        <button (click)="onLoggedin()" [disabled]="loginForm.invalid || loginForm.pending" class="login__btn">{{'LOGIN' | translate }}</button>
+        <!-- <a class="login__forgot" href="">{{ 'LOGIN_FORGET_PASSWORD' | translate}}</a> -->
+      </div>
+    </div>
+</form>
+</div>

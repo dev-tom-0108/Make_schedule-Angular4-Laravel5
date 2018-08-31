@@ -1,0 +1,32 @@
+.mat-dialog-container{
+    background-color: #2d343a;  
+    border-radius: 4px;  
+}
+.box-holder {
+    font-family: 'Heebo';
+    font-size: 18px;
+    //color: #D8DEE8;
+    //border-radius: 4px;
+    //box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    //background-color: #2d343a;
+    .content-holder {
+        margin-bottom: 25px;
+    }
+    .action-container{
+        text-align: center;
+    }
+    .action-button{
+        font-family: 'Heebo';
+        font-size: 16px;
+        color: #D8DEE8;
+        padding: 10px 27px;
+        height: 44px;
+        min-width:200px;
+        box-sizing: border-box;
+        background-color: #1C7C8D;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 9px;
+        border: none;
+    }
+}

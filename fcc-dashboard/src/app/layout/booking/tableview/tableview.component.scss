@@ -1,0 +1,194 @@
+@import "~styles/variables";
+@import "~styles/base";
+//@import '~@swimlane/ngx-datatable/release/index.css';
+//@import '~@swimlane/ngx-datatable/release/themes/material.css';
+//@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+[hidden]{
+  display: none !important;
+}
+.tableview {
+  // width: 100%;
+  //height: 100%;
+  //position: absolute;
+  //overflow: auto;
+  display: flex;
+  //align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding:30px;
+  a {
+      text-decoration: none;
+      cursor: pointer;
+      @include font-style($color: $mint, $size: 15px, $weight: 200);
+    }
+}
+.ngx-datatable{
+  margin-top:40px;
+  width:calc(100% - 20px);
+
+  .datatable-row-center{
+    margin-top: 8px;
+    text-align: center;
+    min-height: 56px;
+    //padding: 0 8px;
+    border-bottom: 1px solid $dark-gray-5;
+  }
+}
+
+
+.ngx-datatable .empty-row{
+  margin-top:8px;
+  padding: 0 8px;
+  @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+}
+.ngx-datatable .datatable-header{
+  margin-top: 8px;
+  text-align: center;
+  min-height: 56px;
+  padding: 0 8px;
+  border-bottom: 1px solid $dark-gray-5;
+  @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+}
+.ngx-datatable .datatable-body .datatable-body-row{
+  margin-top: 8px;
+  min-height: 56px;
+  @include font-style($color: $light-gray-2, $size: 15px, $weight: 200);
+}
+.ngx-datatable .datatable-footer{
+  //padding: 0 8px;
+  border-bottom: 1px solid $dark-gray-5;
+  @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+}
+.ngx-datatable.material .datatable-footer .datatable-pager a{
+  height: 22px;
+  min-width: 24px;
+  line-height: 22px;
+  padding: 0 6px;
+  border-radius: 3px;
+  margin: 6px 3px;
+  text-align: center;
+  vertical-align: top;
+  color:$gray-6;
+  text-decoration: none;
+  vertical-align: bottom;
+}
+.ngx-datatable .datatable-footer .datatable-pager .pager li.disabled{
+  //margin:0 10px !important;
+  opacity: 0.2;
+}
+.ngx-datatable.material .datatable-footer .datatable-pager li.active a{
+  font-weight: bold;
+
+}
+
+.ngx-datatable .datatable-body-cell,
+.ngx-datatable .datatable-header-cell {
+  overflow-x: visible!important;
+}
+
+.datatable-icon-prev:before,
+.datatable-icon-left:before,
+.datatable-icon-right:before,
+.datatable-icon-skip:before {
+  font-style: normal;
+  font-size: 16px;
+}
+
+.datatable-icon-prev:before {
+  content: "\276E";
+}
+
+.datatable-icon-left:before {
+  content: "\2190";
+}
+
+.datatable-icon-right:before {
+  content: "\2192";
+}
+
+.datatable-icon-skip:before {
+  content: "\276F";
+}
+
+
+
+.mat-table {
+  margin-top: 8px;
+  background-color: $gray;
+}
+.mat-paginator{
+  margin-top: 8px;
+  background-color: $gray;
+  min-height: 56px;
+  padding: 0 8px;
+  /* min-height: fit-content; */
+  text-align: center;
+  border-bottom: 1px solid $dark-gray-5;
+  //padding: 30px 0;
+  @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+}
+.mat-icon-button[disabled] .mat-paginator-decrement,
+.mat-icon-button[disabled] .mat-paginator-increment{
+  border-color:$gray-6;
+}
+.mat-header-row,
+.mat-row {
+  border-bottom: 1px solid $dark-gray-5;
+  padding: 30px 0;
+  min-height: fit-content;
+  text-align: center;
+}
+.mat-column-id {
+}
+.mat-column-booking-number {
+  flex: 0 0 5%;
+}
+.mat-column-date {
+  flex: 0 0 10%;
+}
+.mat-column-time {
+  flex: 0 0 10%;
+}
+.mat-column-hours {
+  flex: 0 0 5%;
+}
+.mat-column-number_of_people {
+  flex: 0 0 5%;
+}
+.mat-column-status {
+
+  flex: 0 0 10%;
+}
+.mat-column-name {
+  flex: 0 0 15%;
+}
+.mat-column-phone {
+  flex: 0 0 15%;
+}
+.mat-column-email {
+  flex: 0 0 20%;
+}
+.mat-column-link {
+  a {
+    text-decoration: none;
+    @include font-style($color: $mint, $size: 15px, $weight: 200);
+  }
+}
+.mat-header-row {
+  padding-bottom: 20px;
+}
+
+.mat-header-cell {
+  @include font-style($color: $gray-6, $size: 14px, $weight: 200);
+}
+.mat-cell {
+  @include font-style($color: $light-gray-2, $size: 15px, $weight: 200);
+}
+
+@media #{$mobile} {
+
+}
+
+@media #{$tablet} {
+
+}

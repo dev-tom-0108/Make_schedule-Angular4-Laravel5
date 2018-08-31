@@ -1,0 +1,45 @@
+<div class = 'booking-add-button-group'>
+    <button (click)="prev()" class="booking-add-button-group__button pull-left" type="button" name="button">{{'PREV_BUTTON' | translate }}</button>
+    <!-- <button (click)="next()" class="booking-add-button-group__button pull-right" type="button" name="button">{{'NEXT_BUTTON' | translate }}</button>     -->
+</div>
+<div class="step-account">
+  <ngx-loading [show]="loading"></ngx-loading>  
+  <div [ngStyle]="{'display':state == false?'block':'none'}" class="step-account__new">
+    <div class="step-account__new-label"> {{'BOOKING_ADD_NAME_OR_PHONE' | translate }}</div>
+    <input class="step-account__new-input" type="text" name="" value="" #searchBox (keyup.enter)="search(searchBox.value)">
+    <button (click)="addNewGuest()" class="step-account__new-btn" type="button" name="button">{{'BOOKING_ADD_AS_NEW_GUEST' | translate }}</button>
+  </div>
+  <div [ngStyle]="{'display':state == false?'block':'none'}" 
+    class="step-account__accounts"
+    infiniteScroll            
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="100"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()" >
+        <div *ngFor="let guest of guests" (click)="selectGuest(guest)" class="step-account__account">
+            <div class="step-account__col-50">
+                <div class="step-account__account-info step-account__account-info_name">
+                    <div class="step-account__account-info-label">{{'GUESTS_FULL_NAME' | translate }}</div>
+                    <div class="step-account__account-info-value">{{guest.name}}</div>
+                </div>
+                <div class="step-account__account-info step-account__account-info_email">
+                    <div class="step-account__account-info-label">{{'GUESTS_EMAIL_ADDRESS' | translate }}</div>
+                    <div class="step-account__account-info-value">{{guest.email}}</div>
+                </div>
+            </div>
+            <div class="step-account__col-50">
+                <div class="step-account__account-info step-account__account-info_phone step-account__account-info_right">
+                    <div class="step-account__account-info-label">{{'GUESTS_PHONE_NUMBER' | translate }}</div>
+                    <div class="step-account__account-info-value">{{guest.phone}}</div>
+                </div>
+                <div class="step-account__account-info step-account__account-info_company step-account__account-info_right">
+                    <div class="step-account__account-info-label">{{'GUESTS_COMPANY' | translate }}</div>
+                    <div class="step-account__account-info-value">{{guest.company_name}}</div>
+                </div>
+            </div>
+        </div>
+  </div>
+  <div [ngStyle]="{'display':state == true?'block':'none'}" id="bookingConfirm" class="step-account__confirm">
+    <app-step-confirm></app-step-confirm>
+  </div>
+</div>

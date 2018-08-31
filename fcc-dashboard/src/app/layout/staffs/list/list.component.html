@@ -1,0 +1,24 @@
+<div class="staffs-list">
+  <div class="staffs-list__search icon-search">
+      <ngx-loading [show]="loading"></ngx-loading>        
+    <input #searchBox class="staffs-list__search-input" placeholder="Search staffs..." type="text" (keyup.enter)="search(searchBox.value)" [(ngModel)]="searchText"/>
+  </div>
+
+
+  <div *ngIf="staffs?.length == 0" class="staffs-list__title">{{'STAFF_NO_RECORDS_FOUND' | translate}}</div>
+  <div *ngIf="staffs?.length == 1" class="staffs-list__title">{{'STAFF_ONE_RECORD_FOUND' | translate}}</div>
+  <div *ngIf="staffs?.length > 1" class="staffs-list__title">{{staffs?.length}} {{'STAFF_RECORDS_FOUND' | translate}}</div>
+  
+  <div class="staffs-list__staffs">
+
+    <div *ngFor="let staff of staffs" class="staffs-list__staff"
+     [class.active]="staff.id == selectedId" 
+     (click)="selectStaff(staff.id);">
+      <div class="staffs-list__staff-thumbnail">
+        <img [src]="staff?.profile_image ==  null ? defaultAvatar : staff?.profile_image" alt="">
+      </div>
+      <div class="staffs-list__staff-name">{{ staff.firstname }} {{ staff.lastname }} </div>
+      <div class="staffs-list__staff-phone">{{roles[staff.role] | translate }}</div>
+    </div>
+  </div>
+</div>

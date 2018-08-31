@@ -1,0 +1,14 @@
+<div [hidden] = "!isSettingFloorPackages()" id="floorPackageView" class="floor-package-view ">
+  <ngx-loading [show]="loading"></ngx-loading> 
+  <div class="floor-package-view__header ">
+    <div class="floor-package-view__dropdown ">
+      <ng-select [items]="floors" (change)="floorChange($event)" bindLabel="name" bindValue="id" [(ngModel)]="selectFloorId"></ng-select>
+    </div>
+    <button [disabled] = "isViewState()" (click)="addTable()" class="floor-package-view__zoom-btn icon-plus"></button>
+    <button [disabled] = "isViewState()" (click)="removeTable()" class="floor-package-view__zoom-btn icon-minus"></button>
+    <button class="floor-package-view__close-btn icon-close"></button>
+  </div>
+  <div id="canvas-container" class="floor-package-view__container">
+    <canvas id="floorPackageCanvas"></canvas>
+  </div>
+</div>
